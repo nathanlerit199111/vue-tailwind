@@ -1,0 +1,34 @@
+{
+  "background": {
+    "tbs-bg-primary-color" : "#fafafa",
+    "tbs-bg-secondary-color" : "#e4e5f1",
+    "tbs-bg-tertiary-color" : "#9394a5",
+    "tbs-btn-primary-color" : "#fff",
+    "tbs-btn-secondary-color": "#484b6a"
+  },
+  "font": {
+    "tbs-font-primary-color" : "#858585",
+    "tbs-font-secondary-color" : "#fff",
+    "tbs-font-tertiary-color" : "#e1e1e1",
+    "tbs-font-xs" : "11px",
+    "tbs-font-sm" : "13px",
+    "tbs-font-md" : "18px",
+    "tbs-font-lg" : "25px",
+    "tbs-font-xl" : "32px",
+    "tbs-font-xxl" : "45px"
+  },
+  "spaces": {
+    "tbs-space-xs" : "3px",
+    "tbs-space-sm" : "6px",
+    "tbs-space-md" : "16px",
+    "tbs-space-lg" : "25px",
+    "tbs-space-xl" : "32px"
+  },
+  "border radius": {
+    "tbs-border-radius-xs" : "3px",
+    "tbs-border-radius-sm" : "6px",
+    "tbs-border-radius-md" : "16px",
+    "tbs-border-radius-lg" : "25px",
+    "tbs-border-radius-xl" : "32px"
+  }
+}
