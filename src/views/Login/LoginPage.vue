@@ -57,11 +57,23 @@
     const checkSpecialChar = (password) => {
         passwordRules.hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     };
+    const countTrueConditions = (obj) => {
+        return Object.values(obj).filter(val => val).length;
+    };
 
+    const confirmPassword = ref('');
+    const confirmPasswordMatches = () => {
+        // Check if the length of confirmPassword is greater than 0 before comparing
+        if (confirmPassword.value.length > 0) {
+            return confirmPassword.value === register.value.password;
+        } else {
+            return true; // Return true if length is less than or equal to 1
+        }
+    };
 
-onMounted(() => {
-    validatePassword(register.value.password);
-});
+    onMounted(() => {
+        validatePassword(register.value.password);
+    });
 </script>
 <template>
     <SectionWrapper id="login-wrapper" additional_class="h-full">
@@ -106,22 +118,45 @@ onMounted(() => {
                                 <InputText v-model="register.password" class="block p-2 w-full" type="password" @input="validatePassword(register.password)" />
                                 <div class="password-rules">
                                     <div>
-                                        <small>Must be 8 characters <span v-if="passwordRules.minLength">✔</span></small>
+                                        <small>Minimum 8 characters <span v-if="passwordRules.minLength" class="	
+text-green-600">✔</span></small>
                                     </div>
                                     <div>
-                                        <small>Must have at least 1 Uppercase <span  v-if="passwordRules.hasUpperCase">✔</span></small>
+                                        <small>Must have at least 1 Uppercase <span  v-if="passwordRules.hasUpperCase" class="	
+text-green-600">✔</span></small>
                                     </div>
                                     <div>
-                                        <small>Must have at least 1 Lowercase <span v-if="passwordRules.hasLowerCase">✔</span></small>
+                                        <small>Must have at least 1 Lowercase <span v-if="passwordRules.hasLowerCase" class="	
+text-green-600">✔</span></small>
                                     </div>
                                     <div>
-                                        <small>Must have at least 1 Special Character <span  v-if="passwordRules.hasSpecialChar">✔</span></small>
+                                        <small>Must have at least 1 Special Character <span  v-if="passwordRules.hasSpecialChar" class="	
+text-green-600">✔</span></small>
                                     </div>
                                 </div>
                             </div>
+
+                            <div>
+                                <div 
+                                    :class="{
+                                        'bg-red-500 w-1/3': countTrueConditions(passwordRules) === 1,
+                                        'bg-orange-500 w-4/6': countTrueConditions(passwordRules) > 1 && countTrueConditions(passwordRules) <= 3,
+                                        'bg-green-500 w-full': countTrueConditions(passwordRules) >= 4,
+                                        'bg-gray-300': countTrueConditions(passwordRules) !== 2 && countTrueConditions(passwordRules) !== 4
+                                    }"
+                                    class="h-2.5 rounded-md transition-all border border-solid border-gray-300"
+                                />
+                                <small>
+                                    <template v-if="countTrueConditions(passwordRules) === 1">Weak</template>
+                                    <template v-else-if="countTrueConditions(passwordRules) > 1 && countTrueConditions(passwordRules) <= 3">Moderate</template>
+                                    <template v-else-if="countTrueConditions(passwordRules) >= 4">Strong</template>
+                                </small>
+                            </div>
+
                             <div>
                                 <label>Confirm Password</label>
-                                <InputText class="block p-2 w-full" type="text" />
+                                <InputText v-model="confirmPassword" class="block p-2 w-full" type="password" />
+                                <small v-if="!confirmPasswordMatches()" class="text-red-500">Passwords do not match</small>
                             </div>
                             <div class="flex mx-gap-md">
                                 <Button class="tbs-btn-secondary" label="Sign Up" />
