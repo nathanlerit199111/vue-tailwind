@@ -2,9 +2,20 @@
   "background": {
     "tbs-bg-primary-color" : "#fafafa",
     "tbs-bg-secondary-color" : "#e4e5f1",
-    "tbs-bg-tertiary-color" : "#9394a5",
+    "tbs-bg-tertiary-color" : "#9394a5"
+  },
+  "button": {
     "tbs-btn-primary-color" : "#fff",
     "tbs-btn-secondary-color": "#484b6a"
+  },
+  "side navigation": {
+    "tbs-nav-bg-color" : "#F1F2F7",
+    "tbs-nav-list-bg-color" : "transparent",
+    "tbs-nav-list-font-color" : "#273240",
+    "tbs-nav-list-bg-color-hover" : "#E4E7F5",
+    "tbs-nav-list-font-color-hover" : "#5A6ACF",
+    "tbs-nav-btn-primary-color" : "#fff",
+    "tbs-nav-btn-secondary-color": "#484b6a"
   },
   "font": {
     "tbs-font-primary-color" : "#858585",
@@ -12,7 +23,7 @@
     "tbs-font-tertiary-color" : "#e1e1e1",
     "tbs-font-xs" : "11px",
     "tbs-font-sm" : "13px",
-    "tbs-font-md" : "18px",
+    "tbs-font-md" : "15px",
     "tbs-font-lg" : "25px",
     "tbs-font-xl" : "32px",
     "tbs-font-xxl" : "45px"

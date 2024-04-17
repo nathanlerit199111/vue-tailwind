@@ -155,7 +155,7 @@ text-green-600">✔</span></small>
 
                             <div>
                                 <label>Confirm Password</label>
-                                <InputText v-model="confirmPassword" class="block p-2 w-full" type="password" />
+                                <InputText :disabled="countTrueConditions(passwordRules) < 4" v-model="confirmPassword" class="block p-2 w-full" type="password" />
                                 <small v-if="!confirmPasswordMatches()" class="text-red-500">Passwords do not match</small>
                             </div>
                             <div class="flex mx-gap-md">

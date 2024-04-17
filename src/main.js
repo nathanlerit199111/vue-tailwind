@@ -4,6 +4,7 @@ import customTheme from '@/theme/theme.json';
 import Vue3ColorPicker from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
 import VueLazyLoad from 'vue3-lazyload'
+import 'primeicons/primeicons.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
