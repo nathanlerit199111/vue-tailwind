@@ -50,10 +50,15 @@ button {
 }
 
 
+header {
+    padding: var(--tbs-space-md);
+}
+
 .mini-nav + main {
     width: 87%;
 }
 main {
     width: 80%;
+    background: var(--tbs-bg-primary-color);
     padding: 0 var(--tbs-space-lg);
 }

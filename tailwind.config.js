@@ -14,7 +14,7 @@ export default {
           Paddings in container
         */
         'default': '16px', 
-        'section': '40px' //Padding in sections
+        'section': '16px' //Padding in sections
         //End Default
       },
     },

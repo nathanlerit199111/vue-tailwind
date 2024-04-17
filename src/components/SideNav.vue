@@ -71,10 +71,13 @@
         <div 
             v-for="(side_nav, side_nav_index) in dummy_data"
             :key="side_nav_index"
-            class="side-nav-list mx-gap-md"
+            class="side-nav-list"
         >
-            <i :class="side_nav.icon"></i>
-            <span>{{ side_nav.name }}</span>
+            <router-link to="/theme" class="mx-gap-md">
+                <i :class="side_nav.icon"></i>
+                <span>{{ side_nav.name }}</span>
+            </router-link>
+            
         </div>
     </aside>
 </template>

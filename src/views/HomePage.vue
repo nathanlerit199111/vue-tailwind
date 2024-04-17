@@ -5,12 +5,18 @@
     import Column from '@/components/Column.vue'
 
     import SideNav from '@/components/SideNav.vue'
+
+    //VUE PRIME
+    import InputText from 'primevue/inputtext';
 </script>
 
 <template>
     <div id="dashboard-wrapper">
-        <SideNav mini="true"/>
+        <SideNav :mini="true"/>
         <main>
+            <header>
+                <InputText id="username" type="text" class="w-12rem" />
+            </header>
             <SectionWrapper>
                 <Container>
                     <Row>

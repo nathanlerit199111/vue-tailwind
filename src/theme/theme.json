@@ -13,9 +13,7 @@
     "tbs-nav-list-bg-color" : "transparent",
     "tbs-nav-list-font-color" : "#273240",
     "tbs-nav-list-bg-color-hover" : "#E4E7F5",
-    "tbs-nav-list-font-color-hover" : "#5A6ACF",
-    "tbs-nav-btn-primary-color" : "#fff",
-    "tbs-nav-btn-secondary-color": "#484b6a"
+    "tbs-nav-list-font-color-hover" : "#5A6ACF"
   },
   "font": {
     "tbs-font-primary-color" : "#858585",

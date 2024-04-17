@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import customConfig from '@/theme/theme.json';
-import tinycolor from "tinycolor2";
 
 import SectionWrapper from '@/components/SectionWrapper.vue'
 import Container from '@/components/Container.vue'

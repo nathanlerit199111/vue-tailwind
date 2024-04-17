@@ -40,12 +40,19 @@
         display: flex;
         margin: var(--tbs-space-sm) 0;
         overflow: hidden;
+
+        a {
+            display: flex;
+        }
         span {
             position: relative;
             right: -50px;
             opacity: 0;
             line-height: 16px;
             transition: all ease 0.5s;
+        }
+        i {
+            opacity: 0.7;
         }
     }
 
