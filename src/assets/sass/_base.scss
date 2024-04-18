@@ -63,7 +63,7 @@ button {
 //TABLE
 .p-datatable {
     border-radius: var(--tbs-border-radius-sm);
-    overflow: hidden;
+    // overflow: hidden;
 }
 
 #dashboard-wrapper {
@@ -74,7 +74,7 @@ header {
     padding: var(--tbs-space-md) var(--tbs-space-lg);
 }
 main {
-    width: 93%;
+    width: 100%;
     background: var(--tbs-bg-primary-color);
     padding: 0 var(--tbs-space-lg);
 }

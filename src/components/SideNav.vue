@@ -1,19 +1,14 @@
 <script setup>
-    import { ref } from 'vue'
+    import { ref, onMounted, onUnmounted } from 'vue'
 
     const props_data = defineProps ({
         mini: {
             type: Boolean,
             default: () => false
-        },
-        overlap: {
-            type: Boolean,
-            default: () => false
-        },
+        }
     })
 
     const isActive = ref(true)
-
     const dummy_data = [
         {
             icon: 'pi pi-home',
@@ -52,15 +47,39 @@
     const toggleNavFn = () => {
         isActive.value = !isActive.value
     }
+
+
+    //Check if viewport is 640px (Mobile)
+    const isMobile = ref(false);
+    const handleResize = () => {
+        isMobile.value = window.innerWidth <= 640;
+    };
+    onMounted(() => {
+        handleResize();
+        window.addEventListener('resize', handleResize);
+    });
+    onUnmounted(() => {
+        window.removeEventListener('resize', handleResize);
+    });
 </script>
 
 <template>
-    <aside 
+    <!-- <div v-if="isMobile" class="side-nav-hamburger">
+        <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg>
+    </div> -->
+
+    <aside
         id="side-nav" 
-        :class="`${mini ? 'mini-nav' : ''} ${isActive ? 'active' : ''}`"
+        :class="`
+            ${mini ? 'mini-nav' : ''} 
+            ${isActive ? 'active' : ''}
+            ${isMobile ? 'isMobile' : ''}
+            `"
     >
-        <button 
-            class="close-side-nav"
+        <button
+            class="side-nav-close"
             @click="toggleNavFn()"
         >
             <i :class="`pi ${isActive ? 'pi-chevron-left' : 'pi-chevron-right'}`"></i>

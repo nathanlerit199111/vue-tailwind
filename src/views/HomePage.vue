@@ -32,7 +32,7 @@
     <div id="dashboard-wrapper">
         <SideNav :mini="true"/>
         <main>
-            <header>
+            <header class="flex justify-end">
                 <InputComponent/>
             </header>
             <hr/>
@@ -47,25 +47,27 @@
                 </ContainerWrapper>
             </SectionWrapper>
 
-            <SectionWrapper>
+            <!-- <SectionWrapper>
                 <ContainerWrapper>
                     <RowWrapper>
-                        <DataTable class="w-full shadow-sm" :value="dummy_table_data" tableStyle="min-width: 50rem">
-                            <Column field="code" header="Code"></Column>
-                            <Column field="name" header="Name"></Column>
-                            <Column field="category" header="Category"></Column>
-                            <Column field="quantity" header="Quantity">
-                                <template #body="slotProps">
-                                    <Button 
-                                        class="tbs-btn-secondary" 
-                                        label="Add"
-                                    />
-                                </template>
-                            </Column>
-                        </DataTable>
+                        <ColumnWrapper>
+                            <DataTable :value="dummy_table_data">
+                                <Column field="code" header="Code"></Column>
+                                <Column field="name" header="Name"></Column>
+                                <Column field="category" header="Category"></Column>
+                                <Column field="quantity" header="Quantity">
+                                    <template #body="slotProps">
+                                        <Button 
+                                            class="tbs-btn-secondary" 
+                                            label="Add"
+                                        />
+                                    </template>
+                                </Column>
+                            </DataTable>
+                        </ColumnWrapper>
                     </RowWrapper>
                 </ContainerWrapper>
-            </SectionWrapper>
+            </SectionWrapper> -->
         </main>
     </div>
 </template>
