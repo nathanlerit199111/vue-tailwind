@@ -1,9 +1,25 @@
 //FONTS
 h1 {
-    font-size: var(--tbs-font-xl);
+    font-size: var(--tbs-font-xxl);
 }
 h2 {
+    font-size: var(--tbs-font-xl);
+}
+h3 {
     font-size: var(--tbs-font-lg);
+}
+h4 {
+    font-size: var(--tbs-font-md);
+}
+h5 {
+    font-size: var(--tbs-font-sm);
+}
+h6 {
+    font-size: var(--tbs-font-xs);
+}
+
+p, label, span {
+    font-size: var(--tbs-font-sm);
 }
 
 
@@ -33,32 +49,32 @@ button {
 }
 
 .tbs-btn-primary {
-    background: var(--tbs-btn-primary-color);
+    background: var(--tbs-btn-bg-primary-color);
     color: var(--tbs-font-primary-color);
     border: solid 1px var(--tbs-font-primary-color);
 }
 
 .tbs-btn-secondary {
-    background: var(--tbs-btn-secondary-color);
+    background: var(--tbs-btn-bg-secondary-color);
     color: var(--tbs-font-secondary-color);
 }
 
+
+//TABLE
+.p-datatable {
+    border-radius: var(--tbs-border-radius-sm);
+    overflow: hidden;
+}
 
 #dashboard-wrapper {
     display: flex;
     height: 100%;
 }
-
-
 header {
-    padding: var(--tbs-space-md);
-}
-
-.mini-nav + main {
-    width: 87%;
+    padding: var(--tbs-space-md) var(--tbs-space-lg);
 }
 main {
-    width: 80%;
+    width: 93%;
     background: var(--tbs-bg-primary-color);
     padding: 0 var(--tbs-space-lg);
 }

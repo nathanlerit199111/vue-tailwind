@@ -1,7 +1,7 @@
 #side-nav {
     background: var(--tbs-nav-bg-color);
     padding: 0 var(--tbs-space-md);
-    width: 105px;
+    width: 7%;
     height: 100%;
     transition: all ease 0.5s;
     position: relative;
@@ -20,6 +20,9 @@
 
     .side-nav-logo-wrapper {
         padding: var(--tbs-space-md) var(--tbs-space-lg);
+        min-height: 68px;
+        display: flex;
+        align-items: center;
     }
 
     .side-nav-list.active,
@@ -33,7 +36,6 @@
         background: var(--tbs-nav-list-bg-color);
         color: var(--tbs-nav-list-font-color);
         font-size: var(--tbs-font-md);
-        padding: var(--tbs-space-md) var(--tbs-space-lg);
         border-radius: var(--tbs-border-radius-sm);
         cursor: pointer;
         align-items: center;
@@ -43,6 +45,7 @@
 
         a {
             display: flex;
+            padding: var(--tbs-space-md) var(--tbs-space-lg);
         }
         span {
             position: relative;

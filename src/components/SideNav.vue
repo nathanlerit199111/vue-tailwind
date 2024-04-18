@@ -6,6 +6,10 @@
             type: Boolean,
             default: () => false
         },
+        overlap: {
+            type: Boolean,
+            default: () => false
+        },
     })
 
     const isActive = ref(true)
@@ -63,7 +67,7 @@
         </button>
 
         <div class="side-nav-logo-wrapper">
-            <h3>Logo</h3>
+            <h4>Logo</h4>
         </div>
         <hr/>
 

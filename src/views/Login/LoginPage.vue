@@ -3,9 +3,9 @@
     import { useRouter } from 'vue-router';
 
     import SectionWrapper from '@/components/SectionWrapper.vue'
-    import Container from '@/components/Container.vue'
-    import Row from '@/components/Row.vue'
-    import Column from '@/components/Column.vue'
+    import ContainerWrapper from '@/components/ContainerWrapper.vue'
+    import RowWrapper from '@/components/RowWrapper.vue'
+    import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import FormComponent from '@/components/UIElements/FormComponent.vue'
 
 
@@ -77,9 +77,9 @@
 </script>
 <template>
     <SectionWrapper id="login-wrapper" additional_class="h-full">
-        <Container additional_class="h-full">
-            <Row additional_class="items-center h-full">
-                <Column additional_class="max-w-md mx-auto">
+        <ContainerWrapper additional_class="h-full">
+            <RowWrapper additional_class="items-center h-full">
+                <ColumnWrapper additional_class="max-w-md mx-auto">
                     <FormComponent>
                         <div v-if="!isRegister" class="my-gap-md">
                             <h2>Login</h2>
@@ -164,9 +164,9 @@ text-green-600">✔</span></small>
                             </div>
                         </div>
                     </FormComponent>
-                </Column>
-            </Row>
-        </Container>
+                </ColumnWrapper>
+            </RowWrapper>
+        </ContainerWrapper>
     </SectionWrapper>
 
     <!-- BACKGROUND ANIMATION -->
