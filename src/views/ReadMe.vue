@@ -9,6 +9,25 @@
     //VUE PRIME
     import Chip from 'primevue/chip';
     import Message from 'primevue/message';
+
+
+    const tailwindCode = `<input 
+    type="text"
+    class="bg-red-300 text-red-100 rounded-md w-2/12 text-lg font-normal border border-solid border-black"
+/>`
+
+    const semanticCode = `<input 
+    type="text"
+    class="input-style"
+/>
+.input-style {
+    background: red;
+    border-radius: 10px;
+    width: 50%;
+    font-size: 30px;
+    font-weight: 400;
+    border: solid 1px #000;
+}`
 </script>
 <template>
     <SectionWrapper id="read-me">
@@ -52,7 +71,7 @@
 
                         <p><b>Question:</b> What would be the disadvantage of using CSS variables within SASS?</p>
 
-                        <p><b>Answer:</b> Currently, only the SASS color function is supported, such as in the example: darken(var(--tbs-bg-primary-color), 10%). However, this syntax is invalid, and we won't be utilizing the SASS color function. Our UI/UX designer has provided precise hexadecimal codes for colors, eliminating the need for this function.</p>
+                        <p><b>Answer:</b> Currently, only the SASS color functionality, such as in the example: <code>darken(var(--tbs-bg-primary-color), 10%)</code>, this syntax is invalid. Our UI/UX designer has provided precise hexadecimal codes for colors, eliminating the need for this function.</p>
 
                         <hr class="my-4"/>
 
@@ -117,20 +136,109 @@
             </RowWrapper>
         </ContainerWrapper>
     </SectionWrapper>
+
+
+    <SectionWrapper>
+        <ContainerWrapper additional_class="max-w-5xl my-5">
+            <RowWrapper>
+                <ColumnWrapper>
+                    <h2 class="font-bold">Downside and workaround in tailwind</h2>
+                    <h3>None Semantic</h3>
+                    <p>Tailwind doesn't follow a semantic approach, unlike HTML which provides meaning and structure to content, while CSS handles styling.</p>
+                    <p>It uses utility classes (small and single-purpose) to style website in HTML itself. It cannot separate from its structure. For better understanding <a target="_blank" href="https://nuejs.org/blog/tailwind-vs-semantic-css/">https://nuejs.org/blog/tailwind-vs-semantic-css/</a></p>
+
+                    <div>
+                        <h4>Example:</h4>
+                        <p><b>Tailwind</b> - To adjust the style, you need to add or modify the utility class names, as they aren't separated from the structure.</p>
+                        
+                        <code>
+                            <pre>{{ tailwindCode }}</pre>
+                        </code>
+
+
+
+                        <p><b>Semantic</b> - To adjust the style, you must include a class name; with external CSS, you can adjust styles collectively (as blocks of styles rather than single-purpose). This styling is distinct from the structure it modifies.</p>
+                        
+                        <code>
+                            <div>
+                                <pre>{{ semanticCode }} </pre>
+                            </div>
+                        </code> 
+                    </div>
+                </ColumnWrapper>
+            </RowWrapper>
+
+            <RowWrapper>
+                <ColumnWrapper>
+                    <h4><b>How's that even a problem?</b></h4>
+                    <p>Try to imagine this, you have an input element. Your web app uses a lot of forms. On some forms: </p>
+                    <ul class="list-disc pl-4">
+                        <li>Other developer miss some class names</li>
+                        <li>Other developer mistakenly added unnecessary class names</li>
+                        <li>Other developer use wrong class name. Instead of using p-2 you use p-4 etc</li>
+                        <li>You have many input element existing in your web app</li>
+                    </ul>
+                    <p>Then your task is to fix the style to make it consistent.</p>
+                    <p>Lastly, input field is not just the only element, what if there are other elements that has the same case.</p>
+
+                    <h4><b>How most developer will fix this?</b></h4>
+                    <p>Either, overriding styles with external CSS may involve the potential use of !important declarations.</p>
+                    <p>Manually correct all the utility classes for the impacted input elements.</p>
+
+                    <p>This will start as a small problem and eventually will create a big chunk of hot fix codes. It will affects maintainability and performance</p>
+                </ColumnWrapper>
+            </RowWrapper>
+
+            <RowWrapper>
+                <ColumnWrapper>
+                    <h3>Proper Workaround</h3>
+                    <p>Atomic Design - Create component even for smallest / single element</p>
+
+                    <code>
+                        <p>InputComponent.vue</p>
+                        <pre>{{ tailwindCode }}</pre>
+                    </code>
+
+                    <p>Utilizing this InputComponent.vue component will ensure it uses the correct tailwind utility class names.</p>
+                    <p>If happens you need to change the style, Just go to that component and update the utility class names and all input field will update accordingly.</p>
+                </ColumnWrapper>
+            </RowWrapper>
+
+            <RowWrapper>
+                <ColumnWrapper>
+                    <h3>Front end functional components</h3>
+                    <p>Tailwind only provided style for FREE and not functional components like, table, modal, datepicker, etc.</p>
+                    <p>You need to pay for some useful functional component. With that we will use VuePrime - It uses tailwind with components                     <a target="_blank" href="https://primevue.org/">https://primevue.org/</a></p>
+                </ColumnWrapper>
+            </RowWrapper>
+        </ContainerWrapper>
+    </SectionWrapper>
 </template>
 
 <style lang="scss" scoped>
-#read-me {
-    img {
-        aspect-ratio: auto;
-        width: 100%;
-        height: auto;
-        max-width: 200px;
-        max-height: 120px;
-        object-fit: contain;
-        margin: 20px auto;
-        display: block;
-    }
+h1,h2,h3,h4,p {
+    margin: 10px 0;
+}
+li {
+    font-size: 13px;
+}
+code {
+    padding: 10px;
+    background: #595959;
+    color: #fff;
+    display: block;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+img {
+    aspect-ratio: auto;
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    max-height: 120px;
+    object-fit: contain;
+    margin: 20px auto;
+    display: block;
 }
 
 .theme_example {
