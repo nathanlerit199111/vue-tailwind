@@ -100,7 +100,7 @@
             id="hamburger-icon-menu-wrapper"
         >
             <div
-                class="open" 
+                :class="`${isActive ? 'open' : ''}`" 
                 id="hamburger-icon-menu" 
                 @click="toggleOpenClass">
                 <span></span>
