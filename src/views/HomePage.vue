@@ -34,6 +34,7 @@
         <main>
             <header class="flex justify-end">
                 <InputComponent/>
+                <Button label="sample"/>
             </header>
             <hr/>
             <SectionWrapper>
@@ -47,12 +48,12 @@
                 </ContainerWrapper>
             </SectionWrapper>
 
-            <!-- <SectionWrapper>
+            <SectionWrapper>
                 <ContainerWrapper>
                     <RowWrapper>
                         <ColumnWrapper>
                             <DataTable :value="dummy_table_data">
-                                <Column field="code" header="Code"></Column>
+                                <!-- <Column field="code" header="Code"></Column>
                                 <Column field="name" header="Name"></Column>
                                 <Column field="category" header="Category"></Column>
                                 <Column field="quantity" header="Quantity">
@@ -62,12 +63,12 @@
                                             label="Add"
                                         />
                                     </template>
-                                </Column>
+                                </Column> -->
                             </DataTable>
                         </ColumnWrapper>
                     </RowWrapper>
                 </ContainerWrapper>
-            </SectionWrapper> -->
+            </SectionWrapper>
         </main>
     </div>
 </template>

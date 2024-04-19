@@ -91,7 +91,7 @@
         <hr/>
 
         <!-- Side navigation list -->
-        <div 
+        <nav 
             v-for="(side_nav, side_nav_index) in dummy_data"
             :key="side_nav_index"
             class="side-nav-list"
@@ -101,6 +101,6 @@
                 <span>{{ side_nav.name }}</span>
             </router-link>
             
-        </div>
+        </nav>
     </aside>
 </template>
