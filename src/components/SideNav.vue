@@ -61,6 +61,15 @@
     onUnmounted(() => {
         window.removeEventListener('resize', handleResize);
     });
+
+
+
+    // Function to toggle the 'open' class
+    const toggleOpenClass = () => {
+        const navIcon = document.querySelector('#hamburger-icon-menu');
+        navIcon.classList.toggle('open');
+        isActive.value = !isActive.value
+    };
 </script>
 
 <template>
@@ -79,11 +88,26 @@
             `"
     >
         <button
+            v-if="!isMobile"
             class="side-nav-close"
             @click="toggleNavFn()"
         >
             <i :class="`pi ${isActive ? 'pi-chevron-left' : 'pi-chevron-right'}`"></i>
         </button>
+
+        <div 
+            v-if="isMobile"
+            id="hamburger-icon-menu-wrapper"
+        >
+            <div
+                class="open" 
+                id="hamburger-icon-menu" 
+                @click="toggleOpenClass">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
 
         <div class="side-nav-logo-wrapper">
             <h4>Logo</h4>

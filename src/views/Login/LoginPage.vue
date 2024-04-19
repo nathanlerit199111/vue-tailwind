@@ -79,7 +79,7 @@
     <SectionWrapper id="login-wrapper" additional_class="h-full">
         <ContainerWrapper additional_class="h-full">
             <RowWrapper additional_class="items-center h-full">
-                <ColumnWrapper additional_class="max-w-md mx-auto">
+                <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
                     <FormComponent>
                         <div v-if="!isRegister" class="my-gap-md">
                             <h2>Login</h2>

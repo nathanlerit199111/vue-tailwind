@@ -42,7 +42,7 @@ const saveConfig = () => {
   <SectionWrapper>
     <ContainerWrapper additional_class="max-w-5xl">
       <RowWrapper v-for="(category, categoryName) in temporaryConfigStorage" :key="categoryName">
-        <ColumnWrapper>
+        <ColumnWrapper additional_class="w-full">
           <h3 class="uppercase text-lg font-bold mb-3">{{ categoryName }}</h3>
         </ColumnWrapper>
         <ColumnWrapper v-for="(colorValue, classLabel) in category" :key="classLabel" additional_class="sm:w-3/12">

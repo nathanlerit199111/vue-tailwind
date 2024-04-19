@@ -71,7 +71,7 @@
 
                         <p><b>Question:</b> What would be the disadvantage of using CSS variables within SASS?</p>
 
-                        <p><b>Answer:</b> Currently, only the SASS color functionality, such as in the example: <code>darken(var(--tbs-bg-primary-color), 10%)</code>, this syntax is invalid. Our UI/UX designer has provided precise hexadecimal codes for colors, eliminating the need for this function.</p>
+                        <p><b>Answer:</b> Currently, only the SASS color functionality, such as in the example: <code>darken(var(--tbs-bg-primary-color), 10%)</code>This syntax is invalid. Our UI/UX designer has provided precise hexadecimal codes for colors, eliminating the need for this function.</p>
 
                         <hr class="my-4"/>
 

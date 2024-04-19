@@ -1,11 +1,13 @@
 <script setup>
+    import { ref } from 'vue'
+
     import SectionWrapper from '@/components/SectionWrapper.vue'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
 
+    import HeaderWrapper from '@/components/HeaderWrapper.vue'
     import SideNav from '@/components/SideNav.vue'
-    import InputComponent from '@/components/UIElements/InputComponent.vue'
 
     //VUE PRIME
     import DataTable from 'primevue/datatable';
@@ -32,17 +34,14 @@
     <div id="dashboard-wrapper">
         <SideNav :mini="true"/>
         <main>
-            <header class="flex justify-end">
-                <InputComponent/>
-                <Button label="sample"/>
-            </header>
+            <HeaderWrapper />
             <hr/>
             <SectionWrapper>
                 <ContainerWrapper>
                     <RowWrapper>
                         <ColumnWrapper>
-                        <h2>Payment Types List</h2>
-                        <p>Display all payment types</p>
+                            <h2>Payment Types List</h2>
+                            <p>Display all payment types</p>
                         </ColumnWrapper>
                     </RowWrapper>
                 </ContainerWrapper>
