@@ -43,7 +43,6 @@
                 <ColumnWrapper additional_class="w-6/12">
                     <Img class="my-5" image_src="tailwind-logo.png"/>
                     <h3>Tailwind will be used for creating Skeleton / Wireframe layout</h3>
-                    <p>Avoid utilizing Tailwind styling for background colors, font colors, font sizes, border radius, and box shadows as these elements are defined within the theme settings.</p>
                     <p>Example but not limited to</p>
                     <Chip class="m-2" label="Flexbox" />
                     <Chip class="m-2" label="Grid" />
@@ -53,6 +52,7 @@
                     <Chip class="m-2" label="Width" />
                     <Chip class="m-2" label="Height" />
                     <Chip class="m-2" label="Position ( Relative / Absolute / Fixed )" />
+                    <p>Avoid utilizing Tailwind styling for background colors, font colors, font sizes, border radius, and box shadows as these elements are defined within the theme settings.</p>
                     <p>For Margin / Padding - It depends, if it just a small tweak and not part of the theme. Just make sure we still utilize theme settings</p>
                 </ColumnWrapper>
 
@@ -77,7 +77,7 @@
 
                         <p><b>Question:</b> What is the reason behind separating the implementation in Tailwind?</p>
 
-                        <p><b>Answer:</b> The reason for separating the implementation in Tailwind is to address concerns distinctly: Tailwind manages layouting responsibilities, while CSS variables and SASS handle branding and theming aspects.</p>
+                        <p><b>Answer:</b> To address concerns distinctly: Tailwind manages layouting responsibilities, while CSS variables and SASS handle branding and theming aspects. Additionally, it gives the developer more flexibility since most of the time brand / theme styling is outside Tailwind and which can be quite challenging when trying to use utility classes to adjust themes.</p>
                     </div>
                 </ColumnWrapper>
             </RowWrapper>
@@ -142,7 +142,7 @@
         <ContainerWrapper additional_class="max-w-5xl my-5">
             <RowWrapper>
                 <ColumnWrapper>
-                    <h2 class="font-bold">Downside and workaround in tailwind</h2>
+                    <h2 class="font-bold">Downside and Workaround in Tailwind</h2>
                     <h3>None Semantic</h3>
                     <p>Tailwind doesn't follow a semantic approach, unlike HTML which provides meaning and structure to content, while CSS handles styling.</p>
                     <p>It uses utility classes (small and single-purpose) to style website in HTML itself. It cannot separate from its structure. For better understanding <a target="_blank" href="https://nuejs.org/blog/tailwind-vs-semantic-css/">https://nuejs.org/blog/tailwind-vs-semantic-css/</a></p>
@@ -171,15 +171,15 @@
             <RowWrapper>
                 <ColumnWrapper>
                     <h4><b>How's that even a problem?</b></h4>
-                    <p>Try to imagine this, you have an input element. Your web app uses a lot of forms. On some forms: </p>
+                    <p>Try to imagine this, you have an input field. Your web app uses a lot of forms. On some forms: </p>
                     <ul class="list-disc pl-4">
-                        <li>Other developer miss some class names</li>
-                        <li>Other developer mistakenly added unnecessary class names</li>
-                        <li>Other developer use wrong class name. Instead of using p-2 you use p-4 etc</li>
+                        <li>Other developer miss some class names to some input fields</li>
+                        <li>Other developer mistakenly added unnecessary class names to some input fields</li>
+                        <li>Other developer use wrong class name. Instead of using p-2 you use p-4 etc.</li>
                         <li>You have many input element existing in your web app</li>
                     </ul>
+                    <p>In short, many input fields are not consistent due to different developers approach (input field are not just the only elements, what if there are other elements that has the same case.)</p>
                     <p>Then your task is to fix the style to make it consistent.</p>
-                    <p>Lastly, input field is not just the only element, what if there are other elements that has the same case.</p>
 
                     <h4><b>How most developer will fix this?</b></h4>
                     <p>Either, overriding styles with external CSS may involve the potential use of !important declarations.</p>
@@ -218,6 +218,9 @@
 <style lang="scss" scoped>
 h1,h2,h3,h4,p {
     margin: 10px 0;
+}
+a {
+    color: rgb(37, 141, 159);
 }
 li {
     font-size: 13px;
