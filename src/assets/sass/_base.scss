@@ -1,25 +1,46 @@
 //FONTS
 h1 {
-    font-size: var(--tbs-font-xxl);
+    @include text(
+        --tbs-font-xxl,
+        700
+    )
 }
 h2 {
-    font-size: var(--tbs-font-xl);
+    @include text(
+        --tbs-font-xl,
+        400
+    )
 }
 h3 {
-    font-size: var(--tbs-font-lg);
+    @include text(
+        --tbs-font-lg,
+        400
+    )
 }
 h4 {
-    font-size: var(--tbs-font-md);
+    @include text(
+        --tbs-font-md,
+        400
+    )
 }
 h5 {
-    font-size: var(--tbs-font-sm);
+    @include text(
+        --tbs-font-sm,
+        400
+    )
 }
 h6 {
-    font-size: var(--tbs-font-xs);
+    @include text(
+        --tbs-font-xs,
+        400
+    )
 }
 
 p, label, span {
-    font-size: var(--tbs-font-sm);
+    @include text(
+        --tbs-font-sm,
+        400
+    )
 }
 
 
@@ -33,9 +54,6 @@ img {
 
 
 //FORMS
-label {
-    font-size: var(--tbs-font-sm);
-}
 input {
     margin: var(--tbs-space-sm) 0;
 }
@@ -48,14 +66,19 @@ button {
 }
 
 .tbs-btn-primary {
-    background: var(--tbs-btn-bg-primary-color);
-    color: var(--tbs-font-primary-color);
-    border: solid 1px var(--tbs-font-primary-color);
+    @include button(
+        --tbs-btn-bg-primary-color,
+        --tbs-font-primary-color,
+        --tbs-font-primary-color
+    )
 }
 
 .tbs-btn-secondary {
-    background: var(--tbs-btn-bg-secondary-color);
-    color: var(--tbs-font-secondary-color);
+    @include button(
+        --tbs-btn-bg-secondary-color,
+        --tbs-font-secondary-color,
+        none
+    )
 }
 
 

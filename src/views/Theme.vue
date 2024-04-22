@@ -52,8 +52,7 @@ const saveConfig = () => {
                 {{ classLabel }}
                 <color-picker
                   v-if="classLabel.includes('color')"
-                  v-model:pureColor="category[classLabel]" 
-                  v-model:gradientColor="category[classLabel]"
+                  v-model:pureColor="category[classLabel]"
                 />
               </label>
               
