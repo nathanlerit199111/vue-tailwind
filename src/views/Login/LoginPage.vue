@@ -7,6 +7,7 @@
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import FormComponent from '@/components/UIElements/FormComponent.vue'
+    import InputComponent from '@/components/UIElements/InputComponent.vue'
 
 
     //VUE PRIME
@@ -85,11 +86,17 @@
                             <h2>Login</h2>
                             <div>
                                 <label>Username</label>
-                                <InputText class="block p-2 w-full" type="text" />
+                                <InputComponent 
+                                    additional_class="block w-full" 
+                                    type="text" 
+                                />
                             </div>
                             <div>
                                 <label>Password</label>
-                                <InputText class="block p-2 w-full" type="text" />
+                                <InputComponent 
+                                    additional_class="block w-full" 
+                                    type="password" 
+                                />
                             </div>
                             <p class="text-xs">Forgot password</p>
                             <div class="flex mx-gap-md">
@@ -107,15 +114,27 @@
                             <h2>Register</h2>
                             <div>
                                 <label>First Name</label>
-                                <InputText class="block p-2 w-full" type="text" />
+                                <InputComponent 
+                                    additional_class="block w-full" 
+                                    type="text" 
+                                />
                             </div>
                             <div>
                                 <label>Last Name</label>
-                                <InputText class="block p-2 w-full" type="text" />
+                                <InputComponent 
+                                    additional_class="block w-full" 
+                                    type="text" 
+                                />
                             </div>
                             <div>
                                 <label>Password</label>
-                                <InputText v-model="register.password" class="block p-2 w-full" type="password" @input="validatePassword(register.password)" />
+                                <InputComponent
+                                    v-model="register.password"
+                                    additional_class="block w-full" 
+                                    type="password"
+                                    @input="validatePassword(register.password)"
+                                />
+                                <!-- <InputText v-model="register.password" class="block p-2 w-full" type="password" @input="validatePassword(register.password)" /> -->
                                 <div class="password-rules">
                                     <div>
                                         <small>Minimum 8 characters <span v-if="passwordRules.minLength" class="	
@@ -155,7 +174,13 @@ text-green-600">✔</span></small>
 
                             <div>
                                 <label>Confirm Password</label>
-                                <InputText :disabled="countTrueConditions(passwordRules) < 4" v-model="confirmPassword" class="block p-2 w-full" type="password" />
+                                <InputComponent
+                                    additional_class="block w-full" 
+                                    type="password"
+                                    v-model="confirmPassword"
+                                    :disabled="countTrueConditions(passwordRules) < 4"
+                                />
+                                <!-- <InputText :disabled="countTrueConditions(passwordRules) < 4" v-model="confirmPassword" class="block p-2 w-full" type="password" /> -->
                                 <small v-if="!confirmPasswordMatches()" class="text-red-500">Passwords do not match</small>
                             </div>
                             <div class="flex mx-gap-md">

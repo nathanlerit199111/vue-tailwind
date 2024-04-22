@@ -1,0 +1,11 @@
+//USE THIS FOR DYNAMIC STYLING
+@mixin text($SIZE, $FONT_WEIGHT) {
+    font-size: $SIZE;
+    line-height: calc($SIZE * 1.2);
+    font-weight: $FONT_WEIGHT;
+}
+
+@mixin button($BG, $FONT_COLOR) {
+    background: $BG;
+    color: $FONT_COLOR;
+}

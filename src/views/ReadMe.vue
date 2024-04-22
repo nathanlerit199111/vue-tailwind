@@ -77,7 +77,13 @@
 
                         <p><b>Question:</b> What is the reason behind separating the implementation in Tailwind?</p>
 
-                        <p><b>Answer:</b> To address concerns distinctly: Tailwind manages layouting responsibilities, while CSS variables and SASS handle branding and theming aspects. Additionally, it gives the developer more flexibility since most of the time brand / theme styling is outside Tailwind and which can be quite challenging when trying to use utility classes to adjust themes.</p>
+                        <p><b>Answer:</b> 
+                            <ul class="list-disc">
+                                <li>To address concerns distinctly: Tailwind manages layouting responsibilities, while CSS variables and SASS handle branding and theming aspects.</li>
+                                <li>It gives the developer more flexibility since most of the time brand / theme styling is outside Tailwind and which can be quite challenging when trying to use utility classes to adjust themes.</li>
+                                <li>Avoiding excessive DOM size that can potentially affects performance.</li>
+                            </ul>
+                        </p>
                     </div>
                 </ColumnWrapper>
             </RowWrapper>
@@ -204,11 +210,30 @@
                 </ColumnWrapper>
             </RowWrapper>
 
+
+            <RowWrapper>
+                <ColumnWrapper>
+                    <h3>Excessive DOM Size</h3>
+                    <p>Since it uses too much class names, and possible extra divs or wrapper. We just have to balance the usage of Tailwind.</p>
+                </ColumnWrapper>
+            </RowWrapper>
+
             <RowWrapper>
                 <ColumnWrapper>
                     <h3>Front end functional components</h3>
                     <p>Tailwind only provided style for FREE and not functional components like, table, modal, datepicker, etc.</p>
                     <p>You need to pay for some useful functional component. With that we will use VuePrime - It uses tailwind with components                     <a target="_blank" href="https://primevue.org/">https://primevue.org/</a></p>
+                </ColumnWrapper>
+            </RowWrapper>
+
+            <RowWrapper>
+                <ColumnWrapper>
+                    <h3>Conclusion</h3>
+                    <p>Each approach has its advantages and disadvantages. Tailwind simplifies UI layout for developers by offering easy-to-use utility classes. Unlike Bootstrap, which often combines multiple styles in a single class, Tailwind's approach of one style per class minimizes the need for overriding styles.</p>
+
+                    <p>However, it breaks from the semantic practice of separating HTML for the structure and meaning of a website, and CSS for styling purposes.</p>
+
+                    <p>Balancing developers experience and web performance is the key.</p>
                 </ColumnWrapper>
             </RowWrapper>
         </ContainerWrapper>

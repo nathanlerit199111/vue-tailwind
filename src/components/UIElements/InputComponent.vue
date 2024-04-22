@@ -1,7 +1,27 @@
 <script setup>
+    //VUE PRIME 
     import InputText from 'primevue/inputtext'
+
+    const props_data = defineProps({
+        additional_class: {
+            type: String,
+            default: () => ""
+        },
+        id_name: {
+            type: String,
+            default: () => ""
+        },
+        type: {
+            type: String,
+            default: () => ""
+        },
+    })
 </script>
 
 <template>
-    <InputText placeholder="Search" id="username" type="text" class="w-1/3 py-2 px-4" />
+    <InputText 
+        :type="props_data.type" 
+        :id="props_data.id_name ? props_data.id_name : null"
+        :class="`py-2 px-4 ${props_data.additional_class}`"
+        />
 </template>

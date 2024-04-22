@@ -44,8 +44,7 @@ input {
 
 //BUTTONS
 button {
-    padding: var(--tbs-space-sm) var(--tbs-space-md);
-    border-radius: var(--tbs-border-radius-sm);
+    @extend %buttonProperties;
 }
 
 .tbs-btn-primary {
