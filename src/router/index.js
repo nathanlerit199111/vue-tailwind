@@ -43,8 +43,10 @@ router.beforeEach((to, from, next) => {
   const authToken = getCookie('authToken');
   const isAuthenticated = authToken ? true : false;
 
-  // These are the pages accessible without authentication
-  if (!isAuthenticated && to.path !== '/login' && to.path !== '/readme') {
+
+  if (isAuthenticated && to.path === '/login') {
+    next('/');
+  } else if (!isAuthenticated && to.path !== '/login' && to.path !== '/readme') {
     next('/login');
   } else {
     next();

@@ -9,6 +9,10 @@ const http = axios.create({
 // Add a request interceptor
 http.interceptors.request.use(
   config => {
+    /* 
+      Change 'authToken' to whatever the cookie name you'll be using
+      Update also the router/index.js
+    */
     const authToken = getCookie('authToken');
     // If the authentication token exists, add it to the Authorization header
     if (authToken) {

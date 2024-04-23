@@ -26,8 +26,6 @@
 <template>
     <header class="flex justify-end">
         <InputComponent/>
-        <Button label="sample"/>
-
         <Menubar :model="items"></Menubar>
     </header>
 </template>

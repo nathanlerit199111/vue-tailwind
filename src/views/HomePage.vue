@@ -11,8 +11,8 @@
 
     //VUE PRIME
     import DataTable from 'primevue/datatable';
-    import Column from 'primevue/column';
-    import Button from 'primevue/button';
+    // import Column from 'primevue/column';
+    // import Button from 'primevue/button';
 
     const dummy_table_data = [
         {
