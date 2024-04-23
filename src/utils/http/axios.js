@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { getCookie } from '@/helpers/getCookie';
+const baseURL = import.meta.env.VITE_API_BASE_URL
 
 const http = axios.create({
-    baseURL: import.meta.env.VUE_APP_BASE_URL,
+    baseURL
 });
 
 // Add a request interceptor
@@ -21,5 +22,28 @@ http.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+// http.interceptors.request.use(
+//   (response) => response,
+//   async (error) => {
+//     switch (error.response.status) {
+//       case 400:
+//         console.error("400")
+//         break;
+//       case 401:
+//         console.error("401")
+//         break;
+//       case 403:
+//         console.error("403")
+//         break;
+//       case 404:
+//         console.error("404")
+//         break;
+//       default:
+//         console.error("error")
+//     }
+//     return Promise.reject(error);
+//   }
+// )
 
 export default http;

@@ -81,7 +81,8 @@
                             <ul class="list-disc">
                                 <li>To address concerns distinctly: Tailwind manages layouting responsibilities, while CSS variables and SASS handle branding and theming aspects.</li>
                                 <li>It gives the developer more flexibility since most of the time brand / theme styling is outside Tailwind and which can be quite challenging when trying to use utility classes to adjust themes.</li>
-                                <li>Avoiding excessive DOM size that can potentially affects performance.</li>
+                                <li>Avoiding excessive DOM size that can potentially affects performance. Why? large DOM size increase memory usage that can cause longer style calculation and produce slower layout rendering.
+                                </li>
                             </ul>
                         </p>
                     </div>

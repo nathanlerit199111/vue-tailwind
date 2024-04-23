@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, computed, onMounted } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { useRouter } from 'vue-router';
 
     import SectionWrapper from '@/components/SectionWrapper.vue'
@@ -13,6 +13,9 @@
     //VUE PRIME
     import InputText from 'primevue/inputtext';
     import Button from 'primevue/button';
+
+
+    import AuthApi from '@/api/auth-api.js'
 
     const router = useRouter();
     const loginFn = () => {
@@ -75,6 +78,38 @@
     onMounted(() => {
         validatePassword(register.value.password);
     });
+
+
+
+    //API REQUEST
+    const username = ref()
+    const password = ref()
+    const login = async () => {
+        try {
+            const response = await AuthApi.getToken(
+                {
+                    username: username.value,
+                    password: password.value
+                }
+            )
+            console.log("neru", response?.status)
+            if(response?.status === 200) {
+                let expires = ""
+                let token = response?.data?.token
+                let days = 30
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+                document.cookie = "authToken" + "=" + (token) + expires + "; path=/";
+
+                router.push('/');
+            }
+        }
+        catch (e) {
+            console.log("error", e)
+        }
+    }
+
 </script>
 <template>
     <SectionWrapper id="login-wrapper" additional_class="h-full">
@@ -88,22 +123,25 @@
                                 <label>Username</label>
                                 <InputComponent 
                                     additional_class="block w-full" 
-                                    type="text" 
+                                    type="text"
+                                    v-model="username"
                                 />
                             </div>
                             <div>
                                 <label>Password</label>
                                 <InputComponent 
                                     additional_class="block w-full" 
-                                    type="password" 
+                                    type="password"
+                                    v-model="password"
                                 />
                             </div>
                             <p class="text-xs">Forgot password</p>
                             <div class="flex mx-gap-md">
+                                <!-- @click="loginFn()" -->
                                 <Button 
                                     class="tbs-btn-secondary" 
                                     label="Login"
-                                    @click="loginFn()"
+                                    @click="login()"
                                 />
                                 <Button class="tbs-btn-primary" label="Register" @click="isRegister = true" />
                             </div>
