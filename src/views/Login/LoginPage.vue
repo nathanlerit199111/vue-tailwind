@@ -8,6 +8,7 @@
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import FormComponent from '@/components/UIElements/FormComponent.vue'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
+    import SelectCountry from '@/components/UIElements/SelectCountry.vue'
 
 
     //VUE PRIME
@@ -18,16 +19,16 @@
     import AuthApi from '@/api/auth-api.js'
 
     const router = useRouter();
-    const loginFn = () => {
-        var expires = ""
-        let days = 30
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        expires = "; expires=" + date.toUTCString();
-        document.cookie = "authToken" + "=" + ("authValue") + expires + "; path=/";
+    // const loginFn = () => {
+    //     var expires = ""
+    //     let days = 30
+    //     var date = new Date();
+    //     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    //     expires = "; expires=" + date.toUTCString();
+    //     document.cookie = "authToken" + "=" + ("authValue") + expires + "; path=/";
 
-        router.push('/');
-    }
+    //     router.push('/');
+    // }
 
     //Register
     const isRegister = ref(false)
@@ -82,8 +83,8 @@
 
 
     //API REQUEST
-    const username = ref()
-    const password = ref()
+    const username = ref('atuny0')
+    const password = ref('9uQFF1Lh')
     const login = async () => {
         try {
             const response = await AuthApi.getToken(
@@ -92,7 +93,6 @@
                     password: password.value
                 }
             )
-            console.log("neru", response?.status)
             if(response?.status === 200) {
                 let expires = ""
                 let token = response?.data?.token
@@ -109,7 +109,6 @@
             console.log("error", e)
         }
     }
-
 </script>
 <template>
     <SectionWrapper id="login-wrapper" additional_class="h-full">
@@ -162,6 +161,12 @@
                                 <InputComponent 
                                     additional_class="block w-full" 
                                     type="text" 
+                                />
+                            </div>
+                            <div>
+                                <label>Country</label>
+                                <SelectCountry
+                                    additional_class="w-full" 
                                 />
                             </div>
                             <div>
