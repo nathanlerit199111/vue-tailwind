@@ -12,5 +12,13 @@ export default {
 
     const response = await http.post(url, postData)
     return response ?? null
+  },
+
+
+  async destroyToken() {
+    const url = API_PREFIX
+
+    const response = await http.get(url)
+    return response ?? null
   }
 }
