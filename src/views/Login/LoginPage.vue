@@ -14,8 +14,10 @@
     //VUE PRIME
     import InputText from 'primevue/inputtext';
     import Button from 'primevue/button';
+    import Toast from 'primevue/toast';
+    import { useToast } from 'primevue/usetoast';
 
-
+    //API
     import AuthApi from '@/api/auth-api.js'
 
     const router = useRouter();
@@ -86,6 +88,7 @@
     const username = ref('atuny0')
     const password = ref('9uQFF1Lh')
     const login = async () => {
+        let error_response = ''
         try {
             const response = await AuthApi.getToken(
                 {
@@ -93,6 +96,7 @@
                     password: password.value
                 }
             )
+            error_response = response
             if(response?.status === 200) {
                 let expires = ""
                 let token = response?.data?.token
@@ -107,10 +111,17 @@
         }
         catch (e) {
             console.log("error", e)
+            toast.add(
+                { severity: 'error', summary: 'Error', detail: error_response, life: 3000 }
+            );
         }
     }
+
+    //TOAST MESSAGE
+    const toast = useToast();
 </script>
 <template>
+    <Toast />
     <SectionWrapper id="login-wrapper" additional_class="h-full">
         <ContainerWrapper additional_class="h-full">
             <RowWrapper additional_class="items-center h-full">

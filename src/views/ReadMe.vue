@@ -3,7 +3,7 @@
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
-    import Img from '@/components/UIElements/Img.vue'
+    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
 
 
     //VUE PRIME
@@ -41,7 +41,7 @@
         <ContainerWrapper additional_class="max-w-5xl">
             <RowWrapper>
                 <ColumnWrapper additional_class="w-6/12">
-                    <Img class="my-5" image_src="tailwind-logo.png"/>
+                    <ImgComponent class="my-5" image_src="tailwind-logo.png"/>
                     <h3>Tailwind will be used for creating Skeleton / Wireframe layout</h3>
                     <p>Example but not limited to</p>
                     <Chip class="m-2" label="Flexbox" />
@@ -198,7 +198,7 @@
 
             <RowWrapper>
                 <ColumnWrapper>
-                    <h3>Proper Workaround</h3>
+                    <h4><b>Proper Workaround</b></h4>
                     <p>Atomic Design - Create component even for smallest / single element</p>
 
                     <code>

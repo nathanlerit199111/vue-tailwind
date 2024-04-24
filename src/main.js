@@ -9,6 +9,7 @@ import 'primeicons/primeicons.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config';
+import ToastService from 'primevue/toastservice';
 // import { lazyLoadingPlugin } from '@/plugins/lazyLoading.js'
 
 import App from './App.vue'
@@ -76,4 +77,5 @@ app.use(router)
 app.use(Vue3ColorPicker)
 app.use(VueLazyLoad)
 app.use(PrimeVue)
+app.use(ToastService);
 app.mount('#app')
