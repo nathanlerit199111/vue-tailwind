@@ -1,13 +1,15 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import 'primevue/resources/themes/aura-light-green/theme.css'
 
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import SideNavComponent from '@/components/SideNavComponent.vue'
+
+const route = useRoute()
 </script>
 
 <template>
-  <div id="dashboard-wrapper">
+  <div  v-if="route.path !== '/login'" id="dashboard-wrapper">
     <SideNavComponent :mini="true"/>
     <main>
       <HeaderComponent />
@@ -15,4 +17,5 @@ import SideNavComponent from '@/components/SideNavComponent.vue'
       <RouterView />
     </main>
   </div>
+  <RouterView v-else />
 </template>

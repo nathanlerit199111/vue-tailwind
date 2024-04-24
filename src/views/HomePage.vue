@@ -119,18 +119,6 @@
             "quantity": 21,
             "inventoryStatus": "INSTOCK",
             "rating": 1
-        },
-        {
-            "id": "1009",
-            "code": "9d2n3l4km",
-            "name": "Road Watch",
-            "description": "Product Description",
-            "image": "bamboo-watch.jpg",
-            "price": 78,
-            "category": "Structure",
-            "quantity": 29,
-            "inventoryStatus": "INSTOCK",
-            "rating": 4
         }
     ]
 </script>
