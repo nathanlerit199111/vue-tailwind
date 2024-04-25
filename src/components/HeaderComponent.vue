@@ -1,34 +1,55 @@
 <script setup>
-    import { ref, onMounted, onUnmounted   } from 'vue'
+    import { ref } from 'vue'
+    import { getCookie } from '@/helpers/getCookie'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
 
-    //VUE PRIME
+    // Define logout function
+    const logout = () => {
+        const authToken = getCookie('authToken')
+        if (authToken) {
+            // Expire the authToken cookie
+            document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+            window.location.reload()
+        }
+    };
+
+    // Define handleItemClick function
+    const handleItemClick = (item) => {
+        if (item.action && item.action.click) {
+            item.action.click();
+        }
+    };
+
+    // Import Menubar from PrimeVue
     import Menubar from 'primevue/menubar';
-    const items = ref(
-        [
-            {
-                label: 'Profile',
-                icon: 'pi pi-user',
-                items: [
-                    {
-                        label: 'Settings',
-                        icon: 'pi pi-bolt'
-                    },
-                    {
-                        label: 'Logout',
-                        icon: 'pi pi-bolt'
-                    },
-                ]
-            }
-        ]
-    )
+
+    // Define menu items
+    const items = ref([
+        {
+            label: 'Profile',
+            icon: 'pi pi-user',
+            items: [
+                {
+                    label: 'Settings',
+                    icon: 'pi pi-bolt'
+                },
+                {
+                    label: 'Logout',
+                    icon: 'pi pi-bolt',
+                    action: { click: logout } // Assigning click action to logout function
+                },
+            ]
+        }
+    ]);
 </script>
+
 <template>
     <header class="flex justify-end mx-gap-sm">
         <InputComponent/>
         <Menubar :model="items">
             <template #item="{ item, props, hasSubmenu, root }">
-                <a class="flex align-items-center" v-bind="props.action">
+                <!-- Adding click event handler -->
+                <a class="flex align-items-center" v-bind="props.action" @click="handleItemClick(item)">
                     <span :class="item.icon" />
                     <span class="ml-2">{{ item.label }}</span>
                     
