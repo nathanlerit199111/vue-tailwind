@@ -57,7 +57,7 @@
                 </ColumnWrapper>
 
                 <ColumnWrapper class="theme_example" additional_class="w-6/12">
-                    <Img class="my-5" image_src="sass-logo.png"/>
+                    <ImgComponent class="my-5" image_src="sass-logo.png"/>
                     <h3>SASS will be used for theme</h3>
                     <p>On the theme page, we provide settings accessible to anyone, even those without development experience. These settings generate CSS variables utilized within our SASS file. Essentially, rather than manually coding variables, we've developed a user interface for this purpose. The theme includes colors (background, button and font), spaces (margin / padding), fonts (size, family, line height), border radius and box shadow.
                     </p>

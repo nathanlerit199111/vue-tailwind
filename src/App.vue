@@ -9,7 +9,7 @@ const route = useRoute()
 </script>
 
 <template>
-  <div  v-if="route.path !== '/login'" id="dashboard-wrapper">
+  <div  v-if="route.path !== '/login' && route.path !== '/readme'" id="dashboard-wrapper">
     <SideNavComponent :mini="true"/>
     <main>
       <HeaderComponent />

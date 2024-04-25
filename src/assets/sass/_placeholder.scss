@@ -1,5 +1,5 @@
 %buttonProperties {
-    padding: var(--tbs-space-sm) var(--tbs-space-md);
+    padding: var(--tbs-space-sm) calc(var(--tbs-space-sm) * 2);
     border-radius: var(--tbs-border-radius-sm);
     font-size: var(--tbs-font-sm);
     line-height: var(--tbs-font-sm);

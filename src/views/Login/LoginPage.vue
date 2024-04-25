@@ -88,15 +88,14 @@
     const username = ref('atuny0')
     const password = ref('9uQFF1Lh')
     const login = async () => {
-        let error_response = ''
+        let response = ''
         try {
-            const response = await AuthApi.getToken(
+            response = await AuthApi.getToken(
                 {
                     username: username.value,
                     password: password.value
                 }
             )
-            error_response = response
             if(response?.status === 200) {
                 let expires = ""
                 let token = response?.data?.token
@@ -110,9 +109,8 @@
             }
         }
         catch (e) {
-            console.log("error", e)
             toast.add(
-                { severity: 'error', summary: 'Error', detail: error_response, life: 3000 }
+                { severity: 'error', summary: 'Error', detail: "Invalid Credentials", life: 3000 }
             );
         }
     }
@@ -169,6 +167,13 @@
                             </div>
                             <div>
                                 <label>Last Name</label>
+                                <InputComponent 
+                                    additional_class="block w-full" 
+                                    type="text" 
+                                />
+                            </div>
+                            <div>
+                                <label>Address</label>
                                 <InputComponent 
                                     additional_class="block w-full" 
                                     type="text" 
@@ -238,7 +243,10 @@ text-green-600">✔</span></small>
                                 <small v-if="!confirmPasswordMatches()" class="text-red-500">Passwords do not match</small>
                             </div>
                             <div class="flex mx-gap-md">
-                                <Button class="tbs-btn-secondary" label="Sign Up" />
+                                <Button 
+                                    class="tbs-btn-secondary" 
+                                    label="Sign Up" 
+                                />
                                 <Button class="tbs-btn-primary" label="Cancel" @click="isRegister = false" />
                             </div>
                         </div>
