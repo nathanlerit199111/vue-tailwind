@@ -66,17 +66,18 @@ button {
 }
 
 .tbs-btn-primary {
+    //BG, FONT COLOR, BORDER COLOR
     @include button(
         --tbs-btn-bg-primary-color,
-        --tbs-font-primary-color,
-        --tbs-font-primary-color
+        --tbs-btn-font-primary-color,
+        --tbs-btn-font-primary-color
     )
 }
-
 .tbs-btn-secondary {
+    //BG, FONT COLOR, BORDER COLOR
     @include button(
         --tbs-btn-bg-secondary-color,
-        --tbs-font-secondary-color,
+        --tbs-btn-font-secondary-color,
         none
     )
 }
@@ -85,7 +86,15 @@ button {
 //TABLE
 .p-datatable {
     border-radius: var(--tbs-border-radius-sm);
+    box-shadow: 2px 2px 5px #e8e8e8;
+    overflow: hidden;
     // overflow: hidden;
+}
+table {
+    border-radius: var(--tbs-border-radius-sm);
+    tr:nth-child(even) {
+        background: var(--tbs-bg-primary-color);
+    }
 }
 
 #dashboard-wrapper {
@@ -98,6 +107,6 @@ header {
 main {
     width: 100%;
     background: var(--tbs-bg-primary-color);
-    padding: 0 var(--tbs-space-lg);
+    padding: 0 var(--tbs-space-lg) var(--tbs-space-lg) var(--tbs-space-lg);
     overflow: auto;
 }

@@ -35,7 +35,10 @@
 </script>
 
 <template>
-    <SkeletonLoader v-if="isLoading"/>
+    <SkeletonLoader 
+        v-if="isLoading"
+        type="table"
+    />
 
     
     <div v-if="!isLoading">
@@ -55,11 +58,14 @@
                 <RowWrapper>
                     <ColumnWrapper additional_class="w-full">
                         <DataTable :value="products?.products">
-                            <Column field="title" header="Title"></Column>
-                            <Column field="description" header="Description"></Column>
-                            <Column field="price" header="Price"></Column>
-                            <Column field="stock" header="Stock"></Column>
-                            <Column field="quantity" header="Quantity">
+                            <Column class="py-5" field="title" header="Title"></Column>
+                            <Column class="py-5" field="description" header="Description"></Column>
+                            <Column class="py-5" field="price" header="Price"></Column>
+                            <Column class="py-5" field="stock" header="Stock"></Column>
+                            <Column 
+                                field="quantity" header="Quantity"
+                                class="w-2/12"
+                            >
                                 <template #body="slotProps">
                                     <div class="mx-gap-sm">
                                         <Button 

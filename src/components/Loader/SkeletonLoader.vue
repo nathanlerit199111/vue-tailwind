@@ -8,10 +8,6 @@
     import Skeleton from 'primevue/skeleton';
 
     const props_data = defineProps({
-        isLoading: {
-            type: Boolean,
-            default: () => ""
-        },
         type: {
             type: String,
             default: () => ""
@@ -20,62 +16,95 @@
 </script>
 
 <template>
-     <SectionWrapper v-if="props_data.isLoading">
+    <SectionWrapper v-if="props_data.type === 'table'">
         <ContainerWrapper>
             <RowWrapper additional_class="mb-5">
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
-                </ColumnWrapper>
-            </RowWrapper>
-            <RowWrapper additional_class="mb-5">
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
             </RowWrapper>
             <RowWrapper additional_class="mb-5">
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
             </RowWrapper>
             <RowWrapper additional_class="mb-5">
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton></Skeleton>
+                    <Skeleton height="2.5rem"></Skeleton>
+                </ColumnWrapper>
+            </RowWrapper>
+            <RowWrapper additional_class="mb-5">
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="2.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="2.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="2.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="2.5rem"></Skeleton>
+                </ColumnWrapper>
+            </RowWrapper>
+        </ContainerWrapper>
+    </SectionWrapper>
+
+    <SectionWrapper v-if="props_data.type === 'cards'">
+        <ContainerWrapper>
+            <RowWrapper additional_class="mb-5">
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+            </RowWrapper>
+            <RowWrapper additional_class="mb-5">
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
+                </ColumnWrapper>
+                <ColumnWrapper additional_class="w-3/12">
+                    <Skeleton height="15.5rem"></Skeleton>
                 </ColumnWrapper>
             </RowWrapper>
         </ContainerWrapper>

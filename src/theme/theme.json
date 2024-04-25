@@ -6,7 +6,9 @@
   },
   "button": {
     "tbs-btn-bg-primary-color" : "#fff",
-    "tbs-btn-bg-secondary-color": "#484b6a"
+    "tbs-btn-bg-secondary-color": "#484b6a",
+    "tbs-btn-font-primary-color" : "#858585",
+    "tbs-btn-font-secondary-color": "#fff"
   },
   "side navigation": {
     "tbs-nav-bg-color" : "#F1F2F7",
