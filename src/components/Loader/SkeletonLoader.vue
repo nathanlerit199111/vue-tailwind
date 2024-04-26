@@ -18,60 +18,16 @@
 <template>
     <SectionWrapper v-if="props_data.type === 'table'">
         <ContainerWrapper>
-            <RowWrapper additional_class="mb-5">
-                <ColumnWrapper additional_class="w-3/12">
+            <RowWrapper v-for="table_wrapper in 4" :key="table_wrapper" additional_class="mb-5">
+                <ColumnWrapper v-for="table in 3" :key="table" additional_class="w-3/12">
                     <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>
                 <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-            </RowWrapper>
-            <RowWrapper additional_class="mb-5">
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-            </RowWrapper>
-            <RowWrapper additional_class="mb-5">
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-            </RowWrapper>
-            <RowWrapper additional_class="mb-5">
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
-                </ColumnWrapper>
-                <ColumnWrapper additional_class="w-3/12">
-                    <Skeleton height="2.5rem"></Skeleton>
+                    <div class="flex">
+                        <Skeleton class="mx-1" height="2.5rem"></Skeleton>
+                        <Skeleton class="mx-1" height="2.5rem"></Skeleton>
+                        <Skeleton class="mx-1" height="2.5rem"></Skeleton>
+                    </div>
                 </ColumnWrapper>
             </RowWrapper>
         </ContainerWrapper>

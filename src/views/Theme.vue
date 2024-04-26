@@ -60,7 +60,7 @@ const saveConfig = () => {
             </div>
           </div>
         </ColumnWrapper>
-        <ColumnWrapper>
+        <ColumnWrapper additional_class="w-full">
           <hr style="margin: 20px 0 30px 0"/>
         </ColumnWrapper>
       </RowWrapper>

@@ -10,12 +10,26 @@
     "tbs-btn-font-primary-color" : "#858585",
     "tbs-btn-font-secondary-color": "#fff"
   },
+  "button: hover": {
+    "tbs-btn-bg-primary-color-hover" : "#fff",
+    "tbs-btn-bg-secondary-color-hover": "#484b6a",
+    "tbs-btn-font-primary-color-hover" : "#858585",
+    "tbs-btn-font-secondary-color-hover": "#fff"
+  },
   "side navigation": {
     "tbs-nav-bg-color" : "#F1F2F7",
     "tbs-nav-list-bg-color" : "transparent",
+    "tbs-nav-list-font-color" : "#273240"
+  },
+  "side navigation: hover": {
     "tbs-nav-list-bg-color-hover" : "#E4E7F5",
-    "tbs-nav-list-font-color" : "#273240",
     "tbs-nav-list-font-color-hover" : "#5A6ACF"
+  },
+  "table": {
+    "tbs-table-head-bg-color" : "#bacdd6",
+    "tbs-table-head-font-color" : "#fff",
+    "tbs-table-row-bg-color" : "#F1F2F7",
+    "tbs-table-row-font-color" : "#858585"
   },
   "font": {
     "tbs-font-primary-color" : "#858585",

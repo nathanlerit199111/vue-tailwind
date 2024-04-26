@@ -3,7 +3,16 @@
     import { getCookie } from '@/helpers/getCookie'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
 
-    // Define logout function
+    //VUE PRIME
+    import Menubar from 'primevue/menubar';
+    // Define handleItemClick function
+    const handleItemClick = (item) => {
+        if (item.action && item.action.click) {
+            item.action.click();
+        }
+    };
+
+
     const logout = () => {
         const authToken = getCookie('authToken')
         if (authToken) {
@@ -13,16 +22,7 @@
         }
     };
 
-    // Define handleItemClick function
-    const handleItemClick = (item) => {
-        if (item.action && item.action.click) {
-            item.action.click();
-        }
-    };
-
-    // Import Menubar from PrimeVue
-    import Menubar from 'primevue/menubar';
-
+    
     // Define menu items
     const items = ref([
         {
