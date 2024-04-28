@@ -36,20 +36,20 @@
 </script>
 
 <template>
-    <UploadCsv />
     <SkeletonLoader 
         v-if="isLoading"
         type="table"
     />
-
-    
     <div v-if="!isLoading">
         <SectionWrapper>
             <ContainerWrapper>
-                <RowWrapper>
-                    <ColumnWrapper>
+                <RowWrapper additional_class="items-center">
+                    <ColumnWrapper additional_class="grow">
                         <h2>Payment Types List</h2>
                         <p>Display all payment types</p>
+                    </ColumnWrapper>
+                    <ColumnWrapper>
+                        <UploadCsv />
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
