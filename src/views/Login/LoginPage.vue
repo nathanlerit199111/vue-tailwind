@@ -9,6 +9,7 @@
     import FormComponent from '@/components/UIElements/FormComponent.vue'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
     import SelectCountry from '@/components/UIElements/SelectCountry.vue'
+    // import { checkMinLength, checkUpperCase, checkLowerCase, checkSpecialChar } from '@/helpers/formValidation.js'
 
 
     //VUE PRIME

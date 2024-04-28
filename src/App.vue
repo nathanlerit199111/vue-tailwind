@@ -10,6 +10,9 @@ const route = useRoute()
 
 <template>
   <div  v-if="route.path !== '/login' && route.path !== '/readme'" id="dashboard-wrapper">
+    <!-- 
+      mini - to set the default width of side navigation either mini or wide
+     -->
     <SideNavComponent :mini="true"/>
     <main>
       <HeaderComponent />

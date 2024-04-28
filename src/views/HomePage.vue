@@ -49,6 +49,9 @@
                         <h2>Payment Types List</h2>
                         <p>Display all payment types</p>
                     </ColumnWrapper>
+                    <ColumnWrapper>
+                        <Button class="tbs-btn-primary" label="Import CSV" />
+                    </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
         </SectionWrapper>

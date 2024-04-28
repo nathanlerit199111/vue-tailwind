@@ -18,7 +18,7 @@
 <template>
     <SectionWrapper v-if="props_data.type === 'table'">
         <ContainerWrapper>
-            <RowWrapper v-for="table_wrapper in 4" :key="table_wrapper" additional_class="mb-5">
+            <RowWrapper v-for="table_wrapper in 9" :key="table_wrapper" additional_class="mb-5">
                 <ColumnWrapper v-for="table in 3" :key="table" additional_class="w-3/12">
                     <Skeleton height="2.5rem"></Skeleton>
                 </ColumnWrapper>

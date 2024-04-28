@@ -1,5 +1,6 @@
 <script setup>
     import { ref } from 'vue'
+    import { useRouter } from 'vue-router';
     import { getCookie } from '@/helpers/getCookie'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
 
@@ -24,6 +25,7 @@
 
     
     // Define menu items
+    const router = useRouter()
     const items = ref([
         {
             label: 'Profile',
@@ -31,12 +33,13 @@
             items: [
                 {
                     label: 'Settings',
-                    icon: 'pi pi-bolt'
+                    icon: 'pi pi-bolt',
+                    action: { click: () => router.push('/theme') }
                 },
                 {
                     label: 'Logout',
                     icon: 'pi pi-bolt',
-                    action: { click: logout } // Assigning click action to logout function
+                    action: { click: logout }
                 },
             ]
         }
