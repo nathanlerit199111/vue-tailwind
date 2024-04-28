@@ -6,6 +6,7 @@
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import SkeletonLoader from '@/components/Loader/SkeletonLoader.vue'
+    import UploadCsv from '@/components/UploadCsv.vue'
 
     //VUE PRIME
     import DataTable from 'primevue/datatable';
@@ -28,13 +29,14 @@
             isLoading.value = false
         }
     }
-
+    
     onMounted(() => {
         getProductApi()
-    })
+    });
 </script>
 
 <template>
+    <UploadCsv />
     <SkeletonLoader 
         v-if="isLoading"
         type="table"
@@ -48,9 +50,6 @@
                     <ColumnWrapper>
                         <h2>Payment Types List</h2>
                         <p>Display all payment types</p>
-                    </ColumnWrapper>
-                    <ColumnWrapper>
-                        <Button class="tbs-btn-primary" label="Import CSV" />
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
