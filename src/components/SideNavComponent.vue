@@ -120,11 +120,11 @@
             :key="side_nav_index"
             class="side-nav-list"
         >
-            <router-link to="/" class="mx-gap-md">
+            <router-link to="/theme" class="mx-gap-md">
                 <i :class="side_nav.icon"></i>
                 <span>{{ side_nav.name }}</span>
             </router-link>
-            
+    
         </nav>
     </aside>
 </template>
