@@ -1,0 +1,145 @@
+//============= FONTS =============//
+h1 {
+    @include text(
+        --tbs-font-xxl,
+        700
+    )
+}
+h2 {
+    @include text(
+        --tbs-font-xl,
+        400
+    )
+}
+h3 {
+    @include text(
+        --tbs-font-lg,
+        400
+    )
+}
+h4 {
+    @include text(
+        --tbs-font-md,
+        400
+    )
+}
+h5 {
+    @include text(
+        --tbs-font-sm,
+        400
+    )
+}
+h6 {
+    @include text(
+        --tbs-font-xs,
+        400
+    )
+}
+
+p, label, span {
+    @include text(
+        --tbs-font-sm,
+        400
+    )
+}
+
+
+
+
+//============= FORMS =============//
+input {
+    margin: var(--tbs-space-sm) 0;
+}
+
+
+
+
+
+//============= BUTTONS =============//
+button {
+    @extend %buttonProperties;
+}
+
+.tbs-btn-primary {
+    //BG, FONT COLOR, BORDER COLOR
+    @include button(
+        --tbs-btn-bg-primary-color,
+        --tbs-btn-font-primary-color,
+        --tbs-btn-font-primary-color
+    )
+}
+.tbs-btn-secondary {
+    //BG, FONT COLOR, BORDER COLOR
+    @include button(
+        --tbs-btn-bg-secondary-color,
+        --tbs-btn-font-secondary-color,
+        none
+    )
+}
+
+
+
+
+//============= TABLE =============//
+.p-datatable {
+    border-radius: var(--tbs-border-radius-sm);
+    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
+    overflow: hidden;
+}
+table {
+    background: var(--tbs-table-bg-color);
+    border-radius: var(--tbs-border-radius-sm);
+
+    th {
+        background: transparent; //reset
+    }
+
+    thead {
+        tr {
+            background: var(--tbs-table-head-bg-color);
+        }
+        * {
+            color: var(--tbs-table-head-font-color);
+        }
+    }
+    tbody tr {
+        background: var(--tbs-table-row-bg-color);
+        color: var(--tbs-table-row-font-color);
+        transition: all ease 0.5s;
+    }
+
+    tr:nth-child(even) {
+        /* 
+            Adjust the value depending on your preference
+            #fff - will make it lighten. if you want to darken change it to #000
+            50% - the intensity
+        */
+        background: color-mix(in srgb,var(--tbs-table-row-bg-color),#fff 50%);
+    }
+    tbody tr:hover {
+        background: color-mix(in srgb,var(--tbs-table-row-bg-color),#000 7%);
+    }
+}
+
+
+
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1; //To fix Cumulative Layout Shift 
+}
+#dashboard-wrapper {
+    display: flex;
+    height: 100%;
+}
+header {
+    padding: var(--tbs-space-md) var(--tbs-space-lg);
+}
+main {
+    width: 100%;
+    background: var(--tbs-bg-primary-color);
+    padding: 0 var(--tbs-space-lg) var(--tbs-space-lg) var(--tbs-space-lg);
+    overflow: auto;
+}
