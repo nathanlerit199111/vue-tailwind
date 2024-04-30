@@ -10,7 +10,9 @@ export default {
     ],
     device: 'mobile',
     scanner: {
-      dynamicSampling: false
+      dynamicSampling: false,
+      skipJavascript: false,
+      sitemap: false
     },
     debug: true,
   }

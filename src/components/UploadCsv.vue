@@ -23,9 +23,14 @@
     <div class="flex items-center file-upload-wrapper">
         <input type="file" id="fileInput" @change="csvUploadFn">
         <Button class="tbs-btn-primary">
-            <label for="fileInput" label="">Upload CSV</label>
+            <label class="flex items-center " for="fileInput">
+                <span v-if="!isLoading">
+                    <i class="pi pi-upload mx-2" style="font-size: 14px"></i>
+                    Upload CSV
+                </span>
+                <span v-if="isLoading">Extracting...</span>
+            </label>
         </Button>
-        <p class="mx-2" v-if="isLoading">Extracting... </p>
     </div>
         <!-- Display parsed data, Just removed it. -->
         <div v-if="parsedData">
@@ -41,6 +46,9 @@
 .file-upload-wrapper {
     input {
         display: none;
+    }
+    label {
+        cursor: pointer;
     }
 }
 </style>
