@@ -1,6 +1,6 @@
 //============= FONTS =============//
 * {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto';
 }
 h1 {
     @include text(
@@ -92,7 +92,6 @@ button {
 table {
     background: var(--tbs-table-bg-color);
     border-radius: var(--tbs-border-radius-sm);
-    content-visibility: auto;
 
     th {
         background: transparent; //reset
