@@ -1,4 +1,7 @@
 //============= FONTS =============//
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
 h1 {
     @include text(
         --tbs-font-xxl,
@@ -89,6 +92,7 @@ button {
 table {
     background: var(--tbs-table-bg-color);
     border-radius: var(--tbs-border-radius-sm);
+    content-visibility: auto;
 
     th {
         background: transparent; //reset

@@ -6,7 +6,7 @@
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
-    import FormComponent from '@/components/UIElements/FormComponent.vue'
+    import FormWrapper from '@/components/FormWrapper.vue'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
     import SelectCountry from '@/components/UIElements/SelectCountry.vue'
     // import { checkMinLength, checkUpperCase, checkLowerCase, checkSpecialChar } from '@/helpers/formValidation.js'
@@ -19,7 +19,7 @@
     import { useToast } from 'primevue/usetoast';
 
     //API
-    import AuthApi from '@/api/auth-api.js'
+    import AuthApi from '@/api/AuthApi.js'
 
     const router = useRouter();
     // const loginFn = () => {
@@ -125,7 +125,7 @@
         <ContainerWrapper additional_class="h-full">
             <RowWrapper additional_class="items-center h-full">
                 <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
-                    <FormComponent>
+                    <FormWrapper>
                         <div v-if="!isRegister" class="my-gap-md">
                             <h2>Login</h2>
                             <div>
@@ -251,7 +251,7 @@ text-green-600">✔</span></small>
                                 <Button class="tbs-btn-primary" label="Cancel" @click="isRegister = false" />
                             </div>
                         </div>
-                    </FormComponent>
+                    </FormWrapper>
                 </ColumnWrapper>
             </RowWrapper>
         </ContainerWrapper>
