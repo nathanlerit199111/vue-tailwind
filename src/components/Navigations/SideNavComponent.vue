@@ -8,7 +8,7 @@
         }
     })
 
-    const isActive = ref(true)
+    const isActive = ref(false)
     const dummy_data = [
         {
             icon: 'pi pi-home',
