@@ -36,6 +36,7 @@
 </script>
 
 <template>
+    <p>Hello world</p>
     <SkeletonLoader 
         v-if="isLoading"
         type="table"
