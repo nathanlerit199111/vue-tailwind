@@ -1,8 +1,8 @@
 import './assets/sass/style.scss'
 import 'tailwindcss/tailwind.css'
 import customTheme from '@/theme/theme.json';
-import Vue3ColorPicker from "vue3-colorpicker";
-import VueLazyLoad from 'vue3-lazyload'
+// import Vue3ColorPicker from "vue3-colorpicker";
+// import VueLazyLoad from 'vue3-lazyload'
 import 'primeicons/primeicons.css'
 import "vue3-colorpicker/style.css";
 
@@ -74,8 +74,8 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(Vue3ColorPicker)
-app.use(VueLazyLoad)
+// app.use(Vue3ColorPicker)
+// app.use(VueLazyLoad)
 app.use(PrimeVue)
 app.use(ToastService);
 app.mount('#app')

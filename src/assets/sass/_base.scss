@@ -1,4 +1,7 @@
 //============= FONTS =============//
+* {
+    font-family: 'Roboto';
+}
 h1 {
     @include text(
         --tbs-font-xxl,
