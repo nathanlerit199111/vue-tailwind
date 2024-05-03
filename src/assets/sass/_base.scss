@@ -84,14 +84,11 @@ button {
 
 
 //============= TABLE =============//
-.p-datatable {
-    border-radius: var(--tbs-border-radius-sm);
-    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
-    overflow: hidden;
-}
 table {
     background: var(--tbs-table-bg-color);
     border-radius: var(--tbs-border-radius-sm);
+    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
+    overflow: hidden;
 
     th {
         background: transparent; //reset

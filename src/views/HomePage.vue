@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, watch  } from 'vue'
 
     import SectionWrapper from '@/components/SectionWrapper.vue'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
@@ -32,6 +32,17 @@
     onMounted(() => {
         getProductApi()
     });
+
+    const deleteItem = (item) => {
+        console.log("ITEM", item)
+    };
+
+    //Functions from child component
+    const tableRef = ref()
+    watch(() => tableRef.value?.first, (newValue, oldValue) => {
+        //Add logic here to request API base on pagination
+        console.log('Value Changed', newValue);
+    })
 </script>
 
 <template>
@@ -44,7 +55,7 @@
             <ContainerWrapper>
                 <RowWrapper additional_class="items-center">
                     <ColumnWrapper additional_class="grow">
-                        <h2>Payment Types List</h2>
+                        <h3>Payment Types List</h3>
                         <p>Display all payment types</p>
                     </ColumnWrapper>
                     <ColumnWrapper>
@@ -59,9 +70,9 @@
                 <RowWrapper>
                     <ColumnWrapper additional_class="w-full">
                         <!--
-                            table_data props will pass the entire data from database
-                            headers props will just literally display the text
-                            fields props will only display data base on the provided property name in the Array
+                            - table_data props will pass the entire data from database
+                            - headers props will just literally display the text. if no value, it will load the whole data
+                            - fields props will only display data base on the provided property name in the Array. if no value, it will load the whole data
 
                             slots - there are 2 types of slot; head and item
                             show_select - whill show checkbox
@@ -71,15 +82,26 @@
                                 :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
                                 :fields="['id', 'brand', 'title', 'description', 'price']"
                                 :show_checkbox="true"
+                                ref="tableRef"
                             >
+                                <template #head.image>
+                                    <th>Image</th>
+                                </template>
+                                <template #item.image="{ item }">
+                                    <td class="p-5">
+                                        <img :src="item.images[0]" />
+                                    </td>
+                                </template>
+
+
                                 <template #head.action>
                                     <th>Actions</th>
                                 </template>
                                 <template #item.action="{ item }">
-                                    <td>
+                                    <td class="p-5">
                                         <div class="flex mx-gap-sm">
-                                            <button class="tbs-btn-primary">{{ item.title }}</button>
-                                            <button class="tbs-btn-secondary">Delete</button>
+                                            <button class="tbs-btn-primary">{{ item.brand }}</button>
+                                            <button class="tbs-btn-secondary" @click="deleteItem(item.title)">Delete</button>
                                         </div>
                                     </td>
                                 </template>

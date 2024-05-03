@@ -60,6 +60,36 @@ watch(checkedAll, (newValue) => {
     selectedData.value = [];
   }
 });
+
+
+const displayHeaders = computed(() => {
+  if (props_data.headers.length > 0) {
+    return props_data.headers;
+  } else if (props_data.table_data.length > 0) {
+
+    return Object.keys(props_data.table_data[0]);
+  } else {
+    return [];
+  }
+});
+
+
+const displayFields = computed(() => {
+  if (props_data.fields.length > 0) {
+    return props_data.fields;
+  } else if (props_data.table_data.length > 0) {
+
+    return Object.keys(props_data.table_data[0]);
+  } else {
+    return [];
+  }
+});
+
+const first = ref(0);
+//Functions / data that will be pass to parent
+defineExpose({
+  first
+})
 </script>
 <template>
   <table class="w-full">
@@ -68,7 +98,7 @@ watch(checkedAll, (newValue) => {
         <th class="p-5" v-if="show_checkbox">
           <Checkbox :model-value="allChecked" @update:model-value="toggleAll" :binary="true" />
         </th>
-        <template v-for="(header, headerIndex) in props_data.headers" :key="headerIndex">
+        <template v-for="(header, headerIndex) in displayHeaders" :key="headerIndex">
           <th class="p-5">
             <!-- Check if there's a named slot available for the current header cell -->
             <template v-if="$slots['head.' + headerIndex]">
@@ -81,11 +111,11 @@ watch(checkedAll, (newValue) => {
           </th>
         </template>
         <!-- Render dynamic slots for each item -->
-        <th class="p-5">
-          <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('head.'))" :key="slotName">
+        <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('head.'))" :key="slotName">
+          <th class="p-5">
             <slot :name="slotName"></slot>
-          </template>
-        </th>
+          </th>
+        </template>
       </tr>
     </thead>
     <tbody>
@@ -97,7 +127,7 @@ watch(checkedAll, (newValue) => {
             :binary="true" 
           />
         </td>
-        <template v-for="(field, fieldIndex) in props_data.fields" :key="fieldIndex">
+        <template v-for="(field, fieldIndex) in displayFields" :key="fieldIndex">
           <td class="p-5" v-if="props_data.table_data && props_data.table_data.length > 0">
             <!-- Check if there's a named slot available for the current field -->
             <template v-if="$slots['item.' + field]">
@@ -109,13 +139,19 @@ watch(checkedAll, (newValue) => {
             </template>
           </td>
         </template>
-        <td class="p-5">
-          <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('item.'))" :key="slotName">
+        
+        <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('item.'))" :key="slotName">
+          <td class="p-5">
             <slot :name="slotName" :item="item"></slot>
-          </template>
-        </td>
+          </td>
+        </template>
       </tr>
     </tbody>
   </table>
-  <Paginator :rows="10" :totalRecords="120" :rowsPerPageOptions="[10, 20, 30]"></Paginator>
+  <Paginator
+    v-model:first="first"
+    :rows="10" 
+    :totalRecords="120" 
+    :rowsPerPageOptions="[10, 20, 30]"
+  ></Paginator>
 </template>
