@@ -10,8 +10,6 @@
     import TableComponent from '@/components/UIElements/Table/TableComponent.vue'
 
     //VUE PRIME
-    // import DataTable from 'primevue/datatable';
-    // import Column from 'primevue/column';
     import Button from 'primevue/button';
 
     //API
@@ -60,7 +58,13 @@
             <ContainerWrapper>
                 <RowWrapper>
                     <ColumnWrapper additional_class="w-full">
-                        <!-- <pre>{{ products?.products }}</pre> -->
+                        <!--
+                            table_data props will pass the entire data from database
+                            headers props will just literally display the text
+                            fields props will only display data base on the provided property name in the Array
+
+                            slots - there are 2 types of slot; head and item
+                         -->
                         <TableComponent 
                                 :table_data="products?.products"
                                 :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"

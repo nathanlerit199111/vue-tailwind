@@ -1,8 +1,24 @@
+<script setup>
+  const props_data = defineProps({
+    table_data: {
+      type: Array,
+      default: () => []
+    },
+    fields: {
+      type: Array,
+      default: () => []
+    },
+    headers: {
+      type: Array,
+      default: () => []
+    }
+  });
+</script>
 <template>
   <table class="w-full">
     <thead>
       <tr>
-        <template v-for="(header, headerIndex) in headers" :key="headerIndex">
+        <template v-for="(header, headerIndex) in props_data.headers" :key="headerIndex">
           <th class="p-5">
             <!-- Check if there's a named slot available for the current header cell -->
             <template v-if="$slots['head.' + headerIndex]">
@@ -23,9 +39,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(item, itemIndex) in table_data" :key="itemIndex">
-        <template v-for="(field, fieldIndex) in fields" :key="fieldIndex">
-          <td class="p-5" v-if="table_data && table_data.length > 0">
+      <tr v-for="(item, itemIndex) in props_data.table_data" :key="itemIndex">
+        <template v-for="(field, fieldIndex) in props_data.fields" :key="fieldIndex">
+          <td class="p-5" v-if="props_data.table_data && props_data.table_data.length > 0">
             <!-- Check if there's a named slot available for the current field -->
             <template v-if="$slots['item.' + field]">
               <slot :name="'item.' + field" :item="item"></slot>
@@ -45,22 +61,3 @@
     </tbody>
   </table>
 </template>
-
-<script setup>
-import { defineProps } from 'vue';
-
-const { props: props_data } = defineProps({
-  table_data: {
-    type: Array,
-    default: () => []
-  },
-  fields: {
-    type: Array,
-    default: () => []
-  },
-  headers: {
-    type: Array,
-    default: () => []
-  }
-});
-</script>
