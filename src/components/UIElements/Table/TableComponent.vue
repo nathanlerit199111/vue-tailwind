@@ -83,7 +83,7 @@ watch(checkedAll, (newValue) => {
         <!-- Render dynamic slots for each item -->
         <th class="p-5">
           <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('head.'))" :key="slotName">
-            <slot :name="slotName" :item="{}"></slot>
+            <slot :name="slotName"></slot>
           </template>
         </th>
       </tr>
@@ -111,7 +111,7 @@ watch(checkedAll, (newValue) => {
         </template>
         <td class="p-5">
           <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('item.'))" :key="slotName">
-            <slot :name="slotName" :item="{}"></slot>
+            <slot :name="slotName" :item="item"></slot>
           </template>
         </td>
       </tr>

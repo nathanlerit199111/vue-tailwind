@@ -72,15 +72,13 @@
                                 :fields="['id', 'brand', 'title', 'description', 'price']"
                                 :show_checkbox="true"
                             >
-                                <template #head.action="{ head }">
-                                    <th>
-                                        Actions
-                                    </th>
+                                <template #head.action>
+                                    <th>Actions</th>
                                 </template>
                                 <template #item.action="{ item }">
                                     <td>
                                         <div class="flex mx-gap-sm">
-                                            <button class="tbs-btn-primary">Add</button>
+                                            <button class="tbs-btn-primary">{{ item.title }}</button>
                                             <button class="tbs-btn-secondary">Delete</button>
                                         </div>
                                     </td>
