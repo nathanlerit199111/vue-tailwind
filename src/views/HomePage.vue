@@ -7,10 +7,11 @@
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
     import UploadCsv from '@/components/UIElements/UploadCsv.vue'
+    import TableComponent from '@/components/UIElements/Table/TableComponent.vue'
 
     //VUE PRIME
-    import DataTable from 'primevue/datatable';
-    import Column from 'primevue/column';
+    // import DataTable from 'primevue/datatable';
+    // import Column from 'primevue/column';
     import Button from 'primevue/button';
 
     //API
@@ -36,7 +37,6 @@
 </script>
 
 <template>
-    <p>Hello world</p>
     <SkeletonLoader 
         v-if="isLoading"
         type="table"
@@ -60,29 +60,26 @@
             <ContainerWrapper>
                 <RowWrapper>
                     <ColumnWrapper additional_class="w-full">
-                        <DataTable :value="products?.products">
-                            <Column class="py-5" field="title" header="Title"></Column>
-                            <Column class="py-5" field="description" header="Description"></Column>
-                            <Column class="py-5" field="price" header="Price"></Column>
-                            <Column class="py-5" field="stock" header="Stock"></Column>
-                            <Column 
-                                field="quantity" header="Quantity"
-                                class="w-2/12"
+                        <!-- <pre>{{ products?.products }}</pre> -->
+                        <TableComponent 
+                                :table_data="products?.products"
+                                :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
+                                :fields="['id', 'brand', 'title', 'description', 'price']"
                             >
-                                <template #body="slotProps">
-                                    <div class="flex mx-gap-sm">
-                                        <Button 
-                                            class="tbs-btn-secondary" 
-                                            label="Add"
-                                        />
-                                        <Button 
-                                            class="tbs-btn-primary" 
-                                            label="Delete"
-                                        />
-                                    </div>
+                                <template #head.action="{ head }">
+                                    <th>
+                                        Actions
+                                    </th>
                                 </template>
-                            </Column>
-                        </DataTable>
+                                <template #item.action="{ item }">
+                                    <td>
+                                        <div class="flex mx-gap-sm">
+                                            <button class="tbs-btn-primary">Add</button>
+                                            <button class="tbs-btn-secondary">Delete</button>
+                                        </div>
+                                    </td>
+                                </template>
+                        </TableComponent>
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
