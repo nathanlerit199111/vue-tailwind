@@ -1,8 +1,8 @@
 <script setup>
-  import { ref, computed, watch  } from 'vue'
+  import { ref, computed, watch, defineAsyncComponent } from 'vue'
   //VUE PRIME
-  import Checkbox from 'primevue/checkbox'
-  import Paginator from 'primevue/paginator'
+  import Checkbox from 'primevue/checkbox' //Import without lazy loading because this component is above the fold
+  const Paginator = defineAsyncComponent(() => import('primevue/paginator')) //Import via lazy loading because this component is below the fold
 
   const props_data = defineProps({
     table_data: {
