@@ -1,4 +1,9 @@
 <script setup>
+  import { ref, computed, watch  } from 'vue'
+  //VUE PRIME
+  import Checkbox from 'primevue/checkbox'
+  import Paginator from 'primevue/paginator'
+
   const props_data = defineProps({
     table_data: {
       type: Array,
@@ -11,13 +16,58 @@
     headers: {
       type: Array,
       default: () => []
+    },
+    show_checkbox: {
+      type: Boolean,
+      default: () => false
     }
   });
+
+
+const checkedAll = ref(false);
+const selectedData = ref([]);
+
+const allChecked = computed({
+  get: () => checkedAll.value,
+  set: (value) => {
+    checkedAll.value = value;
+    if (value) {
+      selectedData.value = [...props_data.table_data];
+    } else {
+      selectedData.value = [];
+    }
+  }
+});
+
+const toggleItem = (item) => {
+  const index = selectedData.value.indexOf(item);
+  if (index === -1) {
+    selectedData.value.push(item);
+  } else {
+    selectedData.value.splice(index, 1);
+  }
+}
+
+function toggleAll() {
+  checkedAll.value = !checkedAll.value;
+}
+
+// Watch for changes in checkedAll and update selectedData accordingly
+watch(checkedAll, (newValue) => {
+  if (newValue) {
+    selectedData.value = [...props_data.table_data];
+  } else {
+    selectedData.value = [];
+  }
+});
 </script>
 <template>
   <table class="w-full">
     <thead>
       <tr>
+        <th class="p-5" v-if="show_checkbox">
+          <Checkbox :model-value="allChecked" @update:model-value="toggleAll" :binary="true" />
+        </th>
         <template v-for="(header, headerIndex) in props_data.headers" :key="headerIndex">
           <th class="p-5">
             <!-- Check if there's a named slot available for the current header cell -->
@@ -40,6 +90,13 @@
     </thead>
     <tbody>
       <tr v-for="(item, itemIndex) in props_data.table_data" :key="itemIndex">
+        <td class="p-5" v-if="show_checkbox">
+          <Checkbox 
+            :model-value="selectedData.includes(item)" 
+            @update:model-value="toggleItem(item)" 
+            :binary="true" 
+          />
+        </td>
         <template v-for="(field, fieldIndex) in props_data.fields" :key="fieldIndex">
           <td class="p-5" v-if="props_data.table_data && props_data.table_data.length > 0">
             <!-- Check if there's a named slot available for the current field -->
@@ -60,4 +117,5 @@
       </tr>
     </tbody>
   </table>
+  <Paginator :rows="10" :totalRecords="120" :rowsPerPageOptions="[10, 20, 30]"></Paginator>
 </template>

@@ -64,11 +64,13 @@
                             fields props will only display data base on the provided property name in the Array
 
                             slots - there are 2 types of slot; head and item
+                            show_select - whill show checkbox
                          -->
                         <TableComponent 
                                 :table_data="products?.products"
                                 :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
                                 :fields="['id', 'brand', 'title', 'description', 'price']"
+                                :show_checkbox="true"
                             >
                                 <template #head.action="{ head }">
                                     <th>
