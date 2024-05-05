@@ -7,6 +7,7 @@
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
     import UploadCsv from '@/components/UIElements/UploadCsv.vue'
+    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
     import TableComponent from '@/components/UIElements/Table/TableComponent.vue'
 
     //VUE PRIME
@@ -89,7 +90,11 @@
                                 </template>
                                 <template #item.image="{ item }">
                                     <td class="p-5">
-                                        <img :src="item.images[0]" />
+                                        <ImgComponent
+                                            :image_src="item.images[0]"
+                                            :image_alt="item.title"
+                                            image_loading="lazy"
+                                        />
                                     </td>
                                 </template>
 

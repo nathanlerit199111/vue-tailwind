@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import customConfig from '@/theme/theme.json';
 
 import SectionWrapper from '@/components/SectionWrapper.vue'
@@ -10,6 +10,7 @@ import ColumnWrapper from '@/components/ColumnWrapper.vue'
 //VUE PRIME
 import Message from 'primevue/message';
 import Button from 'primevue/button';
+// import ColorPicker from 'primevue/colorpicker';
 
 // Define a reactive reference to hold the temporary configuration
 const temporaryConfigStorage = ref(customConfig);
@@ -21,6 +22,30 @@ const saveConfig = () => {
   // Update the configuration in the backend or local storage
   localStorage.setItem('themeCSS', JSON.stringify(customConfig));
 }
+
+
+
+// Function to convert local storage data into desired format
+const convertLocalStorageData = () => {
+  const storedThemeCSS = localStorage.getItem('themeCSS');
+  if (storedThemeCSS) {
+    const parsedData = JSON.parse(storedThemeCSS);
+    const convertedData = {};
+
+    for (const [key, value] of Object.entries(parsedData)) {
+      const category = {};
+      for (const [subKey, subValue] of Object.entries(value)) {
+        category[subKey] = subValue;
+      }
+      convertedData[key] = category;
+    }
+
+    temporaryConfigStorage.value = convertedData;
+  }
+}
+onMounted(() => {
+  convertLocalStorageData();
+})
 
 
 </script>
@@ -50,6 +75,10 @@ const saveConfig = () => {
             <div>
               <label class="flex items-center mb-1">
                 {{ classLabel }}
+                <!-- <ColorPicker
+                  v-if="classLabel.includes('color')"
+                  v-model="category[classLabel]" 
+                /> -->
                 <color-picker
                   v-if="classLabel.includes('color')"
                   v-model:pureColor="category[classLabel]"
