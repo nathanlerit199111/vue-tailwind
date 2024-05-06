@@ -13,12 +13,12 @@ import Button from 'primevue/button';
 // import ColorPicker from 'primevue/colorpicker';
 
 // Define a reactive reference to hold the temporary configuration
-const temporaryConfigStorage = ref(customConfig);
+const TEMPORARYCONFIG = ref(customConfig);
 
 // Function to save the configuration
 const saveConfig = () => {
   // Assign the values from temporary storage to customConfig
-  Object.assign(customConfig, temporaryConfigStorage.value);
+  Object.assign(customConfig, TEMPORARYCONFIG.value);
   // Update the configuration in the backend or local storage
   localStorage.setItem('themeCSS', JSON.stringify(customConfig));
 }
@@ -27,9 +27,9 @@ const saveConfig = () => {
 
 // Function to convert local storage data into desired format
 const convertLocalStorageData = () => {
-  const storedThemeCSS = localStorage.getItem('themeCSS');
-  if (storedThemeCSS) {
-    const parsedData = JSON.parse(storedThemeCSS);
+  const STOREDTHEMECSS = localStorage.getItem('themeCSS');
+  if (STOREDTHEMECSS) {
+    const parsedData = JSON.parse(STOREDTHEMECSS);
     const convertedData = {};
 
     for (const [key, value] of Object.entries(parsedData)) {
@@ -40,7 +40,7 @@ const convertLocalStorageData = () => {
       convertedData[key] = category;
     }
 
-    temporaryConfigStorage.value = convertedData;
+    TEMPORARYCONFIG.value = convertedData;
   }
 }
 onMounted(() => {
@@ -66,7 +66,7 @@ onMounted(() => {
 
   <SectionWrapper>
     <ContainerWrapper additional_class="max-w-5xl">
-      <RowWrapper v-for="(category, categoryName) in temporaryConfigStorage" :key="categoryName">
+      <RowWrapper v-for="(category, categoryName) in TEMPORARYCONFIG" :key="categoryName">
         <ColumnWrapper additional_class="w-full">
           <h3 class="uppercase text-lg font-bold mb-3">{{ categoryName }}</h3>
         </ColumnWrapper>

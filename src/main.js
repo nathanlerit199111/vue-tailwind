@@ -1,15 +1,15 @@
 import './assets/sass/style.scss'
-import 'tailwindcss/tailwind.css'
 import customTheme from '@/theme/theme.json';
-import Vue3ColorPicker from "vue3-colorpicker";
-import VueLazyLoad from 'vue3-lazyload'
+import vueColorPicker from "vue3-colorpicker";
+import vueLazyLoad from 'vue3-lazyload'
 import 'primeicons/primeicons.css'
 import "vue3-colorpicker/style.css";
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import PrimeVue from 'primevue/config';
-import ToastService from 'primevue/toastservice';
+import primeVue from 'primevue/config';
+import toastService from 'primevue/toastservice';
+import 'tailwindcss/tailwind.css'
 // import { lazyLoadingPlugin } from '@/plugins/lazyLoading.js'
 
 import App from './App.vue'
@@ -30,33 +30,33 @@ const generateStyles = (config) => {
   return styles;
 };
 
-const customStyles = generateStyles(customTheme);
+const CUSTOMSTYLES = generateStyles(customTheme);
 
-const storedThemeCSS = localStorage.getItem('themeCSS');
-if (storedThemeCSS) {
-  // Parse storedThemeCSS back into an object
-  const parsedThemeCSS = JSON.parse(storedThemeCSS);
+const STOREDTHEMECSS = localStorage.getItem('themeCSS');
+if (STOREDTHEMECSS) {
+  // Parse STOREDTHEMECSS back into an object
+  const parsedThemeCSS = JSON.parse(STOREDTHEMECSS);
 
   // Generate CSS styles from parsedThemeCSS object
-  let parsedCustomStyles = ':root {';
+  let parsedCUSTOMSTYLES = ':root {';
   Object.entries(parsedThemeCSS).forEach(([category, properties]) => {
     Object.entries(properties).forEach(([className, value]) => {
       // Check if the value is an object to avoid applying as CSS variable
       if (typeof value !== 'object') {
-        parsedCustomStyles += `--${className}: ${value};`; // Add -- before property name
+        parsedCUSTOMSTYLES += `--${className}: ${value};`; // Add -- before property name
       }
     });
   });
-  parsedCustomStyles += '}';
+  parsedCUSTOMSTYLES += '}';
 
   // Set the content of the styleElement to the parsed custom styles
   const styleElement = document.createElement('style');
-  styleElement.textContent = parsedCustomStyles;
+  styleElement.textContent = parsedCUSTOMSTYLES;
   document.head.appendChild(styleElement);
 }
 else {
   const styleElement = document.createElement('style');
-  styleElement.textContent = customStyles;
+  styleElement.textContent = CUSTOMSTYLES;
   document.head.appendChild(styleElement);
 }
 
@@ -66,15 +66,15 @@ else {
 // const nonce = 'nonce_value';
 // const styleElement = document.createElement('style');
 // styleElement.setAttribute('nonce', nonce);
-// styleElement.textContent = customStyles;
+// styleElement.textContent = CUSTOMSTYLES;
 // document.head.appendChild(styleElement);
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(Vue3ColorPicker)
-app.use(VueLazyLoad)
-app.use(PrimeVue)
-app.use(ToastService);
+app.use(vueColorPicker)
+app.use(vueLazyLoad)
+app.use(primeVue)
+app.use(toastService);
 app.mount('#app')
