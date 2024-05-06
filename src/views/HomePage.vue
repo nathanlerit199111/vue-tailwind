@@ -12,6 +12,8 @@
 
     //VUE PRIME
     import Button from 'primevue/button';
+    // import DataTable from 'primevue/datatable';
+    // import Column from 'primevue/column';
 
     //API
     import AuthApi from '@/api/ProductApi.js'
