@@ -18,15 +18,20 @@
   })
 
   //Vite for binding image
-  const imgUrl = new URL(
-    `../../assets/images/${props_data.image_src}`,
-    import.meta.url,
-  ).href
+  let imgUrl
+  if(props_data.image_src.startsWith("https://")) {
+    imgUrl = props_data.image_src
+  } else {
+    imgUrl = new URL(
+      `../../assets/images/${props_data.image_src}`,
+      import.meta.url,
+    ).href
+  }
 </script>
 
 <template>
   <img 
-    v-lazy="imgUrl" 
+    v-lazy="imgUrl"
     :alt="props_data.image_alt"
     :loading="props_data.image_loading"
   />

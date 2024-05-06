@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, watchEffect  } from 'vue'
 
     import SectionWrapper from '@/components/SectionWrapper.vue'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
@@ -7,10 +7,10 @@
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
     import UploadCsv from '@/components/UIElements/UploadCsv.vue'
+    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
+    import TableComponent from '@/components/UIElements/Table/TableComponent.vue'
 
     //VUE PRIME
-    import DataTable from 'primevue/datatable';
-    import Column from 'primevue/column';
     import Button from 'primevue/button';
 
     //API
@@ -33,10 +33,21 @@
     onMounted(() => {
         getProductApi()
     });
+
+    const deleteItem = (item) => {
+        console.log("ITEM", item)
+    };
+
+    //Functions from child component
+    const tableRef = ref()
+    watchEffect(() => {
+        const newValue = tableRef.value?.first;
+        //Add logic here to request API base on pagination
+        console.log('Value Changed', newValue);
+    });
 </script>
 
 <template>
-    <p>Hello world</p>
     <SkeletonLoader 
         v-if="isLoading"
         type="table"
@@ -46,7 +57,7 @@
             <ContainerWrapper>
                 <RowWrapper additional_class="items-center">
                     <ColumnWrapper additional_class="grow">
-                        <h2>Payment Types List</h2>
+                        <h3>Payment Types List</h3>
                         <p>Display all payment types</p>
                     </ColumnWrapper>
                     <ColumnWrapper>
@@ -60,29 +71,47 @@
             <ContainerWrapper>
                 <RowWrapper>
                     <ColumnWrapper additional_class="w-full">
-                        <DataTable :value="products?.products">
-                            <Column class="py-5" field="title" header="Title"></Column>
-                            <Column class="py-5" field="description" header="Description"></Column>
-                            <Column class="py-5" field="price" header="Price"></Column>
-                            <Column class="py-5" field="stock" header="Stock"></Column>
-                            <Column 
-                                field="quantity" header="Quantity"
-                                class="w-2/12"
+                        <!--
+                            - table_data props will pass the entire data from database
+                            - headers props will just literally display the text. if no value, it will load the whole data
+                            - fields props will only display data base on the provided property name in the Array. if no value, it will load the whole data
+
+                            slots - there are 2 types of slot; head and item
+                            show_select - whill show checkbox
+                         -->
+                        <TableComponent 
+                                :table_data="products?.products"
+                                :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
+                                :fields="['id', 'brand', 'title', 'description', 'price']"
+                                :show_checkbox="true"
+                                ref="tableRef"
                             >
-                                <template #body="slotProps">
-                                    <div class="flex mx-gap-sm">
-                                        <Button 
-                                            class="tbs-btn-secondary" 
-                                            label="Add"
-                                        />
-                                        <Button 
-                                            class="tbs-btn-primary" 
-                                            label="Delete"
-                                        />
-                                    </div>
+                                <template #head.image>
+                                    <th>Image</th>
                                 </template>
-                            </Column>
-                        </DataTable>
+                                <template #item.image="{ item }">
+                                    <td class="p-5">
+                                        <ImgComponent
+                                            :image_src="item.images[0]"
+                                            :image_alt="item.title"
+                                            image_loading="lazy"
+                                        />
+                                    </td>
+                                </template>
+
+
+                                <template #head.action>
+                                    <th>Actions</th>
+                                </template>
+                                <template #item.action="{ item }">
+                                    <td class="p-5">
+                                        <div class="flex mx-gap-sm">
+                                            <button class="tbs-btn-primary">{{ item.brand }}</button>
+                                            <button class="tbs-btn-secondary" @click="deleteItem(item.title)">Delete</button>
+                                        </div>
+                                    </td>
+                                </template>
+                        </TableComponent>
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>

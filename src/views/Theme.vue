@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import customConfig from '@/theme/theme.json';
 
 import SectionWrapper from '@/components/SectionWrapper.vue'
@@ -7,20 +7,49 @@ import ContainerWrapper from '@/components/ContainerWrapper.vue'
 import RowWrapper from '@/components/RowWrapper.vue'
 import ColumnWrapper from '@/components/ColumnWrapper.vue'
 
+// Import vue3-colorpicker
+import { ColorPicker } from "vue3-colorpicker";
+import "vue3-colorpicker/style.css";
+
 //VUE PRIME
 import Message from 'primevue/message';
 import Button from 'primevue/button';
+// import ColorPicker from 'primevue/colorpicker';
 
 // Define a reactive reference to hold the temporary configuration
-const temporaryConfigStorage = ref(customConfig);
+const TEMPORARYCONFIG = ref(customConfig);
 
 // Function to save the configuration
 const saveConfig = () => {
   // Assign the values from temporary storage to customConfig
-  Object.assign(customConfig, temporaryConfigStorage.value);
+  Object.assign(customConfig, TEMPORARYCONFIG.value);
   // Update the configuration in the backend or local storage
   localStorage.setItem('themeCSS', JSON.stringify(customConfig));
 }
+
+
+
+// Function to convert local storage data into desired format
+const convertLocalStorageData = () => {
+  const STOREDTHEMECSS = localStorage.getItem('themeCSS');
+  if (STOREDTHEMECSS) {
+    const parsedData = JSON.parse(STOREDTHEMECSS);
+    const convertedData = {};
+
+    for (const [key, value] of Object.entries(parsedData)) {
+      const category = {};
+      for (const [subKey, subValue] of Object.entries(value)) {
+        category[subKey] = subValue;
+      }
+      convertedData[key] = category;
+    }
+
+    TEMPORARYCONFIG.value = convertedData;
+  }
+}
+onMounted(() => {
+  convertLocalStorageData();
+})
 
 
 </script>
@@ -41,7 +70,7 @@ const saveConfig = () => {
 
   <SectionWrapper>
     <ContainerWrapper additional_class="max-w-5xl">
-      <RowWrapper v-for="(category, categoryName) in temporaryConfigStorage" :key="categoryName">
+      <RowWrapper v-for="(category, categoryName) in TEMPORARYCONFIG" :key="categoryName">
         <ColumnWrapper additional_class="w-full">
           <h3 class="uppercase text-lg font-bold mb-3">{{ categoryName }}</h3>
         </ColumnWrapper>
@@ -50,6 +79,10 @@ const saveConfig = () => {
             <div>
               <label class="flex items-center mb-1">
                 {{ classLabel }}
+                <!-- <ColorPicker
+                  v-if="classLabel.includes('color')"
+                  v-model="category[classLabel]" 
+                /> -->
                 <color-picker
                   v-if="classLabel.includes('color')"
                   v-model:pureColor="category[classLabel]"

@@ -34,7 +34,7 @@
                 {
                     label: 'Settings',
                     icon: 'pi pi-bolt',
-                    action: { click: () => router.push('/theme') }
+                    link: '/theme'
                 },
                 {
                     label: 'Logout',
@@ -52,7 +52,7 @@
         <Menubar :model="items">
             <template #item="{ item, props, hasSubmenu, root }">
                 <!-- Adding click event handler -->
-                <a class="flex align-items-center" v-bind="props.action" @click="handleItemClick(item)">
+                <a :href="item.link" class="flex align-items-center" v-bind="props.action" @click="handleItemClick(item)">
                     <span :class="item.icon" />
                     <span class="ml-2">{{ item.label }}</span>
                     

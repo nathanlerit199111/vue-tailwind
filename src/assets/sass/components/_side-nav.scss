@@ -50,6 +50,7 @@
         display: flex;
         margin: var(--tbs-space-sm) 0;
         overflow: hidden;
+        content-visibility: auto;
 
         a {
             display: flex;

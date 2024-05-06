@@ -84,14 +84,12 @@ button {
 
 
 //============= TABLE =============//
-.p-datatable {
-    border-radius: var(--tbs-border-radius-sm);
-    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
-    overflow: hidden;
-}
 table {
     background: var(--tbs-table-bg-color);
     border-radius: var(--tbs-border-radius-sm);
+    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
+    overflow: hidden;
+    content-visibility: auto;
 
     th {
         background: transparent; //reset
@@ -122,6 +120,14 @@ table {
     tbody tr:hover {
         background: color-mix(in srgb,var(--tbs-table-row-bg-color),#000 7%);
     }
+}
+
+
+
+//============= PAGINATION =============//
+.p-paginator {
+    margin-top: var(--tbs-space-sm);
+    content-visibility: auto;
 }
 
 
