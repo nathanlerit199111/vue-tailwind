@@ -7,6 +7,10 @@ import ContainerWrapper from '@/components/ContainerWrapper.vue'
 import RowWrapper from '@/components/RowWrapper.vue'
 import ColumnWrapper from '@/components/ColumnWrapper.vue'
 
+// Import vue3-colorpicker
+import { ColorPicker } from "vue3-colorpicker";
+import "vue3-colorpicker/style.css";
+
 //VUE PRIME
 import Message from 'primevue/message';
 import Button from 'primevue/button';

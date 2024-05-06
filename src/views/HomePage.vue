@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted, watch  } from 'vue'
+    import { ref, onMounted, watchEffect  } from 'vue'
 
     import SectionWrapper from '@/components/SectionWrapper.vue'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
@@ -40,10 +40,11 @@
 
     //Functions from child component
     const tableRef = ref()
-    watch(() => tableRef.value?.first, (newValue, oldValue) => {
+    watchEffect(() => {
+        const newValue = tableRef.value?.first;
         //Add logic here to request API base on pagination
         console.log('Value Changed', newValue);
-    })
+    });
 </script>
 
 <template>

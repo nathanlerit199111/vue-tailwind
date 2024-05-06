@@ -1,16 +1,12 @@
 import './assets/sass/style.scss'
 import customTheme from '@/theme/theme.json';
-import vueColorPicker from "vue3-colorpicker";
 import vueLazyLoad from 'vue3-lazyload'
 import 'primeicons/primeicons.css'
-import "vue3-colorpicker/style.css";
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import primeVue from 'primevue/config';
-import toastService from 'primevue/toastservice';
 import 'tailwindcss/tailwind.css'
-// import { lazyLoadingPlugin } from '@/plugins/lazyLoading.js'
 
 import App from './App.vue'
 import router from './router'
@@ -73,8 +69,6 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(vueColorPicker)
 app.use(vueLazyLoad)
 app.use(primeVue)
-app.use(toastService);
 app.mount('#app')
