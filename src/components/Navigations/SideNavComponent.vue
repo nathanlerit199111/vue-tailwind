@@ -12,35 +12,43 @@
     const dummy_data = [
         {
             icon: 'pi pi-home',
-            name: 'Dashboard'
+            name: 'Home',
+            link: '/'
         },
         {
             icon: 'pi pi-user',
-            name: 'Account'
+            name: 'POS',
+            link: '/pos'
         },
         {
             icon: 'pi pi-home',
-            name: 'Dashboard'
+            name: 'Dashboard',
+            link: '/'
         },
         {
             icon: 'pi pi-user',
-            name: 'Account'
+            name: 'Account',
+            link: '/'
         },
         {
             icon: 'pi pi-home',
-            name: 'Dashboard'
+            name: 'Dashboard',
+            link: '/'
         },
         {
             icon: 'pi pi-user',
-            name: 'Account'
+            name: 'Account',
+            link: '/'
         },
         {
             icon: 'pi pi-home',
-            name: 'Dashboard'
+            name: 'Dashboard',
+            link: '/'
         },
         {
             icon: 'pi pi-user',
-            name: 'Account'
+            name: 'Account',
+            link: '/'
         }
     ]
 
@@ -98,6 +106,7 @@
         <div 
             v-if="isMobile"
             id="hamburger-icon-menu-wrapper"
+            class="flex"
         >
             <div
                 :class="`${isActive ? 'open' : ''}`" 
@@ -107,9 +116,15 @@
                 <span></span>
                 <span></span>
             </div>
+
+            <div class="flex justify-center grow">
+                <h4>Logo</h4>
+            </div>
         </div>
 
-        <div class="side-nav-logo-wrapper">
+        <div
+            v-if="!isMobile"
+            class="side-nav-logo-wrapper">
             <h4>Logo</h4>
         </div>
         <hr/>
@@ -120,7 +135,7 @@
             :key="side_nav_index"
             class="side-nav-list"
         >
-            <router-link to="/theme" class="mx-gap-md">
+            <router-link :to="side_nav.link" class="mx-gap-md">
                 <i :class="side_nav.icon"></i>
                 <span>{{ side_nav.name }}</span>
             </router-link>

@@ -151,13 +151,11 @@ img {
     display: flex;
     height: 100%;
 }
-header {
-    padding: var(--tbs-space-md) var(--tbs-space-lg);
-}
+
 main {
     width: 100%;
     background: var(--tbs-bg-primary-color);
-    padding: 0 var(--tbs-space-lg) var(--tbs-space-lg) var(--tbs-space-lg);
+    padding-top: 50px;
     overflow: auto;
 }
 .no-data {

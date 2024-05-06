@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { getCookie } from '@/helpers/getCookie'
 import LoginPage from '../views/Login/LoginPage.vue'
 import HomePage from '../views/HomePage.vue'
+import POS from '../views/POS.vue'
 import ReadMe from '../views/ReadMe.vue'
 import Theme from '../views/Theme.vue'
 
@@ -22,6 +23,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage
+    },
+    {
+      path: '/pos',
+      name: 'pos',
+      component: POS
     },
     {
       path: '/theme',
