@@ -84,12 +84,20 @@ button {
 
 
 //============= TABLE =============//
+.table-wrapper {
+    overflow: auto;
+    border-radius: var(--tbs-border-radius-sm);
+}
 table {
     background: var(--tbs-table-bg-color);
     border-radius: var(--tbs-border-radius-sm);
     box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
     overflow: hidden;
     content-visibility: auto;
+
+    img {
+        min-width: 150px;
+    }
 
     th {
         background: transparent; //reset
@@ -151,4 +159,10 @@ main {
     background: var(--tbs-bg-primary-color);
     padding: 0 var(--tbs-space-lg) var(--tbs-space-lg) var(--tbs-space-lg);
     overflow: auto;
+}
+.no-data {
+    padding: var(--tbs-space-lg);
+    p {
+        font-size: var(--tbs-font-xl);
+    }
 }

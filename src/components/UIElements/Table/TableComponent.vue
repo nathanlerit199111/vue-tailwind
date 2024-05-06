@@ -1,5 +1,6 @@
 <script setup>
   import { ref, computed, watch, defineAsyncComponent } from 'vue'
+
   //VUE PRIME
   import Checkbox from 'primevue/checkbox' //Import without lazy loading because this component is above the fold
   const Paginator = defineAsyncComponent(() => import('primevue/paginator')) //Import via lazy loading because this component is below the fold
@@ -92,66 +93,74 @@ defineExpose({
 })
 </script>
 <template>
-  <table class="w-full">
-    <thead>
-      <tr>
-        <th class="p-5" v-if="show_checkbox">
-          <Checkbox :model-value="allChecked" @update:model-value="toggleAll" :binary="true" />
-        </th>
-        <template v-for="(header, headerIndex) in displayHeaders" :key="headerIndex">
-          <th class="p-5">
-            <!-- Check if there's a named slot available for the current header cell -->
-            <template v-if="$slots['head.' + headerIndex]">
-              <slot :name="'head.' + headerIndex" :header="header"></slot>
-            </template>
-            <!-- If no specific slot content is provided, display the header value -->
-            <template v-else>
-              {{ header }}
-            </template>
+  <div class="table-wrapper" v-if="props_data.table_data.length > 0">
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th class="p-5" v-if="show_checkbox">
+            <Checkbox :model-value="allChecked" @update:model-value="toggleAll" :binary="true" />
           </th>
-        </template>
-        <!-- Render dynamic slots for each item -->
-        <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('head.'))" :key="slotName">
-          <th class="p-5">
-            <slot :name="slotName"></slot>
-          </th>
-        </template>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(item, itemIndex) in props_data.table_data" :key="itemIndex">
-        <td class="p-5" v-if="show_checkbox">
-          <Checkbox 
-            :model-value="selectedData.includes(item)" 
-            @update:model-value="toggleItem(item)" 
-            :binary="true" 
-          />
-        </td>
-        <template v-for="(field, fieldIndex) in displayFields" :key="fieldIndex">
-          <td class="p-5" v-if="props_data.table_data && props_data.table_data.length > 0">
-            <!-- Check if there's a named slot available for the current field -->
-            <template v-if="$slots['item.' + field]">
-              <slot :name="'item.' + field" :item="item"></slot>
-            </template>
-            <!-- If no specific slot content is provided, display the field value -->
-            <template v-else>
-              {{ item[field] }}
-            </template>
+          <template v-for="(header, headerIndex) in displayHeaders" :key="headerIndex">
+            <th class="p-5">
+              <!-- Check if there's a named slot available for the current header cell -->
+              <template v-if="$slots['head.' + headerIndex]">
+                <slot :name="'head.' + headerIndex" :header="header"></slot>
+              </template>
+              <!-- If no specific slot content is provided, display the header value -->
+              <template v-else>
+                {{ header }}
+              </template>
+            </th>
+          </template>
+          <!-- Render dynamic slots for each item -->
+          <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('head.'))" :key="slotName">
+            <th class="p-5">
+              <slot :name="slotName"></slot>
+            </th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, itemIndex) in props_data.table_data" :key="itemIndex">
+          <td class="p-5" v-if="show_checkbox">
+            <Checkbox 
+              :model-value="selectedData.includes(item)" 
+              @update:model-value="toggleItem(item)" 
+              :binary="true" 
+            />
           </td>
-        </template>
-        
-        <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('item.'))" :key="slotName">
-          <td class="p-5">
-            <slot :name="slotName" :item="item"></slot>
-          </td>
-        </template>
-      </tr>
-    </tbody>
-  </table>
-  <Paginator
-    v-model:first="first"
-    :rows="10" 
-    :totalRecords="120" 
-    :rowsPerPageOptions="[10, 20, 30]"
-  ></Paginator>
+          <template v-for="(field, fieldIndex) in displayFields" :key="fieldIndex">
+            <td class="p-5" v-if="props_data.table_data && props_data.table_data.length > 0">
+              <!-- Check if there's a named slot available for the current field -->
+              <template v-if="$slots['item.' + field]">
+                <slot :name="'item.' + field" :item="item"></slot>
+              </template>
+              <!-- If no specific slot content is provided, display the field value -->
+              <template v-else>
+                {{ item[field] }}
+              </template>
+            </td>
+          </template>
+          
+          <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('item.'))" :key="slotName">
+            <td class="p-5">
+              <slot :name="slotName" :item="item"></slot>
+            </td>
+          </template>
+        </tr>
+      </tbody>
+    </table>
+    <Paginator
+      v-model:first="first"
+      :rows="10" 
+      :totalRecords="120" 
+      :rowsPerPageOptions="[10, 20, 30]"
+    ></Paginator>
+  </div>
+  <div 
+    class="no-data flex justify-center uppercase" 
+    v-else
+  >
+    <p>No Data Available</p>
+  </div>
 </template>
