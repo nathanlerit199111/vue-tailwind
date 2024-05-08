@@ -1,6 +1,6 @@
 export default {
     // example
-    site: 'http://localhost:5173/',
+    site: 'http://localhost:4173/',
     cookies: [
         {
             name: 'authToken',

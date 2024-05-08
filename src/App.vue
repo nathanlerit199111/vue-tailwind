@@ -9,7 +9,10 @@ const route = useRoute()
 </script>
 
 <template>
-  <div v-if="route.path !== '/login' && route.path !== '/readme'" id="dashboard-wrapper">
+  <div 
+    v-if="route.path !== '/login' && route.path !== '/readme'" 
+    id="dashboard-wrapper"
+  >
     <!-- 
       mini - to set the default width of side navigation either mini or wide
      -->

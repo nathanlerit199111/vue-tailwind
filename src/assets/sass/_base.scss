@@ -1,3 +1,6 @@
+body {
+    overflow: hidden;
+}
 //============= FONTS =============//
 * {
     font-family: 'Roboto';
@@ -96,7 +99,8 @@ table {
     content-visibility: auto;
 
     img {
-        min-width: 150px;
+        min-width: 80px;
+        max-height: 100px;
     }
 
     th {

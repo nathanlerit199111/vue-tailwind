@@ -1,11 +1,12 @@
 import './assets/sass/style.scss'
-import customTheme from '@/theme/theme.json';
+import customTheme from '@/theme/theme.json'
 import vueLazyLoad from 'vue3-lazyload'
 import 'primeicons/primeicons.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import primeVue from 'primevue/config';
+import primeVue from 'primevue/config'
+import toastService from 'primevue/toastservice'
 import 'tailwindcss/tailwind.css'
 
 import App from './App.vue'
@@ -71,4 +72,5 @@ app.use(createPinia())
 app.use(router)
 app.use(vueLazyLoad)
 app.use(primeVue)
+app.use(toastService)
 app.mount('#app')
