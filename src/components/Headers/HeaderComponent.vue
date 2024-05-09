@@ -48,7 +48,10 @@
 
 <template>
     <header class="flex justify-end mx-gap-sm">
-        <InputComponent/>
+        <InputComponent 
+            type="search"
+            additional_class="block w-full"
+        />
         <Menubar :model="items">
             <template #item="{ item, props, hasSubmenu, root }">
                 <!-- Adding click event handler -->

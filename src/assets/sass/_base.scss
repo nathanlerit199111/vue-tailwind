@@ -54,14 +54,25 @@ p, label, span {
 
 //============= FORMS =============//
 input {
-    margin: var(--tbs-space-sm) 0;
+    padding: var(--tbs-space-sm) 0;
+    border-radius: var(--tbs-border-radius-sm);
+    color: var(--tbs-btn-font-primary-color);
+    outline: solid 1px var(--tbs-bg-tertiary-color);
+    transition: all ease 0.25s;
+
+    &:focus-visible {
+        box-shadow: 0 0 5px var(--tbs-bg-tertiary-color);
+        outline-offset: 0;
+    }
 }
-input.password + i {
+input.password + i,
+input.search + i {
     position: absolute;
     top: 50%;
     right: 15px;
     transform: translate(0, -50%);
     cursor: pointer;
+    color: var(--tbs-btn-font-primary-color);
 }
 
 

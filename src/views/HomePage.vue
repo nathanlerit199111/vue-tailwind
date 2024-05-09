@@ -79,7 +79,7 @@
                             - fields props will only display data base on the provided property name in the Array. if no value, it will load the whole data
 
                             slots - there are 2 types of slot; head and item
-                            show_select - whill show checkbox
+                            show_select - will show checkbox
                          -->
                         <TableComponent 
                                 :table_data="products?.products"
@@ -114,6 +114,13 @@
                                     </td>
                                 </template>
                         </TableComponent>
+
+                        <!-- <DataTable :value="products?.products">
+                            <Column field="id" header="id"></Column>
+                            <Column field="brand" header="brand"></Column>
+                            <Column field="title" header="title"></Column>
+                            <Column field="description" header="description"></Column>
+                        </DataTable> -->
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
