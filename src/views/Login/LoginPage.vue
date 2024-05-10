@@ -9,14 +9,15 @@
     import FormWrapper from '@/components/FormWrapper.vue'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
     import SelectCountry from '@/components/UIElements/SelectCountry.vue'
+    import ToastWrapper from '@/components/ToastWrapper.vue'
     // import { checkMinLength, checkUpperCase, checkLowerCase, checkSpecialChar } from '@/helpers/formValidation.js'
 
 
     //VUE PRIME
     import InputText from 'primevue/inputtext';
     import Button from 'primevue/button';
-    import Toast from 'primevue/toast';
-    import { useToast } from 'primevue/usetoast';
+    // import Toast from 'primevue/toast';
+    // import { useToast } from 'primevue/usetoast';
 
     //API
     import AuthApi from '@/api/AuthApi.js'
@@ -110,17 +111,26 @@
             }
         }
         catch (e) {
-            toast.add(
-                { severity: 'error', summary: 'Error', detail: "Invalid Credentials", life: 3000 }
-            );
+            toast.showToast({
+                status: e.response.status,
+                message: e.response.data.message
+            });
+            console.log("catch", e.response.data.message)
+            // toast.add(
+            //     { severity: 'error', summary: 'Error', detail: "Invalid Credentials", life: 3000 }
+            // );
         }
     }
 
     //TOAST MESSAGE
-    const toast = useToast();
+    // const toast = useToast();
+    import { useToastStore } from '@/stores/toast'
+    const toast = useToastStore()
 </script>
 <template>
-    <Toast />
+    <ToastWrapper
+        position="top-right"
+    />
     <SectionWrapper id="login-wrapper" additional_class="h-full">
         <ContainerWrapper additional_class="h-full">
             <RowWrapper additional_class="items-center h-full">

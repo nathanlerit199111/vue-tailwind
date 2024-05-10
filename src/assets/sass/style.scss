@@ -19,7 +19,9 @@ html {
     @import "mediaqueries";
 
     //components
+    @import "components/toast";
     @import "components/login";
+    @import "components/table";
     @import "components/side-nav";
     @import "components/gallery";
 }

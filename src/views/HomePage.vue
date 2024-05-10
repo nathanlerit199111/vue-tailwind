@@ -8,7 +8,7 @@
     import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
     import UploadCsv from '@/components/UIElements/UploadCsv.vue'
     import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-    import TableComponent from '@/components/UIElements/Table/TableComponent.vue'
+    import TableComponent from '@/components/Tables/TableComponent.vue'
 
     //VUE PRIME
     import Button from 'primevue/button';

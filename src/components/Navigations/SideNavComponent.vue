@@ -5,6 +5,10 @@
         mini: {
             type: Boolean,
             default: () => false
+        },
+        is_mobile: {
+            type: Boolean,
+            default: () => false
         }
     })
 
@@ -57,18 +61,18 @@
     }
 
 
-    //Check if viewport is 640px (Mobile)
-    const isMobile = ref(false);
-    const handleResize = () => {
-        isMobile.value = window.innerWidth <= 640;
-    };
-    onMounted(() => {
-        handleResize();
-        window.addEventListener('resize', handleResize);
-    });
-    onUnmounted(() => {
-        window.removeEventListener('resize', handleResize);
-    });
+    // //Check if viewport is 640px (Mobile)
+    // const isMobile = ref(false);
+    // const handleResize = () => {
+    //     isMobile.value = window.innerWidth <= 640;
+    // };
+    // onMounted(() => {
+    //     handleResize();
+    //     window.addEventListener('resize', handleResize);
+    // });
+    // onUnmounted(() => {
+    //     window.removeEventListener('resize', handleResize);
+    // });
 
 
 
@@ -92,11 +96,11 @@
         :class="`
             ${mini ? 'mini-nav' : ''} 
             ${isActive ? 'active' : ''}
-            ${isMobile ? 'isMobile' : ''}
+            ${is_mobile ? 'isMobile' : ''}
             `"
     >
         <button
-            v-if="!isMobile"
+            v-if="!is_mobile"
             class="side-nav-close"
             @click="toggleNavFn()"
         >
@@ -104,7 +108,7 @@
         </button>
 
         <div 
-            v-if="isMobile"
+            v-if="is_mobile"
             id="hamburger-icon-menu-wrapper"
             class="flex"
         >
@@ -123,7 +127,7 @@
         </div>
 
         <div
-            v-if="!isMobile"
+            v-if="!is_mobile"
             class="side-nav-logo-wrapper">
             <h4>Logo</h4>
         </div>
