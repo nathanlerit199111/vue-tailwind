@@ -101,7 +101,7 @@ defineExpose({
             <Checkbox :model-value="allChecked" @update:model-value="toggleAll" :binary="true" />
           </th>
           <template v-for="(header, headerIndex) in displayHeaders" :key="headerIndex">
-            <th class="p-5">
+            <th class="p-3">
               <!-- Check if there's a named slot available for the current header cell -->
               <template v-if="$slots['head.' + headerIndex]">
                 <slot :name="'head.' + headerIndex" :header="header"></slot>
@@ -114,7 +114,7 @@ defineExpose({
           </template>
           <!-- Render dynamic slots for each item -->
           <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('head.'))" :key="slotName">
-            <th class="p-5">
+            <th class="p-3">
               <slot :name="slotName"></slot>
             </th>
           </template>
@@ -122,7 +122,7 @@ defineExpose({
       </thead>
       <tbody>
         <tr v-for="(item, itemIndex) in props_data.table_data" :key="itemIndex">
-          <td class="p-5" v-if="show_checkbox">
+          <td class="p-3" v-if="show_checkbox">
             <Checkbox 
               :model-value="selectedData.includes(item)" 
               @update:model-value="toggleItem(item)" 
@@ -130,7 +130,7 @@ defineExpose({
             />
           </td>
           <template v-for="(field, fieldIndex) in displayFields" :key="fieldIndex">
-            <td class="p-5" v-if="props_data.table_data && props_data.table_data.length > 0">
+            <td class="p-3" v-if="props_data.table_data && props_data.table_data.length > 0">
               <!-- Check if there's a named slot available for the current field -->
               <template v-if="$slots['item.' + field]">
                 <slot :name="'item.' + field" :item="item"></slot>
@@ -143,7 +143,7 @@ defineExpose({
           </template>
           
           <template v-for="slotName in Object.keys($slots).filter(name => name.startsWith('item.'))" :key="slotName">
-            <td class="p-5">
+            <td class="p-3">
               <slot :name="slotName" :item="item"></slot>
             </td>
           </template>

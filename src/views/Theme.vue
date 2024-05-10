@@ -7,6 +7,10 @@ import ContainerWrapper from '@/components/ContainerWrapper.vue'
 import RowWrapper from '@/components/RowWrapper.vue'
 import ColumnWrapper from '@/components/ColumnWrapper.vue'
 
+//TOAST MESSAGE
+import ToastWrapper from '@/components/ToastWrapper.vue'
+import { useToastStore } from '@/stores/toast'
+
 // Import vue3-colorpicker
 import { ColorPicker } from "vue3-colorpicker";
 import "vue3-colorpicker/style.css";
@@ -16,15 +20,23 @@ import Message from 'primevue/message';
 import Button from 'primevue/button';
 // import ColorPicker from 'primevue/colorpicker';
 
+
+const toast = useToastStore()
+
 // Define a reactive reference to hold the temporary configuration
 const TEMPORARYCONFIG = ref(customConfig);
 
 // Function to save the configuration
 const saveConfig = () => {
   // Assign the values from temporary storage to customConfig
-  Object.assign(customConfig, TEMPORARYCONFIG.value);
+  Object.assign(customConfig, TEMPORARYCONFIG.value)
   // Update the configuration in the backend or local storage
-  localStorage.setItem('themeCSS', JSON.stringify(customConfig));
+  localStorage.setItem('themeCSS', JSON.stringify(customConfig))
+
+  toast.showToast({
+      status: 200,
+      message: 'Theme Saved'
+  })
 }
 
 
@@ -50,10 +62,11 @@ const convertLocalStorageData = () => {
 onMounted(() => {
   convertLocalStorageData();
 })
-
-
 </script>
 <template>
+  <ToastWrapper
+      position="top-right"
+  />
   <SectionWrapper>
     <ContainerWrapper additional_class="max-w-5xl">
       <RowWrapper additional_class="items-center">

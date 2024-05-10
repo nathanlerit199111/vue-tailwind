@@ -131,7 +131,6 @@
             class="side-nav-logo-wrapper">
             <h4>Logo</h4>
         </div>
-        <hr/>
 
         <!-- Side navigation list -->
         <nav 

@@ -9,31 +9,20 @@
     import FormWrapper from '@/components/FormWrapper.vue'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
     import SelectCountry from '@/components/UIElements/SelectCountry.vue'
-    import ToastWrapper from '@/components/ToastWrapper.vue'
     // import { checkMinLength, checkUpperCase, checkLowerCase, checkSpecialChar } from '@/helpers/formValidation.js'
+    
+    //TOAST MESSAGE
+    import ToastWrapper from '@/components/ToastWrapper.vue'
+    import { useToastStore } from '@/stores/toast'
 
 
     //VUE PRIME
-    import InputText from 'primevue/inputtext';
     import Button from 'primevue/button';
-    // import Toast from 'primevue/toast';
-    // import { useToast } from 'primevue/usetoast';
 
     //API
     import AuthApi from '@/api/AuthApi.js'
 
-    const router = useRouter();
-    // const loginFn = () => {
-    //     var expires = ""
-    //     let days = 30
-    //     var date = new Date();
-    //     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-    //     expires = "; expires=" + date.toUTCString();
-    //     document.cookie = "authToken" + "=" + ("authValue") + expires + "; path=/";
-
-    //     router.push('/');
-    // }
-
+    const router = useRouter()
     //Register
     const isRegister = ref(false)
     const register = ref(
@@ -102,29 +91,22 @@
                 let expires = ""
                 let token = response?.data?.token
                 let days = 30
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
-                document.cookie = "authToken" + "=" + (token) + expires + "; path=/";
+                var date = new Date()
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000))
+                expires = "; expires=" + date.toUTCString()
+                document.cookie = "authToken" + "=" + (token) + expires + "; path=/"
 
-                router.push('/');
+                router.push('/')
             }
         }
         catch (e) {
             toast.showToast({
                 status: e.response.status,
                 message: e.response.data.message
-            });
-            console.log("catch", e.response.data.message)
-            // toast.add(
-            //     { severity: 'error', summary: 'Error', detail: "Invalid Credentials", life: 3000 }
-            // );
+            })
         }
     }
 
-    //TOAST MESSAGE
-    // const toast = useToast();
-    import { useToastStore } from '@/stores/toast'
     const toast = useToastStore()
 </script>
 <template>

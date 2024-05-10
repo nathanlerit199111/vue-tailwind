@@ -1,16 +1,17 @@
 .toast-wrapper {
     position: absolute;
     z-index: 5;
+    border-radius: var(--tbs-border-radius-xs);
     &.top-left {
-        top: 10px;
-        left: 10px;
+        top: 20px;
+        left: 20px;
         //Exit animation
         &.fade-top {
             animation: fadeTop 0.5s ease-in-out;
         }
     }
     &.top-center {
-        top: 10px;
+        top: 20px;
         left: 50%;
         transform: translate(-50%, 0);
         //Exit animation
@@ -19,8 +20,8 @@
         }
     }
     &.top-right {
-        top: 10px;
-        right: 10px;
+        top: 20px;
+        right: 20px;
         //Exit animation
         &.fade-top {
             animation: fadeTop 0.5s ease-in-out;
@@ -28,15 +29,15 @@
     }
 
     &.bottom-left {
-        bottom: 10px;
-        left: 10px;
+        bottom: 20px;
+        left: 20px;
         //Exit animation
         &.fade-top {
             animation: fadeTop 0.5s ease-in-out;
         }
     }
     &.bottom-center {
-        bottom: 10px;
+        bottom: 20px;
         left: 50%;
         transform: translate(-50%, 0);
         //Exit animation
@@ -45,8 +46,8 @@
         }
     }
     &.bottom-right {
-        bottom: 10px;
-        right: 10px;
+        bottom: 20px;
+        right: 20px;
         //Exit animation
         &.fade-top {
             animation: fadeTop 0.5s ease-in-out;
@@ -54,12 +55,15 @@
     }
 
     &.success {
-        background: green;
+        background: #00ab41;
+        color: #fff;
     }
     &.warning {
         background: orange;
+        color: #fff;
     }
     &.error {
-        background: red;
+        background: rgb(255, 118, 118);
+        color: #fff;
     }
 }

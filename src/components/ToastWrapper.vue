@@ -33,7 +33,7 @@ const props_data = defineProps({
     v-if="toast.is_visible"
     :id="props_data.id_name || null"
     :class="
-      `toast-wrapper p-2 
+      `toast-wrapper py-3 px-6
       ${toast.status}
       ${props_data.additional_class} 
       ${props_data.position} 
@@ -41,11 +41,13 @@ const props_data = defineProps({
       `
     "
   >
-    <div class="toast-header">
-      <h4> xxx{{ toast }}</h4>
+    <div class="toast-header flex">
+      <!-- <i :class="`mr-2 pi ${toast.status === 'error' ? 'pi-times' : toast.status === 'success' ? 'pi-check' : 'pi-exclamation-circle'}`"></i> -->
+      <h4 class="capitalize">{{ toast.status }} Message</h4>
       <slot name="header"></slot>
     </div>
-    <div class="toast-body">
+
+    <div class="toast-body mt-3">
       <p>{{ toast.message }}</p>
       <slot name="body"></slot>
     </div>

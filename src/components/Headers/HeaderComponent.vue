@@ -1,17 +1,10 @@
 <script setup>
-    import { ref } from 'vue'
-    import { useRouter } from 'vue-router';
+    import { ref, onMounted } from 'vue'
     import { getCookie } from '@/helpers/getCookie'
-    import InputComponent from '@/components/UIElements/InputComponent.vue'
-
-    //VUE PRIME
-    import Menubar from 'primevue/menubar';
-    // Define handleItemClick function
-    const handleItemClick = (item) => {
-        if (item.action && item.action.click) {
-            item.action.click();
-        }
-    };
+    import ContainerWrapper from '@/components/ContainerWrapper.vue'
+    import RowWrapper from '@/components/RowWrapper.vue'
+    import ColumnWrapper from '@/components/ColumnWrapper.vue'
+    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
 
 
     const logout = () => {
@@ -21,47 +14,79 @@
             document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
             window.location.reload()
         }
-    };
+    }
 
-    
-    // Define menu items
-    const router = useRouter()
-    const items = ref([
+    const isOpen = ref(false)
+    const items = [
         {
-            label: 'Profile',
-            icon: 'pi pi-user',
-            items: [
-                {
-                    label: 'Settings',
-                    icon: 'pi pi-bolt',
-                    link: '/theme'
-                },
-                {
-                    label: 'Logout',
-                    icon: 'pi pi-bolt',
-                    action: { click: logout }
-                },
-            ]
+            name: 'Profile',
+            link: '/profile'
+        },
+        {
+            name: 'Theme',
+            link: '/theme'
+        },
+        {
+            name: 'Logout',
+            link: '/'
         }
-    ]);
+    ];
+
+    const toggleDropdown = () => {
+        isOpen.value = !isOpen.value
+    }
+
+    const selectItem = (item) => {
+        console.log('Selected:', item)
+        isOpen.value = false
+    }
+
+    onMounted(() => {
+        document.body.addEventListener('click', closeDropdownOnClickOutside)
+    })
+
+    const closeDropdownOnClickOutside = (event) => {
+        if (!event.target.closest('.dropdown')) {
+            isOpen.value = false
+        }
+    }
 </script>
 
 <template>
     <header class="flex justify-end mx-gap-sm">
-        <InputComponent 
-            type="search"
-            additional_class="block w-full"
-        />
-        <Menubar :model="items">
-            <template #item="{ item, props, hasSubmenu, root }">
-                <!-- Adding click event handler -->
-                <a :href="item.link" class="flex align-items-center" v-bind="props.action" @click="handleItemClick(item)">
-                    <span :class="item.icon" />
-                    <span class="ml-2">{{ item.label }}</span>
-                    
-                    <i v-if="hasSubmenu" :class="['pi pi-angle-down', { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root }]"></i>
-                </a>
-            </template>
-        </Menubar>
+        <ContainerWrapper>
+            <RowWrapper additional_class="justify-end">
+                <ColumnWrapper>
+                    <div class="dropdown relative" @click="toggleDropdown">
+                        <!-- <button class="dropdown-toggle">{{ isOpen ? 'Close' : 'Open' }} Dropdown</button> -->
+                        <div class="flex items-center dropdown-toggle">
+                            <ImgComponent
+                                image_src="avatar.png"
+                                image_alt="avatar"
+                                image_loading="eager"
+                            />
+                            <p>First Name, Surname</p>
+                        </div>
+                        <ul v-if="isOpen" class="dropdown-menu">
+                            <li v-for="(item, index) in items" :key="index" @click="selectItem(item)">
+                                <a 
+                                    class="block" 
+                                    v-if="item.name !== 'Logout'" :href="item.link"
+                                >
+                                    {{ item.name }}
+                                </a>
+                                <span
+                                    v-else
+                                    class="block" 
+                                    @click="logout()"
+                                >
+                                    {{ item.name }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </ColumnWrapper>
+            </RowWrapper>
+        </ContainerWrapper>
     </header>
 </template>
