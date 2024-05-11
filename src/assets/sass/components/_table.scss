@@ -1,12 +1,11 @@
 .table-wrapper {
-    // overflow: auto;
+    overflow-x: auto;
     border-radius: var(--tbs-border-radius-sm);
+    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
 }
 table {
     background: var(--tbs-table-bg-color);
     border-radius: var(--tbs-border-radius-sm);
-    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
-
     content-visibility: auto;
 
     img {

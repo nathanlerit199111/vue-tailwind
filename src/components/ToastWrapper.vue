@@ -1,6 +1,5 @@
 <script setup>
 import { useToastStore } from '@/stores/toast'
-import { defineProps, ref, watch } from 'vue'
 
 const toast = useToastStore()
 

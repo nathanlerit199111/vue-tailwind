@@ -1,10 +1,9 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
     import { getCookie } from '@/helpers/getCookie'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
-    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
+    import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
 
 
     const logout = () => {
@@ -16,7 +15,6 @@
         }
     }
 
-    const isOpen = ref(false)
     const items = [
         {
             name: 'Profile',
@@ -30,26 +28,7 @@
             name: 'Logout',
             link: '/'
         }
-    ];
-
-    const toggleDropdown = () => {
-        isOpen.value = !isOpen.value
-    }
-
-    const selectItem = (item) => {
-        console.log('Selected:', item)
-        isOpen.value = false
-    }
-
-    onMounted(() => {
-        document.body.addEventListener('click', closeDropdownOnClickOutside)
-    })
-
-    const closeDropdownOnClickOutside = (event) => {
-        if (!event.target.closest('.dropdown')) {
-            isOpen.value = false
-        }
-    }
+    ]
 </script>
 
 <template>
@@ -57,34 +36,13 @@
         <ContainerWrapper>
             <RowWrapper additional_class="justify-end">
                 <ColumnWrapper>
-                    <div class="dropdown relative" @click="toggleDropdown">
-                        <!-- <button class="dropdown-toggle">{{ isOpen ? 'Close' : 'Open' }} Dropdown</button> -->
-                        <div class="flex items-center dropdown-toggle">
-                            <ImgComponent
-                                image_src="avatar.png"
-                                image_alt="avatar"
-                                image_loading="eager"
-                            />
-                            <p>First Name, Surname</p>
-                        </div>
-                        <ul v-if="isOpen" class="dropdown-menu">
-                            <li v-for="(item, index) in items" :key="index" @click="selectItem(item)">
-                                <a 
-                                    class="block" 
-                                    v-if="item.name !== 'Logout'" :href="item.link"
-                                >
-                                    {{ item.name }}
-                                </a>
-                                <span
-                                    v-else
-                                    class="block" 
-                                    @click="logout()"
-                                >
-                                    {{ item.name }}
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
+                    <DropDownProfileComponent :menu_data="items">
+                        <!-- 
+                            Add links with functionalities
+                            For list with functionaities, use <span> tag instead of <a>, because <a> requires href attributes
+                        -->
+                        <span @click="logout()">Logout</span>
+                    </DropDownProfileComponent>
                 </ColumnWrapper>
             </RowWrapper>
         </ContainerWrapper>

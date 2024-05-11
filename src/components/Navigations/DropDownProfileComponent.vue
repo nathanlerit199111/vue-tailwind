@@ -1,26 +1,66 @@
+<script setup>
+    import { ref, onMounted } from 'vue'
+    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
+
+
+    const props_data = defineProps({
+        menu_data: {
+            type: Array,
+            default: () => [
+                {
+                    name: 'Item 1',
+                    link: '#'
+                },
+                {
+                    name: 'Item 2',
+                    link: '#'
+                },
+            ]
+        }
+    })
+
+    const isOpen = ref(false)
+    const toggleDropdown = () => {
+        isOpen.value = !isOpen.value
+    }
+
+    const selectItem = (item) => {
+        isOpen.value = false
+    }
+
+    onMounted(() => {
+        document.body.addEventListener('click', closeDropdownOnClickOutside)
+    })
+
+    const closeDropdownOnClickOutside = (event) => {
+        if (!event.target.closest('.dropdown')) {
+            isOpen.value = false
+        }
+    }
+</script>
 <template>
     <div class="dropdown relative" @click="toggleDropdown">
-        <ImgComponent
-            image_src="avatar.png"
-            image_alt="avatar"
-            image_loading="eager"
-            class="dropdown-toggle"
-        />
+        <div class="flex items-center dropdown-toggle">
+            <ImgComponent
+                image_src="avatar.png"
+                image_alt="avatar"
+                image_loading="eager"
+            />
+            <h4>First Name</h4>
+        </div>
         <ul v-if="isOpen" class="dropdown-menu">
-            <li v-for="(item, index) in items" :key="index" @click="selectItem(item)">
-                <a 
-                    class="block" 
-                    v-if="item.name !== 'Logout'" :href="item.link"
-                >
-                    {{ item.name }}
-                </a>
-                <span
-                    v-else
-                    class="block" 
-                    @click="logout()"
-                >
-                    {{ item.name }}
-                </span>
+            <template v-for="(item, item_index) in props_data.menu_data" :key="item_index">
+                <li v-if="item.name !== 'Logout'" @click="selectItem(item)">
+                    <a 
+                        class="block" 
+                        :href="item.link"
+                    >
+                        {{ item.name }}
+                    </a>
+                </li>
+            </template>
+            <li>
+                <slot></slot>
             </li>
         </ul>
     </div>
