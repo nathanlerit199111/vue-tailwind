@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted, onUnmounted } from 'vue'
+    import { ref } from 'vue'
 
     const props_data = defineProps ({
         mini: {
@@ -94,13 +94,13 @@
     <aside
         id="side-nav" 
         :class="`
-            ${mini ? 'mini-nav' : ''} 
+            ${props_data.mini ? 'mini-nav' : ''} 
             ${isActive ? 'active' : ''}
-            ${is_mobile ? 'isMobile' : ''}
+            ${props_data.is_mobile ? 'isMobile' : ''}
             `"
     >
         <button
-            v-if="!is_mobile"
+            v-if="!props_data.is_mobile"
             class="side-nav-close"
             @click="toggleNavFn()"
         >
@@ -108,7 +108,7 @@
         </button>
 
         <div 
-            v-if="is_mobile"
+            v-if="props_data.is_mobile"
             id="hamburger-icon-menu-wrapper"
             class="flex"
         >
@@ -121,13 +121,15 @@
                 <span></span>
             </div>
 
-            <div class="flex justify-center grow">
+            <div class="flex items-center justify-center grow">
                 <h4>Logo</h4>
             </div>
+            <!-- Add more data -->
+            <slot></slot>
         </div>
 
         <div
-            v-if="!is_mobile"
+            v-if="!props_data.is_mobile"
             class="side-nav-logo-wrapper">
             <h4>Logo</h4>
         </div>

@@ -8,7 +8,7 @@
 
     //VUE PRIME
     import Chip from 'primevue/chip';
-    import Message from 'primevue/message';
+    // import Message from 'primevue/message';
 
 
     const tailwindCode = `<input 
@@ -47,7 +47,7 @@
                     <Chip class="m-2" label="Flexbox" />
                     <Chip class="m-2" label="Grid" />
                     <Chip class="m-2" label="Text Align" />
-                    <Chip class="m-2"label="Font Weight" />
+                    <Chip class="m-2" label="Font Weight" />
                     <Chip class="m-2" label="Transforms / Transitions" />
                     <Chip class="m-2" label="Width" />
                     <Chip class="m-2" label="Height" />

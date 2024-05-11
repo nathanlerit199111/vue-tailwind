@@ -4,7 +4,7 @@ import LoginPage from '../views/Login/LoginPage.vue'
 import HomePage from '../views/HomePage.vue'
 import POS from '../views/POS.vue'
 import ReadMe from '../views/ReadMe.vue'
-import Theme from '../views/Theme.vue'
+import ThemePage from '../views/ThemePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/theme',
       name: 'theme',
-      component: Theme
+      component: ThemePage
     },
     // {
     //   path: '/example',

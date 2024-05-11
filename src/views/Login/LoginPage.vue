@@ -251,6 +251,6 @@ text-green-600">✔</span></small>
 
     <!-- BACKGROUND ANIMATION -->
     <ul class="floating-squares">
-        <li v-for="n in 10" />
+        <li v-for="n in 10" :key="n" />
     </ul>
 </template>

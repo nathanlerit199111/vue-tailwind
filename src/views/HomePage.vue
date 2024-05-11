@@ -11,7 +11,7 @@
     import TableComponent from '@/components/Tables/TableComponent.vue'
 
     //VUE PRIME
-    import Button from 'primevue/button';
+    // import Button from 'primevue/button';
     // import DataTable from 'primevue/datatable';
     // import Column from 'primevue/column';
 

@@ -24,7 +24,7 @@
         isOpen.value = !isOpen.value
     }
 
-    const selectItem = (item) => {
+    const selectItem = () => {
         isOpen.value = false
     }
 

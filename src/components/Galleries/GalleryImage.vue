@@ -13,7 +13,7 @@
     <div class="gallery-wrapper grid grid-cols-4 gap-2">
         <div 
             class="gallery-list"
-            v-for="(list, list_index) in gallery_data" :key="list_index"
+            v-for="(list, list_index) in props_data.gallery_data" :key="list_index"
         >
             <div class="gallery-image-wrapper overflow-hidden">
                 <ImgComponent
