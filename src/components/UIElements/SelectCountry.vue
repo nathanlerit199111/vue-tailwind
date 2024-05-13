@@ -39,7 +39,7 @@ onMounted(async () => {
     <Dropdown 
         v-model="selectedCountry" 
         :options="country" 
-        optionLabel="name" 
+        option-label="name" 
         placeholder="Select a Country" 
         :class="`py-2 px-4 ${props_data.additional_class}`" 
     />

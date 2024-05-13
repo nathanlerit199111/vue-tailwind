@@ -154,8 +154,8 @@ defineExpose({
   <Paginator
     v-model:first="first"
     :rows="10" 
-    :totalRecords="120" 
-    :rowsPerPageOptions="[10, 20, 30]"
+    :total-records="120" 
+    :rows-per-page-options="[10, 20, 30]"
   ></Paginator>
   <div
     v-if="props_data.table_data.length === 0"

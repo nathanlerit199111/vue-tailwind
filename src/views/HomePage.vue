@@ -11,9 +11,9 @@
     import TableComponent from '@/components/Tables/TableComponent.vue'
 
     //VUE PRIME
-    // import Button from 'primevue/button';
-    // import DataTable from 'primevue/datatable';
-    // import Column from 'primevue/column';
+    import Button from 'primevue/button';
+    import DataTable from 'primevue/datatable';
+    import Column from 'primevue/column';
 
     //API
     import AuthApi from '@/api/ProductApi.js'
@@ -81,7 +81,7 @@
                             slots - there are 2 types of slot; head and item
                             show_select - will show checkbox
                          -->
-                        <TableComponent 
+                        <!-- <TableComponent 
                                 :table_data="products?.products"
                                 :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
                                 :fields="['id', 'brand', 'title', 'description', 'price']"
@@ -113,14 +113,33 @@
                                         </div>
                                     </td>
                                 </template>
-                        </TableComponent>
+                        </TableComponent> -->
 
-                        <!-- <DataTable :value="products?.products">
+                        <DataTable :value="products?.products">
                             <Column field="id" header="id"></Column>
                             <Column field="brand" header="brand"></Column>
                             <Column field="title" header="title"></Column>
                             <Column field="description" header="description"></Column>
-                        </DataTable> -->
+                            <Column field="price" header="price"></Column>
+                            <Column field="image" header="image">
+                                <template #body="slotProps">
+                                    <ImgComponent
+                                        :image_src="slotProps?.data?.images[0]"
+                                        image_alt="asdasd"
+                                        image_loading="lazy"
+                                    />
+                                </template>
+                            </Column>
+                            <Column field="image" header="action">
+                                <template #body="slotProps">
+                                    <div class="flex mx-gap-sm">
+                                        <button class="tbs-btn-primary">xxxx</button>
+                                        <button class="tbs-btn-secondary">Delete</button>
+                                    </div>
+                                </template>
+                        
+                            </Column>
+                        </DataTable>
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
