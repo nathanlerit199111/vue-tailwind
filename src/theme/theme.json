@@ -32,7 +32,7 @@
     "tbs-table-row-font-color" : "#858585"
   },
   "font": {
-    "tbs-font-primary-color" : "#858585",
+    "tbs-font-primary-color" : "black",
     "tbs-font-secondary-color" : "#fff",
     "tbs-font-tertiary-color" : "#e1e1e1",
     "tbs-font-xs" : "11px",

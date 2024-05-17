@@ -2,6 +2,7 @@
     .gallery-list {
         background: var(--tbs-bg-secondary-color);
         border-radius: var(--tbs-border-radius-sm);
+        box-shadow: 2px 2px 3px color-mix(in srgb,var(--tbs-bg-primary-color),#000 12%);
         padding: var(--tbs-space-sm);
     }
     .gallery-image-wrapper {
@@ -20,5 +21,8 @@
         //     left: 0;
         //     bottom: 0;
         // }
+    }
+    button {
+        height: max-content;
     }
 }

@@ -4,7 +4,7 @@
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
-
+    import SVGIcon from '@/components/UIElements/SVGIcon.vue'
 
     const logout = () => {
         const authToken = getCookie('authToken')
@@ -35,7 +35,12 @@
     <header class="flex justify-end mx-gap-sm">
         <ContainerWrapper>
             <RowWrapper additional_class="justify-end">
-                <ColumnWrapper>
+                <ColumnWrapper additional_class="flex items-center mx-gap-md">
+                    <SVGIcon 
+                        icon="Bell"
+                        fill="none"
+                        stroke="black"
+                    />
                     <DropDownProfileComponent :menu_data="items">
                         <!-- 
                             Add links with functionalities

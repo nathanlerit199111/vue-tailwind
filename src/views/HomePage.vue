@@ -12,8 +12,8 @@
 
     //VUE PRIME
     import Button from 'primevue/button';
-    import DataTable from 'primevue/datatable';
-    import Column from 'primevue/column';
+    // import DataTable from 'primevue/datatable';
+    // import Column from 'primevue/column';
 
     //API
     import AuthApi from '@/api/ProductApi.js'
@@ -81,7 +81,7 @@
                             slots - there are 2 types of slot; head and item
                             show_select - will show checkbox
                          -->
-                        <!-- <TableComponent 
+                        <TableComponent 
                                 :table_data="products?.products"
                                 :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
                                 :fields="['id', 'brand', 'title', 'description', 'price']"
@@ -113,9 +113,9 @@
                                         </div>
                                     </td>
                                 </template>
-                        </TableComponent> -->
+                        </TableComponent>
 
-                        <DataTable :value="products?.products">
+                        <!-- <DataTable :value="products?.products">
                             <Column field="id" header="id"></Column>
                             <Column field="brand" header="brand"></Column>
                             <Column field="title" header="title"></Column>
@@ -139,7 +139,7 @@
                                 </template>
                         
                             </Column>
-                        </DataTable>
+                        </DataTable> -->
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>

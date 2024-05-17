@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted  } from 'vue'
+    import { ref, onMounted, computed  } from 'vue'
     import SectionWrapper from '@/components/SectionWrapper.vue'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
     import RowWrapper from '@/components/RowWrapper.vue'
@@ -27,6 +27,21 @@
             isLoading.value = false
         }
     }
+
+    let addedItems = ref([])
+    const addToCart = (item) => {
+        addedItems.value.push({
+            title: item.title,
+            description: item.description,
+            price: item.price
+        })
+    }
+    const deleteToCart = (item) => {
+        addedItems.value.splice(item, 1)
+    }
+    const totalValue = computed(() => {
+        return addedItems.value.reduce((total, item) => total + item.price, 0)
+    })
     
     onMounted(() => {
         getProductApi()
@@ -51,12 +66,24 @@
 
         <SectionWrapper>
             <ContainerWrapper>
-                <RowWrapper additional_class="items-center">
-                    <ColumnWrapper additional_class="w-8/12">
-                        <GalleryImage :gallery_data = "products?.products" />
+                <RowWrapper>
+                    <ColumnWrapper additional_class="w-7/12">
+                        <GalleryImage @addToCart="addToCart" :gallery_data = "products?.products" />
                     </ColumnWrapper>
-                    <ColumnWrapper additional_class="w-4/12">
-                        <h3>POS</h3>
+                    <ColumnWrapper additional_class="w-5/12">
+                        <h3>Summary</h3>
+                        <div
+                            class="grid grid-cols-5 my-5 gap-10"
+                            v-for="(added, added_index) in addedItems" 
+                            :key="added_index"
+                        >
+                            <p>{{ added_index + 1 }}</p>
+                            <p>{{ added.title }}</p>
+                            <p>{{ added.description }}</p>
+                            <p>$ {{ added.price }}</p>
+                            <button class="tbs-btn-secondary h-max" @click="deleteToCart(added_index)">Delete</button>
+                        </div>
+                        <h3 v-if="addedItems.length > 0">Total: $ {{ totalValue }}</h3>
                     </ColumnWrapper>
                 </RowWrapper>
             </ContainerWrapper>
