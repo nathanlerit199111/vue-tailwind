@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, defineProps, defineEmits } from 'vue'
+    import { ref, defineEmits } from 'vue'
     //VUE PRIME 
     // import InputText from 'primevue/inputtext'
 
