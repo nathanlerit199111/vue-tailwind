@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { getCookie } from '@/helpers/getCookie'
+import { createRouter, createWebHistory } from 'vue-router';
+import { getCookie } from '@/helpers/getCookie';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,12 +15,16 @@ const router = createRouter({
       component: () => import('@/views/ReadMe.vue')
     },
     {
-      path: '/layout',
-      component:() => import('@/views/LoggedInLayout.vue'),
+      path: '/',
+      component: () => import('@/views/LoggedInLayout.vue'),
       children: [
         {
-          title: 'Home',
           path: '/',
+          redirect: '/home'
+        },
+        {
+          title: 'Home',
+          path: '/home',
           name: 'home',
           component: () => import('../views/HomePage.vue')
         },
@@ -39,20 +43,19 @@ const router = createRouter({
       ]
     }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   const authToken = getCookie('authToken');
-  const isAuthenticated = authToken ? true : false;
-
+  const isAuthenticated = !!authToken;
 
   if (isAuthenticated && to.path === '/login') {
     next('/');
-  } else if (!isAuthenticated && to.path !== '/login' && to.path !== '/readme') {
+  } else if (!isAuthenticated && !['/login', '/readme'].includes(to.path)) {
     next('/login');
   } else {
     next();
   }
 });
 
-export default router
+export default router;
