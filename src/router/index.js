@@ -15,19 +15,28 @@ const router = createRouter({
       component: () => import('@/views/ReadMe.vue')
     },
     {
-      path: '/',
-      name: 'home',
-      component: () => import('../views/HomePage.vue')
-    },
-    {
-      path: '/pos',
-      name: 'pos',
-      component: () => import('../views/POS.vue')
-    },
-    {
-      path: '/theme',
-      name: 'theme',
-      component: () => import('../views/ThemePage.vue')
+      path: '/layout',
+      component:() => import('@/views/LoggedInLayout.vue'),
+      children: [
+        {
+          title: 'Home',
+          path: '/',
+          name: 'home',
+          component: () => import('../views/HomePage.vue')
+        },
+        {
+          title: 'POS',
+          path: '/pos',
+          name: 'pos',
+          component: () => import('../views/POS.vue')
+        },
+        {
+          title: 'Theme',
+          path: '/theme',
+          name: 'theme',
+          component: () => import('../views/ThemePage.vue')
+        }
+      ]
     }
   ]
 })

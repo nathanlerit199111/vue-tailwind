@@ -9,7 +9,7 @@
     import FormWrapper from '@/components/FormWrapper.vue'
     import InputComponent from '@/components/UIElements/InputComponent.vue'
     import SelectCountry from '@/components/UIElements/SelectCountry.vue'
-    // import { checkMinLength, checkUpperCase, checkLowerCase, checkSpecialChar } from '@/helpers/formValidation.js'
+    import { passwordRules, validatePassword } from '@/helpers/formValidation.js'
     
     //TOAST MESSAGE
     import ToastWrapper from '@/components/ToastWrapper.vue'
@@ -30,31 +30,7 @@
             password: ''
         }
     )
-    const passwordRules = {
-        minLength: ref(false),
-        hasUpperCase: ref(false),
-        hasLowerCase: ref(false),
-        hasSpecialChar: ref(false)
-    };
-    const validatePassword = (password) => {
-        checkMinLength(password);
-        checkUpperCase(password);
-        checkLowerCase(password);
-        checkSpecialChar(password);
-    };
-    //ADD / CHANGE BELOW CONDITIONS
-    const checkMinLength = (password) => {
-        passwordRules.minLength = password.length >= 8;
-    };
-    const checkUpperCase = (password) => {
-        passwordRules.hasUpperCase = /[A-Z]/.test(password);
-    };
-    const checkLowerCase = (password) => {
-        passwordRules.hasLowerCase = /[a-z]/.test(password);
-    };
-    const checkSpecialChar = (password) => {
-        passwordRules.hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    };
+
     const countTrueConditions = (obj) => {
         return Object.values(obj).filter(val => val).length;
     };
