@@ -52,8 +52,8 @@
 
 
     //API REQUEST
-    const username = ref('atuny0')
-    const password = ref('9uQFF1Lh')
+    const username = ref('emilys')
+    const password = ref('emilyspass')
     const login = async () => {
         let response = ''
         try {

@@ -12,11 +12,11 @@ const router = createRouter({
     {
       path: '/readme',
       name: 'readme',
-      component: () => import('@/views/ReadMe.vue')
+      component: () => import('@/views/AuthPages/ReadMe.vue')
     },
     {
       path: '/',
-      component: () => import('@/views/LoggedInLayout.vue'),
+      component: () => import('@/views/AuthPages/AuthPagesLayout.vue'),
       children: [
         {
           path: '/',
@@ -26,19 +26,19 @@ const router = createRouter({
           title: 'Home',
           path: '/home',
           name: 'home',
-          component: () => import('../views/HomePage.vue')
+          component: () => import('../views/AuthPages/HomePage.vue')
         },
         {
           title: 'POS',
           path: '/pos',
           name: 'pos',
-          component: () => import('../views/POS.vue')
+          component: () => import('../views/AuthPages/POS.vue')
         },
         {
           title: 'Theme',
           path: '/theme',
           name: 'theme',
-          component: () => import('../views/ThemePage.vue')
+          component: () => import('../views/AuthPages/ThemePage.vue')
         }
       ]
     }

@@ -144,7 +144,6 @@
                 <i :class="side_nav.icon"></i>
                 <span>{{ side_nav.name }}</span>
             </router-link>
-    
         </nav>
     </aside>
 </template>

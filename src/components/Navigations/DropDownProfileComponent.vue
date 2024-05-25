@@ -2,7 +2,6 @@
     import { ref, onMounted } from 'vue'
     import ImgComponent from '@/components/UIElements/ImgComponent.vue'
 
-
     const props_data = defineProps({
         menu_data: {
             type: Array,
@@ -51,12 +50,12 @@
         <ul v-if="isOpen" class="dropdown-menu">
             <template v-for="(item, item_index) in props_data.menu_data" :key="item_index">
                 <li v-if="item.name !== 'Logout'" @click="selectItem(item)">
-                    <a 
+                    <router-link  
                         class="block" 
-                        :href="item.link"
+                        :to="item.link"
                     >
                         {{ item.name }}
-                    </a>
+                    </router-link>
                 </li>
             </template>
             <li>
