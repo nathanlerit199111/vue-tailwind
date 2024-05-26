@@ -1,70 +1,13 @@
-<template>
-    <CalendarModal 
-        @closeCalendarModal="isCalendarModal = false" 
-        v-if="isCalendarModal"
-        :event-data="selectedEventData"
-    />
-    <div>
-        <div class="flex space-x-4 mb-4">
-            <!-- Dropdown for selecting month -->
-            <select v-model="selectedMonth" class="p-2 border rounded">
-                <option v-for="(month, index) in months" :key="index" :value="index">
-                    {{ month }}
-                </option>
-            </select>
-
-            <!-- Dropdown for selecting year -->
-            <select v-model="selectedYear" class="p-2 border rounded">
-                <option v-for="year in years" :key="year" :value="year">
-                    {{ year }}
-                </option>
-            </select>
-
-
-            <!-- Buttons for navigating to previous and next month -->
-            <button @click="previousMonth" class="p-2 border rounded">
-                <i class="pi pi-angle-left"></i>
-            </button>
-            <button @click="nextMonth" class="p-2 border rounded">
-                <i class="pi pi-angle-right"></i>
-            </button>
-        </div>
-
-        <div class="calendar-wrapper grid grid-cols-7">
-            <!-- Render the days of the week headers -->
-            <div class="calendar-header p-5" v-for="day in daysOfWeek" :key="day">
-                {{ day }}
-            </div>
-
-            <!-- Render the dates of the selected month -->
-            <div
-                class="day-wrapper py-2"
-                v-for="(date, index) in dates"
-                :key="index"
-            >
-                <p :class="['days', { 'current-day': date === currentDate && selectedMonth === moment().month() && selectedYear === moment().year() }]">{{ date }}</p>
-                <span
-                    @click="openCalendarModal(event)" 
-                    v-for="event in getEventData(selectedYear, selectedMonth, date)" :key="event.eventName"
-                    v-if="hasEvent(selectedYear, selectedMonth, date)" class="event-dates" :style="{ backgroundColor: getBackgroundColor(selectedYear, selectedMonth, date) }">
-                    {{ event.eventName }}
-                </span>
-            </div>
-        </div>
-    </div>
-</template>
-
-
 <script setup>
-import { ref, computed } from 'vue';
-import moment from 'moment';
+import { ref, computed } from 'vue'
+import moment from 'moment'
 
-import CalendarModal from '@/components/Calendar/CalendarModal.vue';
+import CalendarModal from '@/components/Calendar/CalendarModal.vue'
 
 
 // Calendar Modal
-const isCalendarModal = ref(false)
-const selectedEventData = ref(null)
+let isCalendarModal = ref(false)
+let selectedEventData = ref(null)
 const openCalendarModal = (event) => {
   selectedEventData.value = event
   isCalendarModal.value = true
@@ -72,45 +15,45 @@ const openCalendarModal = (event) => {
 
 // ====== CREATION OF CALENDAR FOR MONTH VIEW USING MOMENTJS ====== //
 // Define reactive properties for the selected month and year
-const selectedMonth = ref(moment().month()) // Current month
-const selectedYear = ref(moment().year()) // Current year
+const SELECTEDMONTH = ref(moment().month()) // Current month
+const SELECTEDYEAR = ref(moment().year()) // Current year
 
 // Define the current date
-const currentDate = moment().date()
+const CURRENTDATE = moment().date()
 
 // Define Days of the week
-const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const DAYSOFWEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 // Generate an array of dates for the selected month and year
-const dates = computed(() => {
-    const daysInMonth = moment().year(selectedYear.value).month(selectedMonth.value).daysInMonth()
-    const firstDayOfMonth = moment().year(selectedYear.value).month(selectedMonth.value).startOf('month').day()
+let dates = computed(() => {
+    const DAYSINMONTH = moment().year(SELECTEDYEAR.value).month(SELECTEDMONTH.value).daysInMonth()
+    const FIRSTDAYOFMONTH = moment().year(SELECTEDYEAR.value).month(SELECTEDMONTH.value).startOf('month').day()
 
     // Create an array for the dates of the calendar
-    const datesArray = []
+    let datesArray = []
     /* 
         Fill in the blanks for the days before the first of the month
         Example if the first day of the month starts at Tuesday, it will create empty box for Sunday and Monday
     */
-    for (let i = 0; i < firstDayOfMonth; i++) {
+    for (let i = 0; i < FIRSTDAYOFMONTH; i++) {
         datesArray.push('')
     }
     // Fill in the days of the month
-    for (let i = 1; i <= daysInMonth; i++) {
+    for (let i = 1; i <= DAYSINMONTH; i++) {
         datesArray.push(i)
     }
 
     
     // Calculate the number of days in the last week
-    const totalDays = datesArray.length
-    const daysInLastWeek = totalDays % 7
-    const blanksAfter = daysInLastWeek === 0 ? 0 : 7 - daysInLastWeek
+    const TOTALDAYS = datesArray.length
+    const DAYSINLASTWEEK = TOTALDAYS % 7
+    const BLANKSAFTER = DAYSINLASTWEEK === 0 ? 0 : 7 - DAYSINLASTWEEK
 
     /* 
         Fill in the blanks for the days after the end of the month
         Example if the last day of the month end at Thursday, it will create empty box for Friday and Saturday
     */
-    for (let i = 0; i < blanksAfter; i++) {
+    for (let i = 0; i < BLANKSAFTER; i++) {
         datesArray.push('')
     }
 
@@ -119,8 +62,8 @@ const dates = computed(() => {
 
 
 // Generate arrays for months and years
-const months = moment.months();
-const years = Array.from({ length: 101 }, (_, i) => moment().year() - 50 + i); // Last 50 years, next 50 years
+const MONTHS = moment.months()
+const YEARS = Array.from({ length: 101 }, (_, i) => moment().year() - 50 + i) // Last 50 years, next 50 years
 
 
 
@@ -174,10 +117,10 @@ const hasEvent = (year, month, date) => {
     We can add API call to fetch events on the specific month
 */
 const previousMonth = () => {
-    selectedMonth.value -= 1
-    if (selectedMonth.value < 0) {
-        selectedMonth.value = 11
-        selectedYear.value -= 1
+    SELECTEDMONTH.value -= 1
+    if (SELECTEDMONTH.value < 0) {
+        SELECTEDMONTH.value = 11
+        SELECTEDYEAR.value -= 1
     }
 }
 
@@ -186,13 +129,70 @@ const previousMonth = () => {
     We can add API call to fetch events on the specific month
 */
 const nextMonth = () => {
-    selectedMonth.value += 1
-    if (selectedMonth.value > 11) {
-        selectedMonth.value = 0
-        selectedYear.value += 1
+    SELECTEDMONTH.value += 1
+    if (SELECTEDMONTH.value > 11) {
+        SELECTEDMONTH.value = 0
+        SELECTEDYEAR.value += 1
     }
 }
 </script>
+
+<template>
+    <CalendarModal 
+        @closeCalendarModal="isCalendarModal = false" 
+        v-if="isCalendarModal"
+        :event-data="selectedEventData"
+    />
+    <div>
+        <div class="flex space-x-4 mb-4">
+            <!-- Dropdown for selecting month -->
+            <select v-model="SELECTEDMONTH" class="p-2 border rounded">
+                <option v-for="(month, index) in MONTHS" :key="index" :value="index">
+                    {{ month }}
+                </option>
+            </select>
+
+            <!-- Dropdown for selecting year -->
+            <select v-model="SELECTEDYEAR" class="p-2 border rounded">
+                <option v-for="year in YEARS" :key="year" :value="year">
+                    {{ year }}
+                </option>
+            </select>
+
+
+            <!-- Buttons for navigating to previous and next month -->
+            <button @click="previousMonth" class="p-2 border rounded">
+                <i class="pi pi-angle-left"></i>
+            </button>
+            <button @click="nextMonth" class="p-2 border rounded">
+                <i class="pi pi-angle-right"></i>
+            </button>
+        </div>
+
+        <div class="calendar-wrapper grid grid-cols-7">
+            <!-- Render the days of the week headers -->
+            <div class="calendar-header p-5" v-for="day in DAYSOFWEEK" :key="day">
+                {{ day }}
+            </div>
+
+            <!-- Render the dates of the selected month -->
+            <div
+                class="day-wrapper py-2"
+                v-for="(date, index) in dates"
+                :key="index"
+            >
+                <p :class="['days', { 'current-day': date === CURRENTDATE && SELECTEDMONTH === moment().month() && SELECTEDYEAR === moment().year() }]">{{ date }}</p>
+                <div
+                    @click="openCalendarModal(event)" 
+                    v-for="event in getEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.eventName"
+                    v-if="hasEvent(SELECTEDYEAR, SELECTEDMONTH, date)" class="event-dates text-left p-2" :style="{ backgroundColor: getBackgroundColor(SELECTEDYEAR, SELECTEDMONTH, date) }">
+                    <p>{{ event.eventName }}</p>
+                    <p>{{ event.date }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 
 
@@ -209,6 +209,8 @@ const nextMonth = () => {
     text-align: center;
     position: relative;
     min-height: 80px;
+    max-height: 150px;
+    overflow-y: auto;
 }
 .days {
     width: 30px;
@@ -227,9 +229,6 @@ const nextMonth = () => {
 .event-dates {
     width: 100%;
     min-height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: #fff;
     margin: 8px 0;
     cursor: pointer;
