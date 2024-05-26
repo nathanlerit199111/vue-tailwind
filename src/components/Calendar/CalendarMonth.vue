@@ -135,6 +135,15 @@ const nextMonth = () => {
         SELECTEDYEAR.value += 1
     }
 }
+
+
+// ====== CRUD ====== //
+const addEvent = () => {
+    console.log("DELETE")
+}
+const deleteEvent = () => {
+    console.log("DELETE")
+}
 </script>
 
 <template>

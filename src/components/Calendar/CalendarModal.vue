@@ -1,4 +1,5 @@
 <script setup>
+import InputComponent from '../UIElements/InputComponent.vue';
 const props_data = defineProps({
     eventData: {
       type: Object,
@@ -42,14 +43,15 @@ const props_data = defineProps({
                 </div>
                 
                 <div class="my-gap-sm">
+                    <h3>Create New Event</h3>
                     <div class="mx-gap-sm">
                         <label>Event Title</label>
-                        <input type="text"/>
+                        <InputComponent additional_class="w-full" />
                     </div>
 
                     <div class="mx-gap-sm">
                         <label>Event Date</label>
-                        <input class="py-2" type="text"/>
+                        <InputComponent additional_class="w-full" />
                     </div>
                 </div>
             </div>

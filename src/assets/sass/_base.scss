@@ -144,6 +144,7 @@ button {
         background: var(--tbs-bg-primary-color);
         padding: var(--tbs-space-lg);
         border-radius: var(--tbs-border-radius-sm);
+        min-width: 300px;
     }
 }
 
