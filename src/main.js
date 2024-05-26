@@ -2,6 +2,7 @@ import './assets/sass/style.scss'
 import customTheme from '@/theme/theme.json'
 import vueLazyLoad from 'vue3-lazyload'
 import 'primeicons/primeicons.css'
+import 'primevue/resources/themes/aura-light-green/theme.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
