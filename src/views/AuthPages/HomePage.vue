@@ -10,6 +10,9 @@
     import ImgComponent from '@/components/UIElements/ImgComponent.vue'
     import TableComponent from '@/components/Tables/TableComponent.vue'
 
+
+    import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
+
     //VUE PRIME
     import Button from 'primevue/button';
     // import DataTable from 'primevue/datatable';
@@ -50,6 +53,7 @@
 </script>
 
 <template>
+    <CalendarMonth />
     <SkeletonLoader 
         v-if="isLoading"
         type="table"
