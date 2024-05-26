@@ -7,7 +7,7 @@ import CalendarModal from '@/components/Calendar/CalendarModal.vue'
 
 // Calendar Modal
 let isCalendarModal = ref(false)
-let selectedEventData = ref(null)
+let selectedEventData = ref({})
 const openCalendarModal = (event) => {
   selectedEventData.value = event
   isCalendarModal.value = true
@@ -139,7 +139,7 @@ const nextMonth = () => {
 
 <template>
     <CalendarModal 
-        @closeCalendarModal="isCalendarModal = false" 
+        @closeCalendarModal="isCalendarModal = false, selectedEventData = {}" 
         v-if="isCalendarModal"
         :event-data="selectedEventData"
     />
@@ -180,6 +180,7 @@ const nextMonth = () => {
                 class="day-wrapper py-2"
                 v-for="(date, index) in dates"
                 :key="index"
+                @click="isCalendarModal = true"
             >
                 <p :class="['days', { 'current-day': date === CURRENTDATE && SELECTEDMONTH === moment().month() && SELECTEDYEAR === moment().year() }]">{{ date }}</p>
                 <div
@@ -193,51 +194,3 @@ const nextMonth = () => {
         </div>
     </div>
 </template>
-
-
-
-<style lang="scss">
-.calendar-header {
-    border: solid 1px #e9e9e9;
-    background-color: #f0f0f0;
-    font-weight: bold;
-    text-align: center;
-}
-
-.day-wrapper {
-    border: solid 1px #e9e9e9;
-    text-align: center;
-    position: relative;
-    min-height: 80px;
-    max-height: 150px;
-    overflow-y: auto;
-}
-.days {
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-bottom: 20px;
-}
-.current-day {
-    background: blue;
-    color: #fff;
-    border-radius: 50%;
-}
-.event-dates {
-    width: 100%;
-    min-height: 20px;
-    color: #fff;
-    margin: 8px 0;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-select {
-    padding: 8px;
-    border: 1px solid #e9e9e9;
-    border-radius: 4px;
-}
-</style>

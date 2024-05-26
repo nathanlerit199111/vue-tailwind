@@ -15,6 +15,11 @@ const router = createRouter({
       component: () => import('@/views/AuthPages/ReadMe.vue')
     },
     {
+      path: '/:catchAll(.*)', // Catch all unmatched routes
+      name: 'NotFound',
+      component: () => import('@/views/NotFound.vue')
+    },
+    {
       path: '/',
       component: () => import('@/views/AuthPages/AuthPagesLayout.vue'),
       children: [
