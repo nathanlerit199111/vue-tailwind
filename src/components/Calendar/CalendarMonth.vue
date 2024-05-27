@@ -147,7 +147,7 @@ const getBackgroundColor = (year, month, date) => {
 }
 
 //Function to get the data of the event
-const getEventData = (year, month, date) => {
+const displayEventData = (year, month, date) => {
     const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MMM D, YYYY');
     const events = dummyData.filter(item => item.date === formattedDate);
     return events.length > 0 ? events : [];
@@ -249,7 +249,7 @@ const deleteEvent = () => {
                 <p :class="['days', { 'current-day': date === CURRENTDATE && SELECTEDMONTH === moment().month() && SELECTEDYEAR === moment().year() }]">{{ date }}</p>
                 <div
                     @click="openCalendarModal(event)" 
-                    v-for="event in getEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.name"
+                    v-for="event in displayEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.name"
                     v-if="hasEvent(SELECTEDYEAR, SELECTEDMONTH, date)" class="event-dates text-left p-2" :style="{ backgroundColor: getBackgroundColor(SELECTEDYEAR, SELECTEDMONTH, date) }">
                     <p>{{ event.name }}</p>
                     <p>{{ event.time }}</p>
