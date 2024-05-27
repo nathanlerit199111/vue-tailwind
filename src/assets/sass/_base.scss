@@ -74,12 +74,13 @@ p, label, span {
 
 
 //============= FORMS =============//
-input {
+input, textarea {
     padding: var(--tbs-space-sm) 0;
     border-radius: var(--tbs-border-radius-sm);
     color: var(--tbs-btn-font-primary-color);
     outline: solid 1px var(--tbs-bg-tertiary-color);
     transition: all ease 0.25s;
+    min-height: 40px;
 
     &:focus-visible {
         box-shadow: 0 0 5px var(--tbs-bg-tertiary-color);

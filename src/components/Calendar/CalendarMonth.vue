@@ -73,17 +73,71 @@ const YEARS = Array.from({ length: 101 }, (_, i) => moment().year() - 50 + i) //
     Make sure to follow this pattern and date format in backend
     From backend, just pass the data depending on the specific data - in this case, month
 */
-const dummyData = [
-    { date: 'May 23, 2024', backgroundColor: 'lightblue', eventName: 'Event A' },
-    { date: 'May 24, 2024', backgroundColor: 'lightblue', eventName: 'Event A' },
-    { date: 'May 25, 2024', backgroundColor: 'lightblue', eventName: 'Event A' },
-    { date: 'May 27, 2024', backgroundColor: 'lightblue', eventName: 'Event B' },
-    { date: 'May 28, 2024', backgroundColor: 'lightblue', eventName: 'Event C' },
-    { date: 'May 23, 2024', backgroundColor: 'lightblue', eventName: 'Event E' },
-    { date: 'May 23, 2024', backgroundColor: 'lightblue', eventName: 'Event F' },
-    { date: 'May 23, 2024', backgroundColor: 'lightblue', eventName: 'Event G' },
-    { date: 'May 23, 2024', backgroundColor: 'lightblue', eventName: 'Event H' },
-];
+let dummyData = [
+    { 
+        name: 'Event A',
+        description: 'Description for Event A',
+        date: 'May 24, 2024', 
+        time: '9:30 AM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event A',
+        description: 'Description for Event A',
+        date: 'May 25, 2024', 
+        time: '11:00 AM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event E',
+        description: 'Description for Event E',
+        date: 'May 23, 2024', 
+        time: '10:00 AM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event B',
+        description: 'Description for Event B',
+        date: 'May 27, 2024', 
+        time: '2:00 PM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event C',
+        description: 'Description for Event C',
+        date: 'May 28, 2024', 
+        time: '3:30 PM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event F',
+        description: 'Description for Event F',
+        date: 'May 23, 2024', 
+        time: '1:00 PM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event G',
+        description: 'Description for Event G',
+        date: 'May 23, 2024', 
+        time: '3:00 PM',
+        backgroundColor: 'lightblue'
+    },
+    { 
+        name: 'Event H',
+        description: 'Description for Event H',
+        date: 'May 23, 2024', 
+        time: '4:30 PM',
+        backgroundColor: 'lightblue'
+    }
+]
+
+const addEventData = (item) => {
+    dummyData.push(item) //This will just update the front end side, when refresh it will remove the data
+    //Add API call here to update the backend as well
+    isCalendarModal.value = false
+}
+
 
 // Function to add colors on the event date
 const getBackgroundColor = (year, month, date) => {
@@ -148,7 +202,8 @@ const deleteEvent = () => {
 
 <template>
     <CalendarModal 
-        @closeCalendarModal="isCalendarModal = false, selectedEventData = {}" 
+        @closeCalendarModal="isCalendarModal = false, selectedEventData = {}"
+        @addEvent="addEventData"
         v-if="isCalendarModal"
         :event-data="selectedEventData"
     />
@@ -189,15 +244,15 @@ const deleteEvent = () => {
                 class="day-wrapper py-2"
                 v-for="(date, index) in dates"
                 :key="index"
-                @click="isCalendarModal = true"
+                @click="date ? isCalendarModal = true : null"
             >
                 <p :class="['days', { 'current-day': date === CURRENTDATE && SELECTEDMONTH === moment().month() && SELECTEDYEAR === moment().year() }]">{{ date }}</p>
                 <div
                     @click="openCalendarModal(event)" 
-                    v-for="event in getEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.eventName"
+                    v-for="event in getEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.name"
                     v-if="hasEvent(SELECTEDYEAR, SELECTEDMONTH, date)" class="event-dates text-left p-2" :style="{ backgroundColor: getBackgroundColor(SELECTEDYEAR, SELECTEDMONTH, date) }">
-                    <p>{{ event.eventName }}</p>
-                    <p>{{ event.date }}</p>
+                    <p>{{ event.name }}</p>
+                    <p>{{ event.time }}</p>
                 </div>
             </div>
         </div>
