@@ -241,7 +241,7 @@ const deleteEvent = () => {
 
             <!-- Render the dates of the selected month -->
             <div
-                class="day-wrapper py-2"
+                :class="`day-wrapper py-2 ${date ? 'cursor-pointer' : 'cursor-default'}`"
                 v-for="(date, index) in dates"
                 :key="index"
                 @click="date ? isCalendarModal = true : null"
