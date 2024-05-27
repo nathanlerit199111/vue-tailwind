@@ -21,6 +21,7 @@
     background: #555; 
 }
 
+
 //============= FONTS =============//
 * {
     font-family: 'Roboto';
@@ -147,6 +148,23 @@ button {
         min-width: 300px;
     }
 }
+
+//============= ACTIVE STATUS =============//
+.active-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    &.active {
+        background: #16ca16;
+        box-shadow: 0 0 4px #16ca16;
+    }
+    &.inactive {
+        background: rgb(255, 39, 39);
+        box-shadow: 0 0 4px rgb(255, 39, 39);
+    }
+}
+
+
 
 img {
     width: 100%;

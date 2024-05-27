@@ -5,6 +5,7 @@
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
     import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
     import SVGIcon from '@/components/UIElements/SVGIcon.vue'
+    import ActiveStatus from '@/components/ActiveStatus/ActiveStatus.vue'
 
     const logout = () => {
         const authToken = getCookie('authToken')
@@ -48,6 +49,7 @@
                         -->
                         <span @click="logout()">Logout</span>
                     </DropDownProfileComponent>
+                    <ActiveStatus />
                 </ColumnWrapper>
             </RowWrapper>
         </ContainerWrapper>
