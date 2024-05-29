@@ -77,90 +77,92 @@ let dummyData = [
     { 
         name: 'Event A',
         description: 'Description for Event A',
-        date: 'May 24, 2024', 
+        date: '05/24/2024', 
         time: '9:30 AM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event A',
         description: 'Description for Event A',
-        date: 'May 25, 2024', 
+        date: '05/25/2024', 
         time: '11:00 AM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event E',
         description: 'Description for Event E',
-        date: 'May 23, 2024', 
+        date: '05/23/2024', 
         time: '10:00 AM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event B',
         description: 'Description for Event B',
-        date: 'May 27, 2024', 
+        date: '05/27/2024', 
         time: '2:00 PM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event C',
         description: 'Description for Event C',
-        date: 'May 28, 2024', 
+        date: '05/28/2024', 
         time: '3:30 PM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event F',
         description: 'Description for Event F',
-        date: 'May 23, 2024', 
+        date: '05/23/2024', 
         time: '1:00 PM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event G',
         description: 'Description for Event G',
-        date: 'May 23, 2024', 
+        date: '05/23/2024', 
         time: '3:00 PM',
         backgroundColor: 'lightblue'
     },
     { 
         name: 'Event H',
         description: 'Description for Event H',
-        date: 'May 23, 2024', 
+        date: '05/23/2024', 
         time: '4:30 PM',
         backgroundColor: 'lightblue'
     }
 ]
 
+
 const addEventData = (item) => {
     dummyData.push(item) //This will just update the front end side, when refresh it will remove the data
     //Add API call here to update the backend as well
+    console.log("xxxxx", dummyData)
     isCalendarModal.value = false
 }
 
 
 // Function to add colors on the event date
 const getBackgroundColor = (year, month, date) => {
-    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MMM D, YYYY');
+    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MM/DD/YYYY');
     const match = dummyData.find(item => item.date === formattedDate);
     return match ? match.backgroundColor : '';
-}
+};
 
 //Function to get the data of the event
 const displayEventData = (year, month, date) => {
-    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MMM D, YYYY');
+    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MM/DD/YYYY');
     const events = dummyData.filter(item => item.date === formattedDate);
     return events.length > 0 ? events : [];
-}
+};
 
 /*
     Function to check if theres an event
     Refer to the span tag that uses class name 'event-dates'. it condition whether to display it or not
 */
 const hasEvent = (year, month, date) => {
-    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MMM D, YYYY');
+    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MM/DD/YYYY');
     return dummyData.some(item => item.date === formattedDate);
-}
+};
 
 
 

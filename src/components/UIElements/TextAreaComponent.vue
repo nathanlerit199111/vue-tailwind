@@ -32,7 +32,7 @@
 
 <template>
     <div class="relative h-max">
-        <input
+        <textarea
             v-model="val"
             @input="handleInput"
             :id="props_data.id_name ? props_data.id_name : null"
