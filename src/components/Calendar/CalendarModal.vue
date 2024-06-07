@@ -16,8 +16,10 @@ const props_data = defineProps({
 let newEventData = ref({
     name: '',
     description: '',
-    date: '',
-    time: '',
+    startDate: '',
+    endDate: '',
+    startTime: '',
+    endTime: '',
     backgroundColor: 'lightblue'
 })
 
@@ -26,39 +28,53 @@ let newEventData = ref({
     If directly bind to newEventData.date and newEventData.time then applied computed to format data,
     We will get maximum call stack size error
 */
-let date = ref('')
-let time = ref('')
-let is24HrFormat = ref(false)
-const formattedDate = computed(() => {
-    const rawDate = new Date(date.value)
-    const month = String(rawDate.getMonth() + 1).padStart(2, '0')
-    const day = String(rawDate.getDate()).padStart(2, '0')
-    const year = rawDate.getFullYear()
-    return `${month}/${day}/${year}`
-})
-const formattedTime = computed(() => {
-    if (!time.value) return '' // Return empty string if time is not set
-    const rawTime = new Date(time.value)
-    let hours = rawTime.getHours()
-    const minutes = rawTime.getMinutes()
-    const ampm = hours >= 12 ? 'PM' : 'AM'
-    hours = hours % 12
-    hours = hours ? hours : 12 // Handle midnight (0 hours)
-    const formattedHours = String(hours).padStart(2, '0')
-    const formattedMinutes = String(minutes).padStart(2, '0')
-    return `${formattedHours}:${formattedMinutes} ${ampm}`
-})
+let startDate = ref('');
+let endDate = ref('');
+let startTime = ref('');
+let endTime = ref('');
+let is24HrFormat = ref(false);
 
-const formattedTime24hr = computed(() => {
-    if (!time.value) return ''; // Return empty string if time is not set
-    const rawTime = new Date(time.value);
-    const hours = String(rawTime.getHours()).padStart(2, '0');
-    const minutes = String(rawTime.getMinutes()).padStart(2, '0');
-    return `${hours}:${minutes}`;
-})
+// Utility function to format dates
+const formatDate = (dateValue) => {
+    if (!dateValue) return '';
+    const rawDate = new Date(dateValue);
+    const month = String(rawDate.getMonth() + 1).padStart(2, '0');
+    const day = String(rawDate.getDate()).padStart(2, '0');
+    const year = rawDate.getFullYear();
+    return `${month}/${day}/${year}`;
+};
 
-newEventData.value.date = formattedDate
-newEventData.value.time = is24HrFormat.value ? formattedTime24hr : formattedTime
+// Utility function to format time
+const formatTime = (timeValue, format24Hr = false) => {
+    if (!timeValue) return '';
+    const rawTime = new Date(timeValue);
+    const hours = rawTime.getHours();
+    const minutes = rawTime.getMinutes();
+    if (format24Hr) {
+        // Format for 24-hour clock
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    } else {
+        // Format for 12-hour clock
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = String(hours % 12 || 12).padStart(2, '0'); // Handle midnight (0 hours)
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        return `${formattedHours}:${formattedMinutes} ${ampm}`;
+    }
+};
+
+// Computed properties using the utility functions
+const formattedFromDate = computed(() => formatDate(startDate.value));
+const formattedToDate = computed(() => formatDate(endDate.value));
+const formattedFromTime = computed(() => formatTime(startTime.value, is24HrFormat.value));
+const formattedToTime = computed(() => formatTime(endTime.value, is24HrFormat.value));
+
+
+newEventData.value.startDate = formattedFromDate;
+newEventData.value.endDate = formattedToDate;
+newEventData.value.startTime = formattedFromTime;
+newEventData.value.endTime = formattedToTime;
+
+
 </script>
 
 <template>
@@ -101,16 +117,37 @@ newEventData.value.time = is24HrFormat.value ? formattedTime24hr : formattedTime
                         <TextAreaComponent v-model="newEventData.description" additional_class="w-full" />
                     </div>
 
-                    <div class="mx-gap-sm">
+                    <div>
                         <label>Date</label>
-                        <!-- <InputComponent v-model="newEventData.date" additional_class="w-full" /> -->
-                        <Calendar v-model="date" showButtonBar  class="w-full"/>
+                        <div class="flex mx-gap-sm">
+                            <div class="mx-gap-sm">
+                                <label>From</label>
+                                <!-- <InputComponent v-model="newEventData.date" additional_class="w-full" /> -->
+                                <Calendar v-model="startDate" showButtonBar  class="w-full"/>
+                            </div>
+
+                            <div class="mx-gap-sm">
+                                <label>To</label>
+                                <!-- <InputComponent v-model="newEventData.date" additional_class="w-full" /> -->
+                                <Calendar v-model="endDate" showButtonBar  class="w-full"/>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mx-gap-sm">
+                    <div>
                         <label>Time</label>
-                        <!-- <InputComponent v-model="newEventData.time" additional_class="w-full" /> -->
-                        <Calendar v-model="time" showButtonBar timeOnly hourFormat="12" class="w-full"/>
+                        <div class="flex mx-gap-sm">
+                            <div class="mx-gap-sm">
+                                <label>From</label>
+                                <!-- <InputComponent v-model="newEventData.time" additional_class="w-full" /> -->
+                                <Calendar v-model="startTime" showButtonBar timeOnly hourFormat="12" class="w-full"/>
+                            </div>
+                            <div class="mx-gap-sm">
+                                <label>To</label>
+                                <!-- <InputComponent v-model="newEventData.time" additional_class="w-full" /> -->
+                                <Calendar v-model="endTime" showButtonBar timeOnly hourFormat="12" class="w-full"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
