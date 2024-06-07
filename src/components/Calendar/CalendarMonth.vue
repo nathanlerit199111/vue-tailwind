@@ -214,7 +214,7 @@ const deleteEvent = () => {
                     v-for="event in displayEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.name"
                     v-if="hasEvent(SELECTEDYEAR, SELECTEDMONTH, date)" class="event-dates text-left p-2" :style="{ backgroundColor: getBackgroundColor(SELECTEDYEAR, SELECTEDMONTH, date) }">
                     <p>{{ event.name }}</p>
-                    <p>{{ event.time }}</p>
+                    <p>{{ event.startTime }} - {{ event.endTime }}</p>
                 </div>
             </div>
         </div>
