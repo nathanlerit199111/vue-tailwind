@@ -77,10 +77,12 @@ let dummyData = [
     { 
         name: 'Event A',
         description: 'Description for Event A',
-        startDate: '06/24/2024',
-        endDate: '06/25/2024',
-        startTime: '9:30 AM',
-        endTime: '10:30 AM',
+        dates: [
+            { date: '06/10/2024', startTime: '9:30 AM', endTime: '10:30 AM' },
+            { date: '06/11/2024', startTime: '9:30 AM', endTime: '10:30 AM' },
+            { date: '06/12/2024', startTime: '9:30 AM', endTime: '10:30 AM' },
+            { date: '06/13/2024', startTime: '9:30 AM', endTime: '10:30 AM' }
+        ],
         backgroundColor: 'lightblue'
     }
 ]
@@ -93,26 +95,34 @@ const addEventData = (item) => {
     isCalendarModal.value = false;
 };
 
-const isDateWithinRange = (date, startDate, endDate) => {
-    const targetDate = moment(date, 'MM/DD/YYYY');
-    const start = moment(startDate, 'MM/DD/YYYY');
-    const end = moment(endDate, 'MM/DD/YYYY');
-    return targetDate.isBetween(start, end, null, '[]'); // inclusive range
+const isDateWithinEvent = (date, event) => {
+    // Parse the event date strings
+    const eventDates = event.dates.map(eventDate => new Date(eventDate.date));
+
+    // Parse the target date string
+    const targetDate = new Date(date);
+
+    // Check if the target date matches any event date
+    return eventDates.some(eventDate => {
+        return eventDate.getFullYear() === targetDate.getFullYear() &&
+            eventDate.getMonth() === targetDate.getMonth() &&
+            eventDate.getDate() === targetDate.getDate();
+    });
 };
+
 
 
 // Function to add colors on the event date
 const getBackgroundColor = (year, month, date) => {
-    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MM/DD/YYYY');
-    const match = dummyData.find(item => isDateWithinRange(formattedDate, item.startDate, item.endDate));
+    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D', true).format('MM/DD/YYYY');
+    const match = dummyData.find(event => isDateWithinEvent(formattedDate, event));
     return match ? match.backgroundColor : '';
 };
 
 //Function to get the data of the event
 const displayEventData = (year, month, date) => {
-    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MM/DD/YYYY');
-    const events = dummyData.filter(item => isDateWithinRange(formattedDate, item.startDate, item.endDate));
-    return events.length > 0 ? events : [];
+    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D', true).format('MM/DD/YYYY');
+    return dummyData.filter(event => isDateWithinEvent(formattedDate, event));
 };
 
 /*
@@ -120,8 +130,8 @@ const displayEventData = (year, month, date) => {
     Refer to the span tag that uses class name 'event-dates'. it condition whether to display it or not
 */
 const hasEvent = (year, month, date) => {
-    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D').format('MM/DD/YYYY');
-    return dummyData.some(item => isDateWithinRange(formattedDate, item.startDate, item.endDate));
+    const formattedDate = moment(`${year}-${month + 1}-${date}`, 'YYYY-M-D', true).format('MM/DD/YYYY');
+    return dummyData.some(event => isDateWithinEvent(formattedDate, event));
 };
 
 
@@ -214,7 +224,6 @@ const deleteEvent = () => {
                     v-for="event in displayEventData(SELECTEDYEAR, SELECTEDMONTH, date)" :key="event.name"
                     v-if="hasEvent(SELECTEDYEAR, SELECTEDMONTH, date)" class="event-dates text-left p-2" :style="{ backgroundColor: getBackgroundColor(SELECTEDYEAR, SELECTEDMONTH, date) }">
                     <p>{{ event.name }}</p>
-                    <p>{{ event.startTime }} - {{ event.endTime }}</p>
                 </div>
             </div>
         </div>

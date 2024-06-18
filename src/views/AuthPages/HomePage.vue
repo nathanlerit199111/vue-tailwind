@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, onMounted, watchEffect  } from 'vue'
+    import { ref, onMounted, watchEffect, onBeforeUnmount  } from 'vue'
 
     import SectionWrapper from '@/components/SectionWrapper.vue'
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
@@ -15,8 +15,6 @@
 
     //VUE PRIME
     import Button from 'primevue/button';
-    // import DataTable from 'primevue/datatable';
-    // import Column from 'primevue/column';
 
     //API
     import AuthApi from '@/api/ProductApi.js'
@@ -50,6 +48,9 @@
         //Add logic here to request API base on pagination
         console.log('Value Changed', newValue);
     });
+
+
+
 </script>
 
 <template>
