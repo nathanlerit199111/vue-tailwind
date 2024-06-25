@@ -147,7 +147,9 @@ button {
         padding: var(--tbs-space-lg);
         border-radius: var(--tbs-border-radius-sm);
         min-width: 300px;
+        animation: fadeInFromTop 0.2s ease-in-out forwards;
     }
+    
 }
 
 //============= ACTIVE STATUS =============//
