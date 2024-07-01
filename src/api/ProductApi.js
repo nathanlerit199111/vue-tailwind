@@ -5,7 +5,7 @@ export default {
   async getProduct() {
     const url = API_PREFIX
 
-    const response = await http.get(url)
-    return response ?? null
+    const RESPONSE = await http.get(url)
+    return RESPONSE ?? null
   }
 }

@@ -1,126 +1,104 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+  import { ref, onMounted } from 'vue'
+  import { useRouter } from 'vue-router'
 
-import SectionWrapper from '@/components/SectionWrapper.vue'
-import ContainerWrapper from '@/components/ContainerWrapper.vue'
-import RowWrapper from '@/components/RowWrapper.vue'
-import ColumnWrapper from '@/components/ColumnWrapper.vue'
-import FormWrapper from '@/components/FormWrapper.vue'
-import InputComponent from '@/components/UIElements/InputComponent.vue'
-import SelectCountry from '@/components/UIElements/SelectCountry.vue'
-// import { checkMinLength, checkUpperCase, checkLowerCase, checkSpecialChar } from '@/helpers/formValidation.js'
+  import SectionWrapper from '@/components/SectionWrapper.vue'
+  import ContainerWrapper from '@/components/ContainerWrapper.vue'
+  import RowWrapper from '@/components/RowWrapper.vue'
+  import ColumnWrapper from '@/components/ColumnWrapper.vue'
+  import FormWrapper from '@/components/FormWrapper.vue'
+  import InputComponent from '@/components/UIElements/InputComponent.vue'
+  import SelectCountry from '@/components/UIElements/SelectCountry.vue'
+  import { passwordRules, validatePassword } from '@/helpers/formValidation.js'
 
-//VUE PRIME
-import InputText from 'primevue/inputtext'
-import Button from 'primevue/button'
-import Toast from 'primevue/toast'
-import { useToast } from 'primevue/usetoast'
+  //TOAST MESSAGE
+  import ToastWrapper from '@/components/ToastWrapper.vue'
+  import { useToastStore } from '@/stores/toast'
 
-//API
-import AuthApi from '@/api/AuthApi.js'
+  //VUE PRIME
+  import Button from 'primevue/button'
 
-const router = useRouter()
-// const loginFn = () => {
-//     var expires = ""
-//     let days = 30
-//     var date = new Date();
-//     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-//     expires = "; expires=" + date.toUTCString();
-//     document.cookie = "authToken" + "=" + ("authValue") + expires + "; path=/";
+  //API
+  import AuthApi from '@/api/AuthApi.js'
 
-//     router.push('/');
-// }
+  const router = useRouter()
+  //Register
+  const isRegister = ref(false)
+  const register = ref({
+    password: ''
+  })
 
-//Register
-const isRegister = ref(false)
-const register = ref({
-  password: ''
-})
-const passwordRules = {
-  minLength: ref(false),
-  hasUpperCase: ref(false),
-  hasLowerCase: ref(false),
-  hasSpecialChar: ref(false)
-}
-const validatePassword = (password) => {
-  checkMinLength(password)
-  checkUpperCase(password)
-  checkLowerCase(password)
-  checkSpecialChar(password)
-}
-//ADD / CHANGE BELOW CONDITIONS
-const checkMinLength = (password) => {
-  passwordRules.minLength = password.length >= 8
-}
-const checkUpperCase = (password) => {
-  passwordRules.hasUpperCase = /[A-Z]/.test(password)
-}
-const checkLowerCase = (password) => {
-  passwordRules.hasLowerCase = /[a-z]/.test(password)
-}
-const checkSpecialChar = (password) => {
-  passwordRules.hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password)
-}
-const countTrueConditions = (obj) => {
-  return Object.values(obj).filter((val) => val).length
-}
-
-const confirmPassword = ref('')
-const confirmPasswordMatches = () => {
-  // Check if the length of confirmPassword is greater than 0 before comparing
-  if (confirmPassword.value.length > 0) {
-    return confirmPassword.value === register.value.password
-  } else {
-    return true // Return true if length is less than or equal to 1
+  const countTrueConditions = (obj) => {
+    return Object.values(obj).filter((val) => val).length
   }
-}
 
-onMounted(() => {
-  validatePassword(register.value.password)
-})
-
-//API REQUEST
-const username = ref('emilys')
-const password = ref('emilyspass')
-const login = async () => {
-  let response = ''
-  try {
-    response = await AuthApi.getToken({
-      username: username.value,
-      password: password.value
-    })
-    if (response?.status === 200) {
-      let expires = ''
-      let token = response?.data?.token
-      let days = 30
-      var date = new Date()
-      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-      expires = '; expires=' + date.toUTCString()
-      document.cookie = 'authToken' + '=' + token + expires + '; path=/'
-
-      router.push('/')
+  const confirmPassword = ref('')
+  const confirmPasswordMatches = () => {
+    // Check if the length of confirmPassword is greater than 0 before comparing
+    if (confirmPassword.value.length > 0) {
+      return confirmPassword.value === register.value.password
+    } else {
+      return true // Return true if length is less than or equal to 1
     }
-  } catch (e) {
-    toast.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials', life: 3000 })
   }
-}
 
-//TOAST MESSAGE
-const toast = useToast()
+  onMounted(() => {
+    validatePassword(register.value.password)
+  })
+
+  //API REQUEST
+  const username = ref('emilys')
+  const password = ref('emilyspass')
+  const login = async () => {
+    let response = ''
+    try {
+      response = await AuthApi.getToken({
+        username: username.value,
+        password: password.value
+      })
+      if (response?.status === 200) {
+        let expires = ''
+        let token = response?.data?.token
+        let days = 30
+        var date = new Date()
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+        expires = '; expires=' + date.toUTCString()
+        document.cookie = 'authToken' + '=' + token + expires + '; path=/'
+
+        router.push('/')
+      }
+    } catch (e) {
+      toast.showToast({
+        status: e.response.status,
+        message: e.response.data.message
+      })
+    }
+  }
+
+  const toast = useToastStore()
 </script>
 <template>
-  <Toast />
-  <SectionWrapper id="login-wrapper" additional_class="h-full">
+  <ToastWrapper position="top-right" />
+  <SectionWrapper
+    id="login-wrapper"
+    additional_class="h-full"
+  >
     <ContainerWrapper additional_class="h-full">
       <RowWrapper additional_class="items-center h-full">
         <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
           <FormWrapper>
-            <div v-if="!isRegister" class="my-gap-md">
+            <div
+              v-if="!isRegister"
+              class="my-gap-md"
+            >
               <h2>Login</h2>
               <div>
                 <label>Username</label>
-                <InputComponent additional_class="block w-full" type="text" v-model="username" />
+                <InputComponent
+                  additional_class="block w-full"
+                  type="text"
+                  v-model="username"
+                />
               </div>
               <div>
                 <label>Password</label>
@@ -133,24 +111,44 @@ const toast = useToast()
               <p class="text-xs">Forgot password</p>
               <div class="flex mx-gap-md">
                 <!-- @click="loginFn()" -->
-                <Button class="tbs-btn-secondary" label="Login" @click="login()" />
-                <Button class="tbs-btn-primary" label="Register" @click="isRegister = true" />
+                <Button
+                  class="tbs-btn-secondary"
+                  label="Login"
+                  @click="login()"
+                />
+                <Button
+                  class="tbs-btn-primary"
+                  label="Register"
+                  @click="isRegister = true"
+                />
               </div>
             </div>
 
-            <div v-if="isRegister" class="my-gap-md">
+            <div
+              v-if="isRegister"
+              class="my-gap-md"
+            >
               <h2>Register</h2>
               <div>
                 <label>First Name</label>
-                <InputComponent additional_class="block w-full" type="text" />
+                <InputComponent
+                  additional_class="block w-full"
+                  type="text"
+                />
               </div>
               <div>
                 <label>Last Name</label>
-                <InputComponent additional_class="block w-full" type="text" />
+                <InputComponent
+                  additional_class="block w-full"
+                  type="text"
+                />
               </div>
               <div>
                 <label>Address</label>
-                <InputComponent additional_class="block w-full" type="text" />
+                <InputComponent
+                  additional_class="block w-full"
+                  type="text"
+                />
               </div>
               <div>
                 <label>Country</label>
@@ -169,13 +167,19 @@ const toast = useToast()
                   <div>
                     <small
                       >Minimum 8 characters
-                      <span v-if="passwordRules.minLength" class="text-green-600">✔</span></small
+                      <span
+                        v-if="passwordRules.minLength"
+                        class="text-green-600"
+                        >✔</span
+                      ></small
                     >
                   </div>
                   <div>
                     <small
                       >Must have at least 1 Uppercase
-                      <span v-if="passwordRules.hasUpperCase" class="text-green-600"
+                      <span
+                        v-if="passwordRules.hasUpperCase"
+                        class="text-green-600"
                         >✔</span
                       ></small
                     >
@@ -183,7 +187,9 @@ const toast = useToast()
                   <div>
                     <small
                       >Must have at least 1 Lowercase
-                      <span v-if="passwordRules.hasLowerCase" class="text-green-600"
+                      <span
+                        v-if="passwordRules.hasLowerCase"
+                        class="text-green-600"
                         >✔</span
                       ></small
                     >
@@ -191,7 +197,9 @@ const toast = useToast()
                   <div>
                     <small
                       >Must have at least 1 Special Character
-                      <span v-if="passwordRules.hasSpecialChar" class="text-green-600"
+                      <span
+                        v-if="passwordRules.hasSpecialChar"
+                        class="text-green-600"
                         >✔</span
                       ></small
                     >
@@ -235,13 +243,22 @@ const toast = useToast()
                   :disabled="countTrueConditions(passwordRules) < 4"
                 />
                 <!-- <InputText :disabled="countTrueConditions(passwordRules) < 4" v-model="confirmPassword" class="block p-2 w-full" type="password" /> -->
-                <small v-if="!confirmPasswordMatches()" class="text-red-500"
+                <small
+                  v-if="!confirmPasswordMatches()"
+                  class="text-red-500"
                   >Passwords do not match</small
                 >
               </div>
               <div class="flex mx-gap-md">
-                <Button class="tbs-btn-secondary" label="Sign Up" />
-                <Button class="tbs-btn-primary" label="Cancel" @click="isRegister = false" />
+                <Button
+                  class="tbs-btn-secondary"
+                  label="Sign Up"
+                />
+                <Button
+                  class="tbs-btn-primary"
+                  label="Cancel"
+                  @click="isRegister = false"
+                />
               </div>
             </div>
           </FormWrapper>
@@ -252,6 +269,9 @@ const toast = useToast()
 
   <!-- BACKGROUND ANIMATION -->
   <ul class="floating-squares">
-    <li v-for="n in 10" />
+    <li
+      v-for="n in 10"
+      :key="n"
+    />
   </ul>
 </template>

@@ -6,7 +6,7 @@
 @font-face {
     font-family: 'Roboto';
     src: url('@/assets/fonts/Roboto-Regular.woff2') format('woff2');
-    font-display: swap; 
+    font-display: swap;
 }
 
 html {
@@ -19,7 +19,11 @@ html {
     @import "mediaqueries";
 
     //components
+    @import "components/toast";
     @import "components/login";
+    @import "components/table";
     @import "components/side-nav";
     @import "components/gallery";
+    @import "components/dropdown";
+    @import "components/calendar";
 }

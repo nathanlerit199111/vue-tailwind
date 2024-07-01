@@ -1,8 +1,12 @@
 <script setup>
-    import { ref, onMounted, onUnmounted } from 'vue'
+    import { ref } from 'vue'
 
     const props_data = defineProps ({
         mini: {
+            type: Boolean,
+            default: () => false
+        },
+        is_mobile: {
             type: Boolean,
             default: () => false
         }
@@ -57,18 +61,18 @@
     }
 
 
-    //Check if viewport is 640px (Mobile)
-    const isMobile = ref(false);
-    const handleResize = () => {
-        isMobile.value = window.innerWidth <= 640;
-    };
-    onMounted(() => {
-        handleResize();
-        window.addEventListener('resize', handleResize);
-    });
-    onUnmounted(() => {
-        window.removeEventListener('resize', handleResize);
-    });
+    // //Check if viewport is 640px (Mobile)
+    // const isMobile = ref(false);
+    // const handleResize = () => {
+    //     isMobile.value = window.innerWidth <= 640;
+    // };
+    // onMounted(() => {
+    //     handleResize();
+    //     window.addEventListener('resize', handleResize);
+    // });
+    // onUnmounted(() => {
+    //     window.removeEventListener('resize', handleResize);
+    // });
 
 
 
@@ -90,13 +94,13 @@
     <aside
         id="side-nav" 
         :class="`
-            ${mini ? 'mini-nav' : ''} 
+            ${props_data.mini ? 'mini-nav' : ''} 
             ${isActive ? 'active' : ''}
-            ${isMobile ? 'isMobile' : ''}
+            ${props_data.is_mobile ? 'isMobile' : ''}
             `"
     >
         <button
-            v-if="!isMobile"
+            v-if="!props_data.is_mobile"
             class="side-nav-close"
             @click="toggleNavFn()"
         >
@@ -104,7 +108,7 @@
         </button>
 
         <div 
-            v-if="isMobile"
+            v-if="props_data.is_mobile"
             id="hamburger-icon-menu-wrapper"
             class="flex"
         >
@@ -117,17 +121,18 @@
                 <span></span>
             </div>
 
-            <div class="flex justify-center grow">
+            <div class="flex items-center justify-center grow">
                 <h4>Logo</h4>
             </div>
+            <!-- Add more data -->
+            <slot></slot>
         </div>
 
         <div
-            v-if="!isMobile"
+            v-if="!props_data.is_mobile"
             class="side-nav-logo-wrapper">
             <h4>Logo</h4>
         </div>
-        <hr/>
 
         <!-- Side navigation list -->
         <nav 
@@ -139,7 +144,6 @@
                 <i :class="side_nav.icon"></i>
                 <span>{{ side_nav.name }}</span>
             </router-link>
-    
         </nav>
     </aside>
 </template>

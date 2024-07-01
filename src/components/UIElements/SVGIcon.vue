@@ -22,7 +22,7 @@ const props_data = defineProps({
   },
 })
 const dynamicComponent = defineAsyncComponent(
-  () => import(`@/components/SVG/${props_data.icon}.vue`),
+  () => import(`@/components/SVGList/${props_data.icon}.vue`),
 )
 </script>
 

@@ -31,8 +31,12 @@
     "tbs-table-row-bg-color" : "#F1F2F7",
     "tbs-table-row-font-color" : "#858585"
   },
+  "calendar": {
+    "tbs-calendar-head-bg-color" : "#bacdd6",
+    "tbs-calendar-head-font-color" : "#fff"
+  },
   "font": {
-    "tbs-font-primary-color" : "#858585",
+    "tbs-font-primary-color" : "#565656",
     "tbs-font-secondary-color" : "#fff",
     "tbs-font-tertiary-color" : "#e1e1e1",
     "tbs-font-xs" : "11px",

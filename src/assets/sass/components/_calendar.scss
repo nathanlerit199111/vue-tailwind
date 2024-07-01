@@ -1,0 +1,43 @@
+.calendar-header {
+    border: solid 1px #e9e9e9;
+    background: var(--tbs-calendar-head-bg-color);
+    color: var(--tbs-calendar-head-font-color);
+    font-weight: bold;
+    text-align: center;
+}
+
+.day-wrapper {
+    border: solid 1px #e9e9e9;
+    text-align: center;
+    position: relative;
+    min-height: 80px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.days {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto 20px;
+    color: var(--tbs-font-primary-color);
+}
+.current-day {
+    background: var(--tbs-calendar-head-bg-color);
+    color: var(--tbs-calendar-head-font-color);
+    border-radius: 50%;
+}
+.event-dates {
+    width: 100%;
+    min-height: 20px;
+    color: var(--tbs-calendar-head-font-color);
+    margin: 3px 0;
+    border-radius: 3px;
+}
+
+select {
+    padding: 8px;
+    border: 1px solid #e9e9e9;
+    border-radius: 4px;
+}

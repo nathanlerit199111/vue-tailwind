@@ -1,18 +1,11 @@
 <script setup>
-    import { ref } from 'vue'
-    import { useRouter } from 'vue-router';
     import { getCookie } from '@/helpers/getCookie'
-    import InputComponent from '@/components/UIElements/InputComponent.vue'
-
-    //VUE PRIME
-    import Menubar from 'primevue/menubar';
-    // Define handleItemClick function
-    const handleItemClick = (item) => {
-        if (item.action && item.action.click) {
-            item.action.click();
-        }
-    };
-
+    import ContainerWrapper from '@/components/ContainerWrapper.vue'
+    import RowWrapper from '@/components/RowWrapper.vue'
+    import ColumnWrapper from '@/components/ColumnWrapper.vue'
+    import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
+    import SVGIcon from '@/components/UIElements/SVGIcon.vue'
+    import ActiveStatus from '@/components/ActiveStatus/ActiveStatus.vue'
 
     const logout = () => {
         const authToken = getCookie('authToken')
@@ -21,44 +14,44 @@
             document.cookie = 'authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
             window.location.reload()
         }
-    };
+    }
 
-    
-    // Define menu items
-    const router = useRouter()
-    const items = ref([
+    const items = [
         {
-            label: 'Profile',
-            icon: 'pi pi-user',
-            items: [
-                {
-                    label: 'Settings',
-                    icon: 'pi pi-bolt',
-                    link: '/theme'
-                },
-                {
-                    label: 'Logout',
-                    icon: 'pi pi-bolt',
-                    action: { click: logout }
-                },
-            ]
+            name: 'Profile',
+            link: '/profile'
+        },
+        {
+            name: 'Theme',
+            link: '/theme'
+        },
+        {
+            name: 'Logout',
+            link: '/'
         }
-    ]);
+    ]
 </script>
 
 <template>
     <header class="flex justify-end mx-gap-sm">
-        <InputComponent/>
-        <Menubar :model="items">
-            <template #item="{ item, props, hasSubmenu, root }">
-                <!-- Adding click event handler -->
-                <a :href="item.link" class="flex align-items-center" v-bind="props.action" @click="handleItemClick(item)">
-                    <span :class="item.icon" />
-                    <span class="ml-2">{{ item.label }}</span>
-                    
-                    <i v-if="hasSubmenu" :class="['pi pi-angle-down', { 'pi-angle-down ml-2': root, 'pi-angle-right ml-auto': !root }]"></i>
-                </a>
-            </template>
-        </Menubar>
+        <ContainerWrapper>
+            <RowWrapper additional_class="justify-end">
+                <ColumnWrapper additional_class="flex items-center mx-gap-md">
+                    <SVGIcon 
+                        icon="Bell"
+                        fill="none"
+                        stroke="black"
+                    />
+                    <DropDownProfileComponent :menu_data="items">
+                        <!-- 
+                            Add links with functionalities
+                            For list with functionaities, use <span> tag instead of <a>, because <a> requires href attributes
+                        -->
+                        <span @click="logout()">Logout</span>
+                    </DropDownProfileComponent>
+                    <ActiveStatus />
+                </ColumnWrapper>
+            </RowWrapper>
+        </ContainerWrapper>
     </header>
 </template>

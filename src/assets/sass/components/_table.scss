@@ -1,0 +1,45 @@
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--tbs-border-radius-sm);
+    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
+}
+table {
+    background: var(--tbs-table-bg-color);
+    border-radius: var(--tbs-border-radius-sm);
+    content-visibility: auto;
+
+    img {
+        min-width: 80px;
+        max-height: 100px;
+    }
+
+    th {
+        background: transparent; //reset
+    }
+
+    thead {
+        tr {
+            background: var(--tbs-table-head-bg-color);
+        }
+        * {
+            color: var(--tbs-table-head-font-color);
+        }
+    }
+    tbody tr {
+        background: var(--tbs-table-row-bg-color);
+        color: var(--tbs-table-row-font-color);
+        transition: all ease 0.5s;
+    }
+
+    tr:nth-child(even) {
+        /* 
+            Adjust the value depending on your preference
+            #fff - will make it lighten. if you want to darken change it to #000
+            50% - the intensity
+        */
+        background: color-mix(in srgb,var(--tbs-table-row-bg-color),#fff 50%);
+    }
+    tbody tr:hover {
+        background: color-mix(in srgb,var(--tbs-table-row-bg-color),#000 7%);
+    }
+}

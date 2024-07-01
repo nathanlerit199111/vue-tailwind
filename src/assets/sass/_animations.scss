@@ -109,3 +109,40 @@
     }
 
 }
+
+
+//======= TOAST =======//
+@keyframes fadeTop {
+    0% {
+        opacity: 10;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+@keyframes fadeTopCenter {
+    0% {
+        opacity: 10;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100%);
+    }
+}
+
+
+
+
+@keyframes fadeInFromTop {
+    0% {
+      transform: scale(.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+}
