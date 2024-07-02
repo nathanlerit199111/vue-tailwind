@@ -5,7 +5,7 @@ import 'primeicons/primeicons.css'
 import 'primevue/resources/themes/aura-light-green/theme.css'
 
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+// import { createPinia } from 'pinia'
 import primeVue from 'primevue/config'
 // import toastService from 'primevue/toastservice'
 import 'tailwindcss/tailwind.css'
@@ -72,7 +72,7 @@ else {
 
 const app = createApp(App)
 
-app.use(createPinia())
+// app.use(createPinia())
 app.use(router)
 app.use(vueLazyLoad)
 app.use(primeVue)

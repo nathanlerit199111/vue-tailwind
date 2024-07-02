@@ -1,7 +1,11 @@
 <script setup>
   import { ref } from 'vue'
-  import { useSideNavigation } from '@/stores/settings/sidenav'
+  import { useSideNavigation } from '@/stores/settings/sideNav'
+  import { getCookie } from '@/helpers/getCookie'
+  import { checkUserPermision } from '@/helpers/permissionValidation'
   import SVGIcon from '@/components/UIElements/SVGIcon.vue'
+
+  const userProfile = JSON.parse(getCookie('userProfile'))
 
   const props_data = defineProps({
     mini: {
@@ -13,8 +17,6 @@
       default: () => false
     }
   })
-
-  // const isActive = ref(false)
 
   const nav = useSideNavigation()
   const side_navigation = ref(nav.side_nav)
@@ -42,7 +44,7 @@
   const toggleOpenClass = () => {
     const navIcon = document.querySelector('#hamburger-icon-menu')
     navIcon.classList.toggle('open')
-    // isActive.value = !isActive.value
+    toggleNavFn()
   }
 </script>
 
@@ -110,13 +112,14 @@
       class="side-nav-list"
     >
       <router-link
+        v-if="checkUserPermision(nav.role_permissions, userProfile.role, nav.isPermissionRequired)"
         :to="nav.link"
-        v-slot="{ href, route, navigate, isActive, isExactActive }"
+        v-slot="{ href, route, navigate, isActiveRoute, isExactActive }"
         custom
       >
         <a
           :href="href"
-          :class="[(isActive || isExactActive) && 'bg-green-200 w-full']"
+          :class="[(isActiveRoute || isExactActive) && 'bg-green-200 ', isActive ? 'w-full' : '']"
           @click="navigate"
         >
           <SVGIcon
@@ -132,5 +135,3 @@
     </nav>
   </aside>
 </template>
-
-<style lang="scss" module="attr"></style>

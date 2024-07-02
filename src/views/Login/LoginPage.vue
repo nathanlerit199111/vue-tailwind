@@ -65,6 +65,21 @@
         expires = '; expires=' + date.toUTCString()
         document.cookie = 'authToken' + '=' + token + expires + '; path=/'
 
+        // Dummy set user info
+        const userProfile = {
+          id: response.data.id,
+          fullname: `${response.data.firstName} ${response.data.lastName}`,
+          email: response.data.email,
+          image: response.data.image,
+          role: {
+            id: 1,
+            role: 'Admin',
+            slug: 'admin'
+          }
+        }
+        const userProfileStr = JSON.stringify(userProfile)
+        document.cookie = 'userProfile' + '=' + userProfileStr + ';' + expires + ';path=/'
+
         router.push('/')
       }
     } catch (e) {

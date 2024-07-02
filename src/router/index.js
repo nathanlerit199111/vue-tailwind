@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { getCookie } from '@/helpers/getCookie';
+import { checkUserPermision, getRouteCheckPermission } from '@/helpers/permissionValidation';
 
 import { meta, setMeta } from "./meta";
 
@@ -89,9 +90,25 @@ const routes =  [
         {
           path: "/:catchAll(.*)",
           name: 'NotFound',
-          component: () => import('@/views/NotFound.vue'),
+          component: () => import('@/views/ErrorPages/NotFound.vue'),
           meta: {
             ...meta['error-404']
+          }
+        }
+      ]
+    },
+    {
+      path: '/error-403', // Catch all unmatched routes
+      components: {
+        default: () => import('@/layout/Base.vue'),
+      },
+      children: [
+        {
+          path: "/error-403",
+          name: 'forbidden-403',
+          component: () => import('@/views/ErrorPages/Forbidden.vue'),
+          meta: {
+            ...meta['error-403']
           }
         }
       ]
@@ -136,10 +153,22 @@ router.beforeEach((to, from, next) => {
 
 	setMeta(to, from);
 	if (isAuthenticated) {
+    const userProfile = JSON.parse(getCookie('userProfile'))
+
+    let nav = getRouteCheckPermission(to.name)
 		if(to.name == 'login'){
 			next('/'); // If user try to access login routes and isAuthenticated
 		} else {
-			next(); // Access page required auth
+      if(nav.isPermissionRequired){
+        let isAllowed = checkUserPermision(nav.role_permissions, userProfile.role, true)
+        if(isAllowed){
+          next()
+        } else {
+          next('/error-403')
+        }
+      } else {
+        next(); // Access page required auth
+      }
 		}
 	} else if (!isAuthenticated) {
 		if (isLogin.includes(to.name)) {

@@ -10,8 +10,8 @@ export const useSideNavigation = defineStore('sideNav', {
         link: 'home',
         isLinkOut: false,  
         icon: 'Bell',
-        isWithPermission: false,
-        role_permissions: [],
+        isPermissionRequired: false,
+        role_permissions: ['Admin'],
         children: []
       },
       {
@@ -20,7 +20,7 @@ export const useSideNavigation = defineStore('sideNav', {
         link: 'pos',
         isLinkOut: false,  
         icon: 'Bell',
-        isWithPermission: false,
+        isPermissionRequired: false,
         role_permissions: [],
         children: []
       },
@@ -30,7 +30,7 @@ export const useSideNavigation = defineStore('sideNav', {
         link: 'theme',
         isLinkOut: false,  
         icon: 'Bell',
-        isWithPermission: false,
+        isPermissionRequired: false,
         role_permissions: [],
         children: []
       },

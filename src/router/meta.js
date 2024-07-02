@@ -125,6 +125,23 @@ export const meta = {
         }
     ],
   },
+  "error-403": {
+    title: `${appName} - Page Forbidden `,
+    metaTags: [
+        {
+            name: "robots", // it will set the page to uncrawlable
+            content: "noindex, nofollow"
+        },
+        {
+            property: "og:title",
+            content: `${appName} - Page Forbidden `,
+        },
+        {
+            property: "description",
+            content: "Not authorized to view this page.",
+        }
+    ],
+  },
 };
 
 /**
