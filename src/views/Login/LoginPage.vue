@@ -19,7 +19,7 @@
   import Button from 'primevue/button'
 
   //API
-  import AuthApi from '@/api/AuthApi.js'
+  import AuthApi from '@/api/auth-api.js'
 
   const router = useRouter()
   //Register

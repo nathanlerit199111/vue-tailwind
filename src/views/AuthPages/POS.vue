@@ -12,7 +12,7 @@
     // import Button from 'primevue/button';
 
     //API
-    import AuthApi from '@/api/ProductApi.js'
+    import AuthApi from '@/api/product-api.js'
     let products = ref()
     let isLoading = ref(true)
     const getProductApi = async () => {
