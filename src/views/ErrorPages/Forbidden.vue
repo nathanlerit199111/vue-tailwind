@@ -1,0 +1,38 @@
+<template>
+  <div
+    id="not-found-wrapper"
+    class="my-gap-md"
+  >
+    <h1>403</h1>
+    <p>Not authorized to view this page</p>
+    <router-link to="/">
+      <button class="tbs-btn-primary">Go back</button>
+    </router-link>
+  </div>
+  <!-- BACKGROUND ANIMATION -->
+  <ul class="floating-squares">
+    <li
+      v-for="n in 10"
+      :key="n"
+    />
+  </ul>
+</template>
+
+<style scoped lang="scss">
+  #not-found-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  h1 {
+    font-size: 110px;
+    line-height: 80px * 1.5;
+    color: var(--tbs-font-primary-color);
+    letter-spacing: 6px;
+  }
+  p {
+    font-size: 20px;
+    color: var(--tbs-font-primary-color);
+  }
+</style>
