@@ -9,7 +9,7 @@
   import FormWrapper from '@/components/FormWrapper.vue'
   import InputComponent from '@/components/UIElements/InputComponent.vue'
   import SelectCountry from '@/components/UIElements/SelectCountry.vue'
-  import { passwordRules, validatePassword } from '@/helpers/formValidation.js'
+  import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
   //TOAST MESSAGE
   import ToastWrapper from '@/components/ToastWrapper.vue'

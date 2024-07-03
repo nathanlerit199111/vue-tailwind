@@ -1,6 +1,6 @@
 <script setup>
   import { ref, onMounted } from 'vue'
-  import { getCookie } from '@/helpers/getCookie'
+  import { getCookie } from '@/helpers/get-cookie'
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
 
   const props_data = defineProps({

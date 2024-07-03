@@ -112,8 +112,8 @@ export const meta = {
     title: `${appName} - Page Not Found `,
     metaTags: [
         {
-            name: "robots", // it will set the page to uncrawlable
-            content: "noindex, nofollow"
+            name: "robots", 
+            content: "noindex, nofollow" // it will set the page to uncrawlable
         },
         {
             property: "og:title",
@@ -129,7 +129,7 @@ export const meta = {
     title: `${appName} - Page Forbidden `,
     metaTags: [
         {
-            name: "robots", // it will set the page to uncrawlable
+            name: "robots",
             content: "noindex, nofollow"
         },
         {

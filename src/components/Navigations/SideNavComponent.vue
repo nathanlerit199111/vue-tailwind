@@ -1,8 +1,8 @@
 <script setup>
   import { ref } from 'vue'
-  import { useSideNavigation } from '@/stores/settings/sideNav'
-  import { getCookie } from '@/helpers/getCookie'
-  import { checkUserPermision } from '@/helpers/permissionValidation'
+  import { useSideNavigation } from '@/stores/settings/side-nav'
+  import { getCookie } from '@/helpers/get-cookie'
+  import { checkUserPermision } from '@/helpers/permission-validation'
   import SVGIcon from '@/components/UIElements/SVGIcon.vue'
 
   const userProfile = JSON.parse(getCookie('userProfile'))
@@ -19,7 +19,7 @@
   })
 
   const nav = useSideNavigation()
-  const side_navigation = ref(nav.side_nav)
+  const sideNavigation = ref(nav.sideNav)
   let isActive = ref(nav.isNavOpen)
 
   const toggleNavFn = () => {
@@ -107,12 +107,12 @@
 
     <!-- Side navigation list -->
     <nav
-      v-for="(nav, key) in side_navigation"
+      v-for="(nav, key) in sideNavigation"
       :key="key"
       class="side-nav-list"
     >
       <router-link
-        v-if="checkUserPermision(nav.role_permissions, userProfile.role, nav.isPermissionRequired)"
+        v-if="checkUserPermision(nav.rolePermissions, userProfile.role, nav.isPermissionRequired)"
         :to="nav.link"
         v-slot="{ href, route, navigate, isActiveRoute, isExactActive }"
         custom
@@ -124,9 +124,9 @@
         >
           <SVGIcon
             :icon="nav.icon"
-            width="16"
-            height="16"
-            fill="none"
+            width="18"
+            height="18"
+            fill="#000000"
             stroke="black"
           />
           <span class="ml-2">{{ nav.title }}</span>
@@ -135,3 +135,4 @@
     </nav>
   </aside>
 </template>
+@/stores/settings/side-nav

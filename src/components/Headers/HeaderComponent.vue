@@ -1,5 +1,5 @@
 <script setup>
-  import { getCookie } from '@/helpers/getCookie'
+  import { getCookie } from '@/helpers/get-cookie'
   import ContainerWrapper from '@/components/ContainerWrapper.vue'
   import RowWrapper from '@/components/RowWrapper.vue'
   import ColumnWrapper from '@/components/ColumnWrapper.vue'

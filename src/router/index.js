@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { getCookie } from '@/helpers/getCookie';
-import { checkUserPermision, getRouteCheckPermission } from '@/helpers/permissionValidation';
+import { getCookie } from '@/helpers/get-cookie';
+import { checkUserPermision, getRouteCheckPermission } from '@/helpers/permission-validation';
 
 import { meta, setMeta } from "./meta";
 
@@ -160,7 +160,7 @@ router.beforeEach((to, from, next) => {
 			next('/'); // If user try to access login routes and isAuthenticated
 		} else {
       if(nav.isPermissionRequired){
-        let isAllowed = checkUserPermision(nav.role_permissions, userProfile.role, true)
+        let isAllowed = checkUserPermision(nav.rolePermissions, userProfile.role, true)
         if(isAllowed){
           next()
         } else {

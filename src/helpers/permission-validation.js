@@ -1,4 +1,4 @@
-import { useSideNavigation } from '@/stores/settings/sideNav';
+import { useSideNavigation } from '@/stores/settings/side-nav'
 export function checkUserPermision( permissions, userInfo, isRequired = false ) {
   let isAllowed = false
   if(isRequired){
@@ -10,9 +10,9 @@ export function checkUserPermision( permissions, userInfo, isRequired = false ) 
 
 export function getRouteCheckPermission(route) {
   const nav = useSideNavigation()
-  let content = 'titiw'
+  let content = ''
 
-  nav.side_nav.forEach((data, key) => {
+  nav.sideNav.forEach((data, key) => {
     if (data.link == route) { 
       content = data
     }

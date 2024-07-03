@@ -8,7 +8,7 @@
   const SideNavComponent = defineAsyncComponent(
     () => import('@/components/Navigations/SideNavComponent.vue')
   )
-  import { useViewport } from '@/helpers/viewportSize.js'
+  import { useViewport } from '@/helpers/viewport-size.js'
 
   const route = useRoute()
   const { isMobile } = useViewport()
