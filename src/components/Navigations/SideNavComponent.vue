@@ -127,7 +127,7 @@
             width="18"
             height="18"
             fill="#000000"
-            stroke="black"
+            stroke=""
           />
           <span class="ml-2">{{ nav.title }}</span>
         </a>
