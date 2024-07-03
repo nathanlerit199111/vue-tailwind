@@ -1,84 +1,78 @@
 <script setup>
-    import { ref, onMounted, watchEffect, onBeforeUnmount  } from 'vue'
+  import { ref, onMounted, watchEffect, onBeforeUnmount } from 'vue'
 
-    import SectionWrapper from '@/components/SectionWrapper.vue'
-    import ContainerWrapper from '@/components/ContainerWrapper.vue'
-    import RowWrapper from '@/components/RowWrapper.vue'
-    import ColumnWrapper from '@/components/ColumnWrapper.vue'
-    import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
-    import UploadCsv from '@/components/UIElements/UploadCsv.vue'
-    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-    import TableComponent from '@/components/Tables/TableComponent.vue'
+  import SectionWrapper from '@/components/SectionWrapper.vue'
+  import ContainerWrapper from '@/components/ContainerWrapper.vue'
+  import RowWrapper from '@/components/RowWrapper.vue'
+  import ColumnWrapper from '@/components/ColumnWrapper.vue'
+  import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
+  import UploadCsv from '@/components/UIElements/UploadCsv.vue'
+  import ImgComponent from '@/components/UIElements/ImgComponent.vue'
+  import TableComponent from '@/components/Tables/TableComponent.vue'
 
+  import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
 
-    import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
+  //VUE PRIME
+  import Button from 'primevue/button'
 
-    //VUE PRIME
-    import Button from 'primevue/button';
-
-    //API
-    import AuthApi from '@/api/ProductApi.js'
-    let products = ref()
-    const isLoading = ref(true)
-    const getProductApi = async () => {
-        try {
-            let response = await AuthApi.getProduct()
-            products.value = response.data
-        }
-        catch (e) {
-            console.log("ERROR", e)
-        }
-        finally {
-            isLoading.value = false
-        }
+  //API
+  import AuthApi from '@/api/ProductApi.js'
+  let products = ref()
+  const isLoading = ref(true)
+  const getProductApi = async () => {
+    try {
+      let response = await AuthApi.getProduct()
+      products.value = response.data
+    } catch (e) {
+      console.log('ERROR', e)
+    } finally {
+      isLoading.value = false
     }
-    
-    onMounted(() => {
-        getProductApi()
-    });
+  }
 
-    const deleteItem = (item) => {
-        console.log("ITEM", item)
-    };
+  onMounted(() => {
+    getProductApi()
+  })
 
-    //Functions from child component
-    const tableRef = ref()
-    watchEffect(() => {
-        const newValue = tableRef.value?.first;
-        //Add logic here to request API base on pagination
-        console.log('Value Changed', newValue);
-    });
+  const deleteItem = (item) => {
+    console.log('ITEM', item)
+  }
 
-
-
+  //Functions from child component
+  const tableRef = ref()
+  watchEffect(() => {
+    const newValue = tableRef.value?.first
+    //Add logic here to request API base on pagination
+    console.log('Value Changed', newValue)
+  })
 </script>
 
 <template>
-    <CalendarMonth />
-    <SkeletonLoader 
-        v-if="isLoading"
-        type="table"
-    />
-    <div v-if="!isLoading">
-        <SectionWrapper>
-            <ContainerWrapper>
-                <RowWrapper additional_class="items-center">
-                    <ColumnWrapper additional_class="grow">
-                        <h3>Payment Types List</h3>
-                        <p>Display all payment types</p>
-                    </ColumnWrapper>
-                    <ColumnWrapper>
-                        <UploadCsv />
-                    </ColumnWrapper>
-                </RowWrapper>
-            </ContainerWrapper>
-        </SectionWrapper>
+  <CalendarMonth />
+  <SkeletonLoader
+    v-if="isLoading"
+    type="table"
+  />
+  <div v-if="!isLoading">
+    <SectionWrapper>
+      <ContainerWrapper>
+        <RowWrapper additional_class="items-center">
+          <ColumnWrapper additional_class="grow">
+            <h3>Payment Types List</h3>
+            <p>Display all payment types</p>
+          </ColumnWrapper>
+          <ColumnWrapper>
+            <UploadCsv />
+          </ColumnWrapper>
+        </RowWrapper>
+      </ContainerWrapper>
+    </SectionWrapper>
 
-        <SectionWrapper>
-            <ContainerWrapper>
-                <RowWrapper>
-                    <ColumnWrapper additional_class="w-full">
-                        <!--
+    <SectionWrapper>
+      <ContainerWrapper>
+        <RowWrapper>
+          <ColumnWrapper additional_class="w-full">
+            <!--
                             - table_data props will pass the entire data from database
                             - headers props will just literally display the text. if no value, it will load the whole data
                             - fields props will only display data base on the provided property name in the Array. if no value, it will load the whole data
@@ -86,41 +80,45 @@
                             slots - there are 2 types of slot; head and item
                             show_select - will show checkbox
                          -->
-                        <TableComponent 
-                                :table_data="products?.products"
-                                :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
-                                :fields="['id', 'brand', 'title', 'description', 'price']"
-                                :show_checkbox="true"
-                                ref="tableRef"
-                            >
-                                <template #head.image>
-                                    <th>Image</th>
-                                </template>
-                                <template #item.image="{ item }">
-                                    <td class="p-5">
-                                        <ImgComponent
-                                            :image_src="item.images[0]"
-                                            :image_alt="item.title"
-                                            image_loading="lazy"
-                                        />
-                                    </td>
-                                </template>
+            <TableComponent
+              :table_data="products?.products"
+              :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
+              :fields="['id', 'brand', 'title', 'description', 'price']"
+              :show_checkbox="true"
+              ref="tableRef"
+            >
+              <template #head.image>
+                <th>Image</th>
+              </template>
+              <template #item.image="{ item }">
+                <td class="p-5">
+                  <ImgComponent
+                    :image_src="item.images[0]"
+                    :image_alt="item.title"
+                    image_loading="lazy"
+                  />
+                </td>
+              </template>
 
+              <template #head.action>
+                <th>Actions</th>
+              </template>
+              <template #item.action="{ item }">
+                <td class="p-5">
+                  <div class="flex mx-gap-sm">
+                    <button class="tbs-btn-primary">{{ item.brand }}</button>
+                    <button
+                      class="tbs-btn-secondary"
+                      @click="deleteItem(item.title)"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </template>
+            </TableComponent>
 
-                                <template #head.action>
-                                    <th>Actions</th>
-                                </template>
-                                <template #item.action="{ item }">
-                                    <td class="p-5">
-                                        <div class="flex mx-gap-sm">
-                                            <button class="tbs-btn-primary">{{ item.brand }}</button>
-                                            <button class="tbs-btn-secondary" @click="deleteItem(item.title)">Delete</button>
-                                        </div>
-                                    </td>
-                                </template>
-                        </TableComponent>
-
-                        <!-- <DataTable :value="products?.products">
+            <!-- <DataTable :value="products?.products">
                             <Column field="id" header="id"></Column>
                             <Column field="brand" header="brand"></Column>
                             <Column field="title" header="title"></Column>
@@ -145,9 +143,9 @@
                         
                             </Column>
                         </DataTable> -->
-                    </ColumnWrapper>
-                </RowWrapper>
-            </ContainerWrapper>
-        </SectionWrapper>
-    </div>
+          </ColumnWrapper>
+        </RowWrapper>
+      </ContainerWrapper>
+    </SectionWrapper>
+  </div>
 </template>

@@ -13,6 +13,9 @@ import 'tailwindcss/tailwind.css'
 import App from './App.vue'
 import router from './router'
 
+// Pinia v2.0.28
+// import pinia from './stores/index';
+
 // Generate CSS based on custom configuration
 const generateStyles = (config) => {
   let styles = ':root {';
@@ -74,4 +77,5 @@ app.use(router)
 app.use(vueLazyLoad)
 app.use(primeVue)
 // app.use(toastService)
+// app.use(pinia);
 app.mount('#app')
