@@ -13,7 +13,7 @@
   //API
   import AuthApi from '@/api/product-api.js'
   let products = ref()
-  const isLoading = ref(true)
+  let isLoading = ref(true)
   const getProductApi = async () => {
     try {
       let response = await AuthApi.getProduct()
