@@ -273,14 +273,14 @@ img {
 .theme_example {
         .column1,
         .column2 {
-            background: var(--tbs-bg-secondary-color);
-            color: var(--tbs-font-primary-color);
+            background: var(--tbs-bg-secondary-color-100);
+            color: var(--tbs-font-primary-color-100);
             border-radius: var(--tbs-border-radius-md);
             padding: var(--tbs-space-lg);
         }
         .columnfull {
-            background: var(--tbs-bg-tertiary-color);
-            color: var(--tbs-font-secondary-color);
+            background: var(--tbs-bg-tertiary-color-100);
+            color: var(--tbs-font-secondary-color-100);
             border-radius: var(--tbs-border-radius-md);
             padding: var(--tbs-space-lg);
         }

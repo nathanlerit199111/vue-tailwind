@@ -28,11 +28,11 @@
   h1 {
     font-size: 110px;
     line-height: 80px * 1.5;
-    color: var(--tbs-font-primary-color);
+    color: var(--tbs-font-primary-color-100);
     letter-spacing: 6px;
   }
   p {
     font-size: 20px;
-    color: var(--tbs-font-primary-color);
+    color: var(--tbs-font-primary-color-100);
   }
 </style>

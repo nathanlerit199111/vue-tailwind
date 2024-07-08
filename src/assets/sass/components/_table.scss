@@ -1,7 +1,7 @@
 .table-wrapper {
     overflow-x: auto;
     border-radius: var(--tbs-border-radius-sm);
-    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color),#000 8%);
+    box-shadow: 2px 2px 5px color-mix(in srgb,var(--tbs-bg-primary-color-100),#000 8%);
 }
 table {
     background: var(--tbs-table-bg-color);

@@ -10,11 +10,6 @@
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Tables/TableComponent.vue'
 
-  import CalendarMonth from '@/components/Calendar/CalendarMonth.vue'
-
-  //VUE PRIME
-  import Button from 'primevue/button'
-
   //API
   import AuthApi from '@/api/product-api.js'
   let products = ref()
@@ -48,7 +43,6 @@
 </script>
 
 <template>
-  <CalendarMonth />
   <SkeletonLoader
     v-if="isLoading"
     type="table"
@@ -73,13 +67,13 @@
         <RowWrapper>
           <ColumnWrapper additional_class="w-full">
             <!--
-                            - table_data props will pass the entire data from database
-                            - headers props will just literally display the text. if no value, it will load the whole data
-                            - fields props will only display data base on the provided property name in the Array. if no value, it will load the whole data
+              - table_data props will pass the entire data from database
+              - headers props will just literally display the text. if no value, it will load the whole data
+              - fields props will only display data base on the provided property name in the Array. if no value, it will load the whole data
 
-                            slots - there are 2 types of slot; head and item
-                            show_select - will show checkbox
-                         -->
+              slots - there are 2 types of slot; head and item
+              show_select - will show checkbox
+            -->
             <TableComponent
               :table_data="products?.products"
               :headers="['ID', 'Brand', 'Title', 'Description', 'Price']"
@@ -116,33 +110,33 @@
                   </div>
                 </td>
               </template>
-            </TableComponent>
+            </TableComponent>dddd
 
-            <!-- <DataTable :value="products?.products">
-                            <Column field="id" header="id"></Column>
-                            <Column field="brand" header="brand"></Column>
-                            <Column field="title" header="title"></Column>
-                            <Column field="description" header="description"></Column>
-                            <Column field="price" header="price"></Column>
-                            <Column field="image" header="image">
-                                <template #body="slotProps">
-                                    <ImgComponent
-                                        :image_src="slotProps?.data?.images[0]"
-                                        image_alt="asdasd"
-                                        image_loading="lazy"
-                                    />
-                                </template>
-                            </Column>
-                            <Column field="image" header="action">
-                                <template #body="slotProps">
-                                    <div class="flex mx-gap-sm">
-                                        <button class="tbs-btn-primary">xxxx</button>
-                                        <button class="tbs-btn-secondary">Delete</button>
-                                    </div>
-                                </template>
-                        
-                            </Column>
-                        </DataTable> -->
+            <!--  <DataTable :value="products?.products">
+                    <Column field="id" header="id"></Column>
+                    <Column field="brand" header="brand"></Column>
+                    <Column field="title" header="title"></Column>
+                    <Column field="description" header="description"></Column>
+                    <Column field="price" header="price"></Column>
+                    <Column field="image" header="image">
+                        <template #body="slotProps">
+                            <ImgComponent
+                                :image_src="slotProps?.data?.images[0]"
+                                image_alt="asdasd"
+                                image_loading="lazy"
+                            />
+                        </template>
+                    </Column>
+                    <Column field="image" header="action">
+                        <template #body="slotProps">
+                            <div class="flex mx-gap-sm">
+                                <button class="tbs-btn-primary">xxxx</button>
+                                <button class="tbs-btn-secondary">Delete</button>
+                            </div>
+                        </template>
+                
+                    </Column>
+                  </DataTable> -->
           </ColumnWrapper>
         </RowWrapper>
       </ContainerWrapper>

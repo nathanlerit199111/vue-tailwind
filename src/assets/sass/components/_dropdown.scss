@@ -9,8 +9,8 @@
 }
 
 .dropdown-menu {
-    background: var(--tbs-bg-primary-color);
-    border: solid 1px var(--tbs-bg-secondary-color);
+    background: var(--tbs-bg-primary-color-100);
+    border: solid 1px var(--tbs-bg-secondary-color-100);
     border-radius: var(--tbs-border-radius-sm);
     position: absolute;
     top: 60px;
@@ -33,7 +33,7 @@
     //     border-left: 10px solid transparent;
     //     border-right: 10px solid transparent;
         
-    //     border-bottom: 10px solid var(--tbs-bg-primary-color);
+    //     border-bottom: 10px solid var(--tbs-bg-primary-color-100);
     //     filter: drop-shadow(0 0 0 #989898);
     // }
 }
@@ -47,7 +47,7 @@
 }
 
 .dropdown-menu li:hover {
-  background: color-mix(in srgb,var(--tbs-bg-primary-color),#000 7%);
+  background: color-mix(in srgb,var(--tbs-bg-primary-color-100),#000 7%);
 }
 
 .dropdown-menu.show {
