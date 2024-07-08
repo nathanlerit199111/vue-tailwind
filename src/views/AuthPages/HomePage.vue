@@ -110,7 +110,7 @@
                   </div>
                 </td>
               </template>
-            </TableComponent>dddd
+            </TableComponent>
 
             <!--  <DataTable :value="products?.products">
                     <Column field="id" header="id"></Column>

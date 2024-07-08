@@ -223,7 +223,7 @@
                 <ColumnWrapper>
                     <h3>Front end functional components</h3>
                     <p>Tailwind only provided style for FREE and not functional components like, table, modal, datepicker, etc.</p>
-                    <p>You need to pay for some useful functional component. With that we will use VuePrime - It uses tailwind with components                     <a target="_blank" href="https://primevue.org/">https://primevue.org/</a></p>
+                    <p>You need to pay for some useful functional component. With that we will create Custom Component, while streaming line the usage or libraries / plugins</p>
                 </ColumnWrapper>
             </RowWrapper>
 
