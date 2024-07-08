@@ -38,9 +38,9 @@
       <RowWrapper additional_class="justify-end">
         <ColumnWrapper additional_class="flex items-center mx-gap-md">
           <SVGIcon
-            icon="AdjustmentsHorizontal"
-            fill="skyblue"
-            stroke="indigo"
+            icon="Bell"
+            fill="none"
+            stroke="black"
           />
           <DropDownProfileComponent :menu_data="items">
             <!-- 
