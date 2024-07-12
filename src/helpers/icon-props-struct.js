@@ -1,6 +1,6 @@
-// createPropsStruct can be used like a defineProps
+// createIconPropsStruct can be used like a defineProps
 // but, you can only override the default property
-export function createPropsStruct(definedProps = {}) {
+export function createIconPropsStruct(definedProps = {}) {
   const getDefault = (key, defaultPropsValue) => {
     const definedDefault = definedProps?.[key]?.default || null
     return typeof definedDefault === 'function'

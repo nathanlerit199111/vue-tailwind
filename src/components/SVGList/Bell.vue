@@ -1,6 +1,6 @@
 <script>
-  import { createPropsStruct } from '@/helpers/props-struct.js'
-  const iconDefaultProps = createPropsStruct()
+  import { createIconPropsStruct } from '@/helpers/icon-props-struct.js'
+  const iconDefaultProps = createIconPropsStruct()
 </script>
 
 <script setup>
