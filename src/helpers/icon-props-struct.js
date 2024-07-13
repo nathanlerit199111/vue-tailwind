@@ -8,7 +8,7 @@ export function createIconPropsStruct(definedProps = {}) {
       : definedDefault || defaultPropsValue
   }
 
-  const defaultColor = 'red'
+  const defaultColor = 'currentColor'
   const defaultSizeInPixel = 25
 
   return {
