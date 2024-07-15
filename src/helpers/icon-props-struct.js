@@ -2,10 +2,7 @@
 // but, you can only override the default property
 export function createIconPropsStruct(definedProps = {}) {
   const getDefault = (key, defaultPropsValue) => {
-    const definedDefault = definedProps?.[key]?.default || null
-    return typeof definedDefault === 'function'
-      ? definedDefault(args)
-      : definedDefault || defaultPropsValue
+    return definedProps?.[key]?.default || defaultPropsValue
   }
 
   const defaultColor = 'currentColor'
