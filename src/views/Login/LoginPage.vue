@@ -11,6 +11,8 @@
   import SelectCountry from '@/components/UIElements/SelectCountry.vue'
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
+  import { Form, Field, useForm } from 'vee-validate';
+
   //TOAST MESSAGE
   import ToastWrapper from '@/components/ToastWrapper.vue'
   import { useToastStore } from '@/stores/toast'
@@ -49,6 +51,9 @@
   //API REQUEST
   const username = ref('emilys')
   const password = ref('emilyspass')
+  // const username = ref('')
+  // const password = ref('')
+
   const login = async () => {
     let response = ''
     try {
@@ -91,6 +96,12 @@
   }
 
   const toast = useToastStore()
+  const isRequired = (value) => {
+    if (!value) {
+      return 'This field is required';
+    }
+    return true;
+    }
 </script>
 <template>
   <ToastWrapper position="top-right" />
@@ -101,7 +112,9 @@
     <ContainerWrapper additional_class="h-full">
       <RowWrapper additional_class="items-center h-full">
         <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
-          <FormWrapper>
+
+          
+          <FormWrapper @submit.prevent="login">
             <div
               v-if="!isRegister"
               class="my-gap-md"
@@ -111,8 +124,10 @@
                 <label>Username</label>
                 <InputComponent
                   additional_class="block w-full"
-                  type="text"
+                  type="email"
+                  name="email"
                   v-model="username"
+                  :rules="isRequired"
                 />
               </div>
               <div>
@@ -120,17 +135,14 @@
                 <InputComponent
                   additional_class="block w-full"
                   type="password"
+                  name="password"
                   v-model="password"
+                  :rules="isRequired"
                 />
               </div>
               <p class="text-xs">Forgot password</p>
               <div class="flex mx-gap-md">
-                <!-- @click="loginFn()" -->
-                <Button
-                  class="tbs-btn-secondary"
-                  label="Login"
-                  @click="login()"
-                />
+                <button class="tbs-btn-secondary" @click="login">Login</button>
                 <Button
                   class="tbs-btn-primary"
                   label="Register"
@@ -148,21 +160,27 @@
                 <label>First Name</label>
                 <InputComponent
                   additional_class="block w-full"
+                  name="first_name"
                   type="text"
+                  :rules="isRequired"
                 />
               </div>
               <div>
                 <label>Last Name</label>
                 <InputComponent
                   additional_class="block w-full"
+                  name="last_name"
                   type="text"
+                  :rules="isRequired"
                 />
               </div>
               <div>
                 <label>Address</label>
                 <InputComponent
                   additional_class="block w-full"
+                  name="address"
                   type="text"
+                  :rules="isRequired"
                 />
               </div>
               <div>
@@ -174,8 +192,10 @@
                 <InputComponent
                   v-model="register.password"
                   additional_class="block w-full"
+                  name="password"
                   type="password"
-                  @input="validatePassword(register.password)"
+                  :inputChange="validatePassword(register.password)"
+                  :rules="isRequired"
                 />
                 <!-- <InputText v-model="register.password" class="block p-2 w-full" type="password" @input="validatePassword(register.password)" /> -->
                 <div class="password-rules">
@@ -253,6 +273,7 @@
                 <label>Confirm Password</label>
                 <InputComponent
                   additional_class="block w-full"
+                  name="confirm_password"
                   type="password"
                   v-model="confirmPassword"
                   :disabled="countTrueConditions(passwordRules) < 4"
@@ -265,10 +286,7 @@
                 >
               </div>
               <div class="flex mx-gap-md">
-                <Button
-                  class="tbs-btn-secondary"
-                  label="Sign Up"
-                />
+                <button class="tbs-btn-secondary">Sign Up</button>
                 <Button
                   class="tbs-btn-primary"
                   label="Cancel"
@@ -276,7 +294,7 @@
                 />
               </div>
             </div>
-          </FormWrapper>
+          </FormWrapper >
         </ColumnWrapper>
       </RowWrapper>
     </ContainerWrapper>
