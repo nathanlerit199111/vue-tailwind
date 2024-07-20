@@ -114,7 +114,7 @@
         <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
 
           
-          <FormWrapper @submit.prevent>
+          <FormWrapper @submit="login">
             <div
               v-if="!isRegister"
               class="my-gap-md"
@@ -142,12 +142,8 @@
               </div>
               <p class="text-xs">Forgot password</p>
               <div class="flex mx-gap-md">
-                <button class="tbs-btn-secondary" @click="login">Login</button>
-                <Button
-                  class="tbs-btn-primary"
-                  label="Register"
-                  @click="isRegister = true"
-                />
+                <button class="tbs-btn-secondary">Login</button>
+                <button class="tbs-btn-primary" @click="isRegister = true">Register</button>
               </div>
             </div>
 

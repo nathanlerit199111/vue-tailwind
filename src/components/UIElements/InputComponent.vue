@@ -49,6 +49,7 @@
 <template>
   <div class="relative h-max">
     <Field
+      v-bind="$attrs"
       v-model="internalValue"
       :name="props_data.name" 
       :type="isPasswordVisible ? 'text' : props_data.type"
