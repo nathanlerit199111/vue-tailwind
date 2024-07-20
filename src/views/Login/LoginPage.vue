@@ -114,7 +114,7 @@
         <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
 
           
-          <FormWrapper @submit.prevent="login">
+          <FormWrapper @submit.prevent>
             <div
               v-if="!isRegister"
               class="my-gap-md"
