@@ -9,6 +9,7 @@
   import UploadCsv from '@/components/UIElements/UploadCsv.vue'
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Tables/TableComponent.vue'
+  import WizzardWrapper from '@/components/WizzardWrapper.vue'
 
   //API
   import AuthApi from '@/api/product-api.js'
@@ -33,6 +34,43 @@
     console.log('ITEM', item)
   }
 
+  const tabs = ref([
+    {
+      name: 'Tab 1',
+      index: 1,
+      isFillUp: false,
+      child: []
+    },
+    {
+      name: 'Tab 2',
+      index: 2,
+      isFillUp: false,
+      child: []
+    },
+    {
+      name: 'Tab 3',
+      index: 3,
+      isFillUp: false,
+      child: [
+        {
+          name: 'Tab 3 Index 1',
+          index: 3.1,
+          isFillUp: false
+        },
+        {
+          name: 'Tab 3 Index 2',
+          index: 3.2,
+          isFillUp: false
+        },
+        {
+          name: 'Tab 3 Index 3',
+          index: 3.3,
+          isFillUp: false
+        }
+      ]
+    }
+  ])
+
   //Functions from child component
   const tableRef = ref()
   watchEffect(() => {
@@ -48,6 +86,15 @@
     type="table"
   />
   <div v-if="!isLoading">
+    <SectionWrapper>
+      <WizzardWrapper
+        :tabs="tabs"
+        :step="2"
+        :childStepIndex="0"
+      >
+      </WizzardWrapper>
+    </SectionWrapper>
+
     <SectionWrapper>
       <ContainerWrapper>
         <RowWrapper additional_class="items-center">
