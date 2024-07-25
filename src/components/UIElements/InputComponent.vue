@@ -17,14 +17,6 @@
       type: String,
       default: ''
     },
-    minValue: {
-      type: Number,
-      default: null
-    },
-    maxValue: {
-      type: Number,
-      default: null
-    },
     rules: {
       type: Function,
       default: (value) => value
@@ -34,14 +26,7 @@
       default: (value) => value
     }
   })
-
   let isPasswordVisible = ref(false)
-
-  const handleInput = (event) => {
-    const inputValue = event.target.value;
-    const validatedValue = props.inputChange(inputValue);
-    model.value = validatedValue;
-  }
 </script>
 
 <template>
@@ -49,12 +34,9 @@
     <Field
       v-bind="$attrs"
       v-model="model"
-      @input="handleInput"
       :name="props.name"
       :type="isPasswordVisible ? 'text' : props.type"
       :rules="props.rules"
-      :max="props.maxValue"
-      :min="props.minValue"
       :class="`py-2 px-4 ${props.additional_class} 
         ${props.type === 'password' ? 'password pr-10' : ''}
         ${props.type === 'search' ? 'search pr-10' : ''}

@@ -12,8 +12,7 @@
     },
     image_loading: {
       type: String,
-      default: () => '',
-      required: true,
+      default: () => 'lazy'
     },
   })
 
