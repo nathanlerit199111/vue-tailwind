@@ -9,7 +9,7 @@
   import UploadCsv from '@/components/UIElements/UploadCsv.vue'
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Tables/TableComponent.vue'
-  import WizzardWrapper from '@/components/WizzardWrapper.vue'
+  import WizardWrapper from '@/components/WizardWrapper.vue'
 
   //API
   import AuthApi from '@/api/product-api.js'
@@ -87,12 +87,12 @@
   />
   <div v-if="!isLoading">
     <SectionWrapper>
-      <WizzardWrapper
+      <WizardWrapper
         :tabs="tabs"
         :step="2"
         :childStepIndex="0"
       >
-      </WizzardWrapper>
+      </WizardWrapper>
     </SectionWrapper>
 
     <SectionWrapper>
