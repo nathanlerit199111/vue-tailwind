@@ -4,17 +4,12 @@
     "tbs-bg-secondary-color-100" : "#e4e5f1",
     "tbs-bg-tertiary-color-100" : "#9394a5"
   },
-  "button": {
-    "tbs-btn-bg-primary-color-100" : "#fff",
-    "tbs-btn-bg-secondary-color-100": "#484b6a",
-    "tbs-btn-font-primary-color-100" : "#858585",
-    "tbs-btn-font-secondary-color-100": "#fff"
-  },
-  "button: hover": {
-    "tbs-btn-bg-primary-color-100-hover" : "#fff",
-    "tbs-btn-bg-secondary-color-100-hover": "#484b6a",
-    "tbs-btn-font-primary-color-100-hover" : "#858585",
-    "tbs-btn-font-secondary-color-100-hover": "#fff"
+  "button primary" : {
+    "tbs-btn-primary-color-100": "#FEDFCE",
+    "tbs-btn-primary-color-200": "#FDC09D",
+    "tbs-btn-primary-color-400": "#FB823B",
+    "tbs-btn-primary-color-500": "#FB630B",
+    "tbs-btn-secondary-color": "#FCFCFD"
   },
   "side navigation": {
     "tbs-nav-bg-color" : "#F1F2F7",

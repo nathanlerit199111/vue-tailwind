@@ -9,6 +9,7 @@
   import FormWrapper from '@/components/FormWrapper.vue'
   import InputComponent from '@/components/UIElements/InputComponent.vue'
   import SelectCountry from '@/components/UIElements/SelectCountry.vue'
+  import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
   import { Form, Field, useForm } from 'vee-validate';
@@ -142,7 +143,12 @@
               </div>
               <p class="text-xs">Forgot password</p>
               <div class="flex mx-gap-md">
-                <button class="tbs-btn-secondary">Login</button>
+                <ButtonComponent
+                  label="Login"
+                  btn_type="primary"
+                  variant=""
+                  size="large"
+                />
                 <button class="tbs-btn-primary" @click="isRegister = true">Register</button>
               </div>
             </div>
@@ -282,7 +288,12 @@
                 >
               </div>
               <div class="flex mx-gap-md">
-                <button class="tbs-btn-secondary">Sign Up</button>
+                <ButtonComponent
+                  label="Sign Up"
+                  type="primary"
+                  variant=""
+                  size="small"
+                />
                 <Button
                   class="tbs-btn-primary"
                   label="Cancel"

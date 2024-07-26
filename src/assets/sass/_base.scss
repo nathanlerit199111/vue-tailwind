@@ -77,7 +77,6 @@ p, label, span {
 input, textarea {
     padding: var(--tbs-space-sm) 0;
     border-radius: var(--tbs-border-radius-sm);
-    color: var(--tbs-btn-font-primary-color-100);
     outline: solid 1px var(--tbs-bg-tertiary-color-100);
     transition: all ease 0.25s;
     min-height: 40px;
@@ -94,7 +93,6 @@ input.search + i {
     right: 15px;
     transform: translate(0, -50%);
     cursor: pointer;
-    color: var(--tbs-btn-font-primary-color-100);
 }
 
 
@@ -103,23 +101,6 @@ input.search + i {
 //============= BUTTONS =============//
 button {
     @extend %buttonProperties;
-}
-
-.tbs-btn-primary {
-    //BG, FONT COLOR, BORDER COLOR
-    @include button(
-        --tbs-btn-bg-primary-color-100,
-        --tbs-btn-font-primary-color-100,
-        --tbs-btn-font-primary-color-100
-    )
-}
-.tbs-btn-secondary {
-    //BG, FONT COLOR, BORDER COLOR
-    @include button(
-        --tbs-btn-bg-secondary-color-100,
-        --tbs-btn-font-secondary-color-100,
-        none
-    )
 }
 
 //============= PAGINATION =============//

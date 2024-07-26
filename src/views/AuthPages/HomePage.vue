@@ -9,6 +9,7 @@
   import UploadCsv from '@/components/UIElements/UploadCsv.vue'
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Tables/TableComponent.vue'
+  import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
 
   //API
   import AuthApi from '@/api/product-api.js'
@@ -100,7 +101,14 @@
               <template #item.action="{ item }">
                 <td class="p-5">
                   <div class="flex mx-gap-sm">
-                    <button class="tbs-btn-primary">{{ item.brand }}</button>
+                    <ButtonComponent
+                      :label="item.brand"
+                      type="primary"
+                      variant=""
+                      size="small"
+                      left_icon="Bell"
+                      :is_loader="true"
+                    />
                     <button
                       class="tbs-btn-secondary"
                       @click="deleteItem(item.title)"
