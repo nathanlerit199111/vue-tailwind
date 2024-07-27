@@ -149,7 +149,13 @@
                   variant=""
                   size="large"
                 />
-                <button class="tbs-btn-primary" @click="isRegister = true">Register</button>
+                <ButtonComponent
+                  label="Register"
+                  btn_type="secondary"
+                  variant=""
+                  size="large"
+                  @click="isRegister = true"
+                />
               </div>
             </div>
 
@@ -290,13 +296,15 @@
               <div class="flex mx-gap-md">
                 <ButtonComponent
                   label="Sign Up"
-                  type="primary"
+                  btn_type="primary"
                   variant=""
-                  size="small"
+                  size="large"
                 />
-                <Button
-                  class="tbs-btn-primary"
+                <ButtonComponent
                   label="Cancel"
+                  btn_type="secondary"
+                  variant=""
+                  size="large"
                   @click="isRegister = false"
                 />
               </div>

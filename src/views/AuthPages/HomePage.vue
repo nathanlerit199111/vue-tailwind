@@ -103,18 +103,20 @@
                   <div class="flex mx-gap-sm">
                     <ButtonComponent
                       :label="item.brand"
-                      type="primary"
+                      btn_type="primary"
                       variant=""
                       size="small"
                       left_icon="Bell"
                       :is_loader="true"
                     />
-                    <button
-                      class="tbs-btn-secondary"
+                    <ButtonComponent
+                      :label="item.brand"
+                      btn_type="secondary"
+                      variant=""
+                      size="small"
+                      :is_loader="true"
                       @click="deleteItem(item.title)"
-                    >
-                      Delete
-                    </button>
+                    />
                   </div>
                 </td>
               </template>

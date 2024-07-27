@@ -5,11 +5,18 @@
     "tbs-bg-tertiary-color-100" : "#9394a5"
   },
   "button primary" : {
-    "tbs-btn-primary-color-100": "#FEDFCE",
-    "tbs-btn-primary-color-200": "#FDC09D",
-    "tbs-btn-primary-color-400": "#FB823B",
-    "tbs-btn-primary-color-500": "#FB630B",
-    "tbs-btn-secondary-color": "#FCFCFD"
+    "tbs-btnPrimary-primary-color-100": "#868ac1",
+    "tbs-btnPrimary-primary-color-200": "#656892",
+    "tbs-btnPrimary-primary-color-400": "#484b6a",
+    "tbs-btnPrimary-primary-color-500": "#32344a",
+    "tbs-btnPrimary-secondary-color": "#FCFCFD"
+  },
+  "button secondary" : {
+    "tbs-btnSecondary-primary-color-100": "#e7f1f5",
+    "tbs-btnSecondary-primary-color-200": "#c7dbe3",
+    "tbs-btnSecondary-primary-color-400": "#bacdd6",
+    "tbs-btnSecondary-primary-color-500": "#94a4ab",
+    "tbs-btnSecondary-secondary-color": "#FCFCFD"
   },
   "side navigation": {
     "tbs-nav-bg-color" : "#F1F2F7",

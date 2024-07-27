@@ -137,62 +137,62 @@
 
 //==== PRIMARY ====//
 .tbs-btn-primary {
-  background: var(--tbs-btn-primary-color-400);
-  color: var(--tbs-btn-secondary-color);
+  background: var(--tbs-btnPrimary-primary-color-400);
+  color: var(--tbs-btnPrimary-secondary-color);
   border-radius: var(--tbs-border-radius-xs);
   // padding: var(--tbs-space-xs) var(--tbs-space-sm);
 
   //icon default state
   * {
-    stroke: var(--tbs-btn-secondary-color);
+    stroke: var(--tbs-btnPrimary-secondary-color);
   }
 
   //hover
   &:hover {
-    background: var(--tbs-btn-primary-color-500);
+    background: var(--tbs-btnPrimary-primary-color-500);
   }
 
   //disabled
   &.disabled {
-    background: var(--tbs-btn-primary-color-200);
+    background: var(--tbs-btnPrimary-primary-color-200);
   }
 
 
 
   //OUTLINED//
   &.outlined {
-    background: var(--tbs-btn-secondary-color);
-    border: solid 1px var(--tbs-btn-primary-color-400);
-    color: var(--tbs-btn-primary-color-400);
+    background: var(--tbs-btnPrimary-secondary-color);
+    border: solid 1px var(--tbs-btnPrimary-primary-color-400);
+    color: var(--tbs-btnPrimary-primary-color-400);
     border-radius: var(--tbs-border-radius-xs);
     // padding: var(--tbs-space-xs) var(--tbs-space-sm);
 
     //icon default state
     * {
-      stroke: var(--tbs-btn-primary-color-400);
+      stroke: var(--tbs-btnPrimary-primary-color-400);
     }
 
     //hover
     &:hover {
-      background: var(--tbs-btn-primary-color-100);
+      background: var(--tbs-btnPrimary-primary-color-100);
     }
 
     //pressed
     &:active {
-      background: var(--tbs-btn-primary-color-500);
-      color: var(--tbs-btn-secondary-color);
+      background: var(--tbs-btnPrimary-primary-color-500);
+      color: var(--tbs-btnPrimary-secondary-color);
       * {
-        stroke: var(--tbs-btn-secondary-color);
+        stroke: var(--tbs-btnPrimary-secondary-color);
       }
     }
 
     //disabled
     &.disabled {
-      background: var(--tbs-btn-secondary-color);
-      color: var(--tbs-btn-primary-color-100);
-      border: solid 1px var(--tbs-btn-primary-color-100);
+      background: var(--tbs-btnPrimary-secondary-color);
+      color: var(--tbs-btnPrimary-primary-color-100);
+      border: solid 1px var(--tbs-btnPrimary-primary-color-100);
       * {
-        stroke: var(--tbs-btn-primary-color-100);
+        stroke: var(--tbs-btnPrimary-primary-color-100);
       }
     }
   }
@@ -202,41 +202,142 @@
   //TEXT//
   &.text {
     background: transparent;
-    color: var(--tbs-btn-primary-color-400);
+    color: var(--tbs-btnPrimary-primary-color-400);
 
     //icon default state
     * {
-      stroke: var(--tbs-btn-primary-color-400);
+      stroke: var(--tbs-btnPrimary-primary-color-400);
     }
 
     //hover
     &:hover span {
-      border-bottom: solid 2px var(--tbs-btn-primary-color-400);
+      border-bottom: solid 2px var(--tbs-btnPrimary-primary-color-400);
     }
 
     //pressed
     &:active {
-      background: var(--tbs-btn-primary-color-100);
-      color: var(--tbs-btn-primary-color-500);
+      background: var(--tbs-btnPrimary-primary-color-100);
+      color: var(--tbs-btnPrimary-primary-color-500);
       box-shadow: none;
       * {
-        stroke: var(--tbs-btn-primary-color-500);
+        stroke: var(--tbs-btnPrimary-primary-color-500);
       }
     }
 
     //disabled
     &.disabled {
-      color: var(--tbs-btn-primary-color-100);
+      color: var(--tbs-btnPrimary-primary-color-100);
       &:hover span {
         border-bottom: none;
       }
       * {
-        stroke: var(--tbs-btn-primary-color-100);
+        stroke: var(--tbs-btnPrimary-primary-color-100);
       }
     }
   }
 }
 
 
+//==== PRIMARY ====//
+.tbs-btn-secondary {
+  background: var(--tbs-btnSecondary-primary-color-400);
+  color: var(--tbs-btnSecondary-secondary-color);
+  border-radius: var(--tbs-border-radius-xs);
+  // padding: var(--tbs-space-xs) var(--tbs-space-sm);
+
+  //icon default state
+  * {
+    stroke: var(--tbs-btnSecondary-secondary-color);
+  }
+
+  //hover
+  &:hover {
+    background: var(--tbs-btnSecondary-primary-color-500);
+  }
+
+  //disabled
+  &.disabled {
+    background: var(--tbs-btnSecondary-primary-color-200);
+  }
+
+
+
+  //OUTLINED//
+  &.outlined {
+    background: var(--tbs-btnSecondary-secondary-color);
+    border: solid 1px var(--tbs-btnSecondary-primary-color-400);
+    color: var(--tbs-btnSecondary-primary-color-400);
+    border-radius: var(--tbs-border-radius-xs);
+    // padding: var(--tbs-space-xs) var(--tbs-space-sm);
+
+    //icon default state
+    * {
+      stroke: var(--tbs-btnSecondary-primary-color-400);
+    }
+
+    //hover
+    &:hover {
+      background: var(--tbs-btnSecondary-primary-color-100);
+    }
+
+    //pressed
+    &:active {
+      background: var(--tbs-btnSecondary-primary-color-500);
+      color: var(--tbs-btnSecondary-secondary-color);
+      * {
+        stroke: var(--tbs-btnSecondary-secondary-color);
+      }
+    }
+
+    //disabled
+    &.disabled {
+      background: var(--tbs-btnSecondary-secondary-color);
+      color: var(--tbs-btnSecondary-primary-color-100);
+      border: solid 1px var(--tbs-btnSecondary-primary-color-100);
+      * {
+        stroke: var(--tbs-btnSecondary-primary-color-100);
+      }
+    }
+  }
+
+
+
+  //TEXT//
+  &.text {
+    background: transparent;
+    color: var(--tbs-btnSecondary-primary-color-400);
+
+    //icon default state
+    * {
+      stroke: var(--tbs-btnSecondary-primary-color-400);
+    }
+
+    //hover
+    &:hover span {
+      border-bottom: solid 2px var(--tbs-btnSecondary-primary-color-400);
+    }
+
+    //pressed
+    &:active {
+      background: var(--tbs-btnSecondary-primary-color-100);
+      color: var(--tbs-btnSecondary-primary-color-500);
+      box-shadow: none;
+      * {
+        stroke: var(--tbs-btnSecondary-primary-color-500);
+      }
+    }
+
+    //disabled
+    &.disabled {
+      color: var(--tbs-btnSecondary-primary-color-100);
+      &:hover span {
+        border-bottom: none;
+      }
+      * {
+        stroke: var(--tbs-btnSecondary-primary-color-100);
+      }
+    }
+  }
+}
 //Copy the primary button css and change the values to create succeeding variations of buttons
 </style>
