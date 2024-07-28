@@ -63,7 +63,10 @@
         ${props_data.is_mobile ? 'isMobile' : ''}
     `"
   >
-    <!-- Toggle for Desktop and Tablet -->
+    <!-- 
+      Toggle for Desktop and Tablet
+      Doesn't matter if it used ButtonComponent or not since this does not follow the other styles
+    -->
     <button
       v-if="!props_data.is_mobile"
       class="side-nav-close"
@@ -126,7 +129,6 @@
             :icon="nav.icon"
             width="18"
             height="18"
-            fill="#000000"
             stroke=""
           />
           <span class="ml-2">{{ nav.title }}</span>
@@ -135,4 +137,3 @@
     </nav>
   </aside>
 </template>
-@/stores/settings/side-nav

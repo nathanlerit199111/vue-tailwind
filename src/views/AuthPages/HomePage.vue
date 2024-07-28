@@ -106,7 +106,7 @@
                       btn_type="primary"
                       variant=""
                       size="small"
-                      left_icon="Bell"
+                      left_icon="bell"
                       :is_loader="true"
                     />
                     <ButtonComponent

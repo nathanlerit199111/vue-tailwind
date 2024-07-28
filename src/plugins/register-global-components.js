@@ -2,7 +2,7 @@ import { camelCase, upperFirst } from 'lodash'
 
 export default {
   install(app) {
-    const componentFiles = import.meta.glob('@/components/global/*.vue', {
+    const componentFiles = import.meta.glob('@/components/UIElements/AppIcon.vue', {
       eager: true
     })
 

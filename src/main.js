@@ -13,7 +13,7 @@ import 'tailwindcss/tailwind.css'
 import App from './App.vue'
 import router from './router'
 
-import registerGlobalComponentsPlugin from './plugins/registerGlobalComponentsPlugin'
+import registerGlobalComponents from './plugins/register-global-components'
 
 // Pinia v2.0.28
 // import pinia from './stores/index';
@@ -74,7 +74,7 @@ app.use(createPinia())
 app.use(router)
 app.use(vueLazyLoad)
 app.use(primeVue)
-app.use(registerGlobalComponentsPlugin)
+app.use(registerGlobalComponents)
 
 // app.use(toastService)
 // app.use(pinia);

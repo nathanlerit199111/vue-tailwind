@@ -85,7 +85,6 @@
   >
     <slot/>
     <component
-      v-if="props_data.label"
       :is="props_data.link_type === 'external' ? 'a' : props_data.link_type === 'internal' ? RouterLink : 'span'"
       :href="props_data.link_type === 'external' ? props_data.link : null"
       :to="props_data.link_type === 'internal' ? props_data.link : null"
@@ -97,9 +96,9 @@
         :fill="props_data.icon_fill_color"
         :stroke="props_data.icon_stroke_color"
       />
-
+      
       {{ props_data.label }}
-
+      
       <SVGIcon
         v-if="props_data.right_icon"
         :icon="props_data.right_icon"
@@ -123,13 +122,13 @@
 }
 
 //==== SIZES ====//
-.btn-small > * {
+.btn-small > *:first-child{
   padding: var(--tbs-space-xs) var(--tbs-space-md);
 }
-.btn-medium > * {
+.btn-medium > *:first-child {
   padding: var(--tbs-space-sm) var(--tbs-space-md);
 }
-.btn-large > * {
+.btn-large > *:first-child {
   padding: 10px var(--tbs-space-lg);
 }
 
