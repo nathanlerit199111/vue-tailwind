@@ -83,8 +83,9 @@
     :class="['btn-wrapper', 'relative', `tbs-btn-${props_data.btn_type}`, `btn-${props_data.size}`, props_data.additional_class, props_data.variant, { 'disabled': props_data.disabled }]"
     :disabled="props_data.disabled"
   >
-
+    <slot/>
     <component
+      v-if="props_data.label"
       :is="props_data.link_type === 'external' ? 'a' : props_data.link_type === 'internal' ? RouterLink : 'span'"
       :href="props_data.link_type === 'external' ? props_data.link : null"
       :to="props_data.link_type === 'internal' ? props_data.link : null"
@@ -107,7 +108,6 @@
       />
       <ButtonLoader v-if="props_data.is_loader" />
     </component>
-
   </button>
 </template>
 

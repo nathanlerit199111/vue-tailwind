@@ -1,6 +1,5 @@
 <script setup>
-    import { ref, defineEmits } from 'vue'
-
+    const model = defineModel()
     const props_data = defineProps({
         additional_class: {
             type: String,
@@ -19,21 +18,12 @@
             default: ''
         }
     })
-
-    const emit = defineEmits(['update:modelValue', 'input'])
-    let val = ref(props_data.modelValue || '')
-    const handleInput = (event) => {
-        const value = event.target.value; // Extract value from InputEvent object
-        val.value = value
-        emit('update:modelValue', value)
-        emit('input', value) // Emit a custom input event with the value
-    }
 </script>
 
 <template>
     <div class="relative h-max">
         <textarea
-            v-model="val"
+            v-model="model"
             @input="handleInput"
             :id="props_data.id_name ? props_data.id_name : null"
             :class="`py-2 px-4 ${props_data.additional_class}`"
