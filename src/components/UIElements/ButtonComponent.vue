@@ -75,8 +75,6 @@
         default: false
     },
   })
-
-  const isExternal = computed(() => props_data.link_type === 'external')
 </script>
 
 <template>
@@ -238,7 +236,7 @@
 }
 
 
-//==== PRIMARY ====//
+//==== SECONDARY ====//
 .tbs-btn-secondary {
   background: var(--tbs-btnSecondary-primary-color-400);
   color: var(--tbs-btnSecondary-secondary-color);
