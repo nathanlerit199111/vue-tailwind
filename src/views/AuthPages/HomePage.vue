@@ -10,6 +10,7 @@
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Tables/TableComponent.vue'
   import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
+  import AccordionComponent from '@/components/Accordion/AccordionComponent.vue'
 
   //API
   import AuthApi from '@/api/product-api.js'
@@ -25,6 +26,17 @@
       isLoading.value = false
     }
   }
+
+  const accordion_array = [
+    {
+      name: 'acc1',
+      content: 'accCon1'
+    },
+    {
+      name: 'acc2',
+      content: 'accCon2'
+    }
+  ]
 
   onMounted(() => {
     getProductApi()
@@ -67,6 +79,14 @@
       <ContainerWrapper>
         <RowWrapper>
           <ColumnWrapper additional_class="w-full">
+            <AccordionComponent
+              :items="accordion_array"
+              right_icon="bell"
+              title_key="name" 
+              content_key="content"
+            />
+
+
             <!--
               - table_data props will pass the entire data from database
               - headers props will just literally display the text. if no value, it will load the whole data
