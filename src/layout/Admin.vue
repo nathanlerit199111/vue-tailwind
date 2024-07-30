@@ -1,13 +1,12 @@
 <script setup>
-  import { defineAsyncComponent } from 'vue'
   import { RouterView, useRoute } from 'vue-router'
   import 'primevue/resources/themes/aura-light-green/theme.css'
 
-  import AppHeader from '@/components/Widgets/Headers/AppHeader.vue'
-  //import SideNavComponent from '@/components/Navigations/SideNavComponent.vue'
-  const SideNavComponent = defineAsyncComponent(
-    () => import('@/components/Navigations/SideNavComponent.vue')
-  )
+  import {
+    AppHeader,
+    SideNavComponent
+  } from '@/components/index.js'
+
   import { useViewport } from '@/helpers/viewport-size.js'
 
   const route = useRoute()

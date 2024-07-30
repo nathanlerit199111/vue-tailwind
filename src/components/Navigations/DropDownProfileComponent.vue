@@ -1,7 +1,9 @@
 <script setup>
   import { ref, onMounted } from 'vue'
   import { getCookie } from '@/helpers/get-cookie'
-  import ImgComponent from '@/components/UIElements/ImgComponent.vue'
+  import {
+    ImgComponent
+  } from '@/components/index.js'
 
   const props_data = defineProps({
     menu_data: {

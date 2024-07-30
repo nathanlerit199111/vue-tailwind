@@ -1,46 +1,8 @@
-<template>
-    <div class="accordion-wrapper">
-      <div 
-        v-for="(item, index) in items" 
-        :key="index" 
-        class="accordion-item"
-      >
-        <div 
-          class="accordion-header" 
-          @click="toggle(index)"
-          :class="{ active: isOpen(index) }"
-        >
-          <!-- Left Icon -->
-          <div v-if="props_data.left_icon" class="accordion-icon left" :style="iconStyle(index)">
-            <SVGIcon :icon="props_data.left_icon" />
-          </div>
-    
-          <!-- Title -->
-          <h2 class="accordion-title">{{ item[title_key] }}</h2>
-    
-          <!-- Right Icon -->
-          <div v-if="props_data.right_icon" class="accordion-icon right" :style="iconStyle(index)">
-            <SVGIcon :icon="props_data.right_icon" />
-          </div>
-        </div>
-    
-        <div 
-          class="accordion-content"
-          :style="{ maxHeight: isOpen(index) ? `${contentHeights[index]}px` : '0px', opacity: isOpen(index) ? 1 : 0 }"
-        >
-          <div>
-            <p>{{ item[content_key] }}</p>
-            <slot :item="item"/>
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
-  
-  
 <script setup>
   import { ref, watch, onMounted, nextTick } from 'vue';
-  import SVGIcon from '@/components/UIElements/SVGIcon.vue';
+  import {
+    SVGIcon
+  } from '@/components/index.js'
   
   // Props definition
   const props_data = defineProps({
@@ -127,6 +89,45 @@
 };
 
 </script>
+
+<template>
+  <div class="accordion-wrapper">
+    <div 
+      v-for="(item, index) in items" 
+      :key="index" 
+      class="accordion-item"
+    >
+      <div 
+        class="accordion-header" 
+        @click="toggle(index)"
+        :class="{ active: isOpen(index) }"
+      >
+        <!-- Left Icon -->
+        <div v-if="props_data.left_icon" class="accordion-icon left" :style="iconStyle(index)">
+          <SVGIcon :icon="props_data.left_icon" />
+        </div>
+  
+        <!-- Title -->
+        <h2 class="accordion-title">{{ item[title_key] }}</h2>
+  
+        <!-- Right Icon -->
+        <div v-if="props_data.right_icon" class="accordion-icon right" :style="iconStyle(index)">
+          <SVGIcon :icon="props_data.right_icon" />
+        </div>
+      </div>
+  
+      <div 
+        class="accordion-content"
+        :style="{ maxHeight: isOpen(index) ? `${contentHeights[index]}px` : '0px', opacity: isOpen(index) ? 1 : 0 }"
+      >
+        <div>
+          <p>{{ item[content_key] }}</p>
+          <slot :item="item"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
   
 <style scoped lang="scss">
   .accordion-wrapper {

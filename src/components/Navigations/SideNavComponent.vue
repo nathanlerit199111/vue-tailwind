@@ -3,7 +3,9 @@
   import { useSideNavigation } from '@/stores/settings/side-nav'
   import { getCookie } from '@/helpers/get-cookie'
   import { checkUserPermision } from '@/helpers/permission-validation'
-  import SVGIcon from '@/components/UIElements/SVGIcon.vue'
+  import {
+    SVGIcon
+  } from '@/components/index.js'
 
   const userProfile = JSON.parse(getCookie('userProfile'))
 

@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue';
-import InputComponent from '../UIElements/InputComponent.vue';
-import TextAreaComponent from '../UIElements/TextAreaComponent.vue';
+import InputComponent from '@/components/UIElements/InputComponent.vue';
+import TextAreaComponent from '@/components/UIElements/TextAreaComponent.vue';
 import Calendar from 'primevue/calendar';
 
 const props_data = defineProps({

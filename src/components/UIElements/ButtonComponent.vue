@@ -1,9 +1,10 @@
 <script setup>
-  import { defineProps, defineAsyncComponent, computed } from 'vue'
   import { RouterLink } from 'vue-router'
 
-  const SVGIcon = defineAsyncComponent(() => import('@/components/UIElements/SVGIcon.vue'))
-  const ButtonLoader = defineAsyncComponent(() => import('@/components/Widgets/Loaders/ButtonLoader.vue'))
+  import {
+    SVGIcon,
+    ButtonLoader,
+  } from '@/components/index.js'
 
   const props_data = defineProps({
     additional_class: {

@@ -1,8 +1,10 @@
 <script setup>
-    import SectionWrapper from '@/components/SectionWrapper.vue'
-    import ContainerWrapper from '@/components/ContainerWrapper.vue'
-    import RowWrapper from '@/components/RowWrapper.vue'
-    import ColumnWrapper from '@/components/ColumnWrapper.vue'
+    import {
+        SectionWrapper,
+        ContainerWrapper,
+        RowWrapper,
+        ColumnWrapper,
+    } from '@/components/index.js'
 
     //VUE PRIME
     import Skeleton from 'primevue/skeleton';

@@ -1,7 +1,9 @@
 <script setup>
     import { ref } from 'vue'
-
-    import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
+    import {
+        ButtonComponent
+    } from '@/components/index.js'
+    
     import Papa from 'papaparse';
     // Parse the CSV data using PapaParse
     const isLoading = ref(false)

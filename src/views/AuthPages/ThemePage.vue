@@ -2,10 +2,12 @@
 import { ref, onMounted } from 'vue'
 import customConfig from '@/theme/theme.json';
 
-import SectionWrapper from '@/components/SectionWrapper.vue'
-import ContainerWrapper from '@/components/ContainerWrapper.vue'
-import RowWrapper from '@/components/RowWrapper.vue'
-import ColumnWrapper from '@/components/ColumnWrapper.vue'
+  import {
+    SectionWrapper,
+    ContainerWrapper,
+    RowWrapper,
+    ColumnWrapper,
+  } from '@/components/index.js'
 
 //TOAST MESSAGE
 import ToastWrapper from '@/components/ToastWrapper.vue'

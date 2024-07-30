@@ -2,17 +2,18 @@
   import { ref, onMounted } from 'vue'
   import { useRouter } from 'vue-router'
 
-  import SectionWrapper from '@/components/SectionWrapper.vue'
-  import ContainerWrapper from '@/components/ContainerWrapper.vue'
-  import RowWrapper from '@/components/RowWrapper.vue'
-  import ColumnWrapper from '@/components/ColumnWrapper.vue'
-  import FormWrapper from '@/components/FormWrapper.vue'
-  import InputComponent from '@/components/UIElements/InputComponent.vue'
-  import SelectCountry from '@/components/UIElements/SelectCountry.vue'
-  import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
+  import {
+    SectionWrapper,
+    ContainerWrapper,
+    RowWrapper,
+    ColumnWrapper,
+    FormWrapper,
+    InputComponent,
+    SelectCountry,
+    ButtonComponent,
+  } from '@/components/index.js'
+  
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
-
-  import { Form, Field, useForm } from 'vee-validate'
 
   //TOAST MESSAGE
   import ToastWrapper from '@/components/ToastWrapper.vue'

@@ -1,6 +1,8 @@
 <script setup>
-    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-
+    import {
+        ImgComponent
+    } from '@/components/index.js'
+    
     const props_data = defineProps({
         gallery_data: {
             type: Array,

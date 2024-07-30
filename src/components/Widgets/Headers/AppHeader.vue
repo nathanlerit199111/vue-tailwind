@@ -1,10 +1,12 @@
 <script setup>
   import { getCookie } from '@/helpers/get-cookie'
-  import ContainerWrapper from '@/components/ContainerWrapper.vue'
-  import RowWrapper from '@/components/RowWrapper.vue'
-  import ColumnWrapper from '@/components/ColumnWrapper.vue'
-  import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
-  import SVGIcon from '@/components/UIElements/SVGIcon.vue'
+  import {
+    ContainerWrapper,
+    RowWrapper,
+    ColumnWrapper,
+    DropDownProfileComponent,
+    SVGIcon
+  } from '@/components/index.js'
 
   const logout = () => {
     const authToken = getCookie('authToken')

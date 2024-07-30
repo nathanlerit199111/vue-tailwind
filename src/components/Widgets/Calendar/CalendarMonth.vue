@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import moment from 'moment'
 
-import CalendarModal from '@/components/Calendar/CalendarModal.vue'
+import CalendarModal from '@/components/Widgets/Calendar/CalendarModal.vue'
 
 
 // Calendar Modal
