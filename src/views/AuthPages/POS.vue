@@ -4,9 +4,9 @@
     import ContainerWrapper from '@/components/ContainerWrapper.vue'
     import RowWrapper from '@/components/RowWrapper.vue'
     import ColumnWrapper from '@/components/ColumnWrapper.vue'
-    import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
+    import SkeletonLoader from '@/components/Widgets/Loaders/SkeletonLoader.vue'
     // import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-    import GalleryImage from '@/components/Galleries/GalleryImage.vue'
+    import GalleryImage from '@/components/Widgets/Galleries/GalleryImage.vue'
 
     //VUE PRIME
     // import Button from 'primevue/button';

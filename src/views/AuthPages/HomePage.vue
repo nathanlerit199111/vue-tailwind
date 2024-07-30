@@ -5,7 +5,7 @@
   import ContainerWrapper from '@/components/ContainerWrapper.vue'
   import RowWrapper from '@/components/RowWrapper.vue'
   import ColumnWrapper from '@/components/ColumnWrapper.vue'
-  import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
+  import SkeletonLoader from '@/components/Widgets/Loaders/SkeletonLoader.vue'
   import UploadCsv from '@/components/UIElements/UploadCsv.vue'
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Widgets/Tables/TableComponent.vue'

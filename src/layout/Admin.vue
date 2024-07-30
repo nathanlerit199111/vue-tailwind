@@ -3,7 +3,7 @@
   import { RouterView, useRoute } from 'vue-router'
   import 'primevue/resources/themes/aura-light-green/theme.css'
 
-  import HeaderComponent from '@/components/Widgets/Headers/HeaderComponent.vue'
+  import AppHeader from '@/components/Widgets/Headers/AppHeader.vue'
   //import SideNavComponent from '@/components/Navigations/SideNavComponent.vue'
   const SideNavComponent = defineAsyncComponent(
     () => import('@/components/Navigations/SideNavComponent.vue')
@@ -21,7 +21,7 @@
       :is_mobile="isMobile"
     />
     <main>
-      <HeaderComponent />
+      <AppHeader />
       <hr />
       <RouterView />
     </main>
