@@ -78,6 +78,15 @@ const routes =  [
           meta: {
             ...meta['home']
           }
+        },
+        {
+          title: 'Wizard',
+          path: '/wizard',
+          name: 'wizard',
+          component: () => import('../views/AuthPages/FormWizardPage.vue'),
+          meta: {
+            ...meta['home']
+          }
         }
       ]
     },

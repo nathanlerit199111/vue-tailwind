@@ -81,6 +81,18 @@
           isFillUp: false
         }
       ]
+    },
+    {
+      name: 'Tab 4',
+      index: 4,
+      isFillUp: false,
+      child: []
+    },
+    {
+      name: 'Tab 5',
+      index: 5,
+      isFillUp: false,
+      child: []
     }
   ])
 
@@ -99,19 +111,6 @@
     type="table"
   />
   <div v-if="!isLoading">
-    <SectionWrapper>
-      <WizardWrapper
-        :tabs="tabs"
-        :step="2"
-        :childStepIndex="0"
-      >
-        <!-- Input Fields -->
-        <!-- Navigation Buttons -->
-        <!-- Submit Button -->
-        test data here sfasfsaf
-      </WizardWrapper>
-    </SectionWrapper>
-
     <SectionWrapper>
       <ContainerWrapper>
         <RowWrapper additional_class="items-center">
