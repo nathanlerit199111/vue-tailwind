@@ -1,5 +1,6 @@
 <script setup>
   import { ref } from 'vue'
+  import FormWrapper from '@/components/FormWrapper.vue'
   import SVGIcon from '@/components/UIElements/SVGIcon.vue'
 
   const props_data = defineProps({
@@ -21,7 +22,7 @@
 </script>
 
 <template>
-  <div class="wizzard">
+  <div class="wizzard-wrapper">
     <div class="tabs">
       <div
         class="item"
@@ -64,13 +65,15 @@
       </div>
     </div>
     <div class="content">
-      <slot></slot>
+      <FormWrapper>
+        <slot></slot>
+      </FormWrapper>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .wizzard {
+  .wizzard-wrapper {
     position: relative;
 
     .tabs {

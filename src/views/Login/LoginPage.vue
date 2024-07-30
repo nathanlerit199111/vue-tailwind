@@ -11,7 +11,7 @@
   import SelectCountry from '@/components/UIElements/SelectCountry.vue'
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
-  import { Form, Field, useForm } from 'vee-validate';
+  import { Form, Field, useForm } from 'vee-validate'
 
   //TOAST MESSAGE
   import ToastWrapper from '@/components/ToastWrapper.vue'
@@ -98,10 +98,10 @@
   const toast = useToastStore()
   const isRequired = (value) => {
     if (!value) {
-      return 'This field is required';
+      return 'This field is required'
     }
-    return true;
-    }
+    return true
+  }
 </script>
 <template>
   <ToastWrapper position="top-right" />
@@ -112,8 +112,6 @@
     <ContainerWrapper additional_class="h-full">
       <RowWrapper additional_class="items-center h-full">
         <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
-
-          
           <FormWrapper @submit="login">
             <div
               v-if="!isRegister"
@@ -143,7 +141,12 @@
               <p class="text-xs">Forgot password</p>
               <div class="flex mx-gap-md">
                 <button class="tbs-btn-secondary">Login</button>
-                <button class="tbs-btn-primary" @click="isRegister = true">Register</button>
+                <button
+                  class="tbs-btn-primary"
+                  @click="isRegister = true"
+                >
+                  Register
+                </button>
               </div>
             </div>
 
@@ -290,7 +293,7 @@
                 />
               </div>
             </div>
-          </FormWrapper >
+          </FormWrapper>
         </ColumnWrapper>
       </RowWrapper>
     </ContainerWrapper>

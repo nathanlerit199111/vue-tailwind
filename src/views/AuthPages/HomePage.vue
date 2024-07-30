@@ -92,6 +92,10 @@
         :step="2"
         :childStepIndex="0"
       >
+        <!-- Input Fields -->
+        <!-- Navigation Buttons -->
+        <!-- Submit Button -->
+        test data here sfasfsaf
       </WizardWrapper>
     </SectionWrapper>
 
