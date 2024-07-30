@@ -8,9 +8,9 @@
   import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
   import UploadCsv from '@/components/UIElements/UploadCsv.vue'
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-  import TableComponent from '@/components/Tables/TableComponent.vue'
+  import TableComponent from '@/components/Widgets/Tables/TableComponent.vue'
   import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
-  import AccordionComponent from '@/components/Accordion/AccordionComponent.vue'
+  import AccordionComponent from '@/components/Widgets/Accordion/AccordionComponent.vue'
 
   //API
   import AuthApi from '@/api/product-api.js'
