@@ -81,7 +81,7 @@ onMounted(() => {
   height: 50px;
   box-shadow: 0 0 5px black inset;
   border-radius: 5px;
-  background: url('@/assets/images/gold-bg.png') center;
+  background: orange;
 }
 
 .digit-wrapper {

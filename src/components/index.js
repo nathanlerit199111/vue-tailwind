@@ -1,98 +1,47 @@
-import { defineAsyncComponent } from 'vue'
+// WRAPPERS
+import SectionWrapper from '@/components/SectionWrapper.vue'
+import ContainerWrapper from '@/components/ContainerWrapper.vue'
+import RowWrapper from '@/components/RowWrapper.vue'
+import ColumnWrapper from '@/components/ColumnWrapper.vue'
+import FormWrapper from '@/components/FormWrapper.vue'
 
-//WRAPPERS
-const SectionWrapper = defineAsyncComponent(() =>
-    import('@/components/SectionWrapper.vue')
-)
-const ContainerWrapper = defineAsyncComponent(() =>
-    import('@/components/ContainerWrapper.vue')
-)
-const RowWrapper = defineAsyncComponent(() =>
-    import('@/components/RowWrapper.vue')
-)
-const ColumnWrapper = defineAsyncComponent(() =>
-    import('@/components/ColumnWrapper.vue')
-)
-const FormWrapper = defineAsyncComponent(() =>
-    import('@/components/FormWrapper.vue')
-)
+// NAVIGATIONS
+import SideNavComponent from '@/components/Navigations/SideNavComponent.vue'
+import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
 
+// WIDGETS
+import SkeletonLoader from '@/components/Widgets/Loaders/SkeletonLoader.vue'
+import ButtonLoader from '@/components/Widgets/Loaders/ButtonLoader.vue'
+import AppHeader from '@/components/Widgets/Headers/AppHeader.vue'
+import TableComponent from '@/components/Widgets/Tables/TableComponent.vue'
+import AccordionComponent from '@/components/Widgets/Accordion/AccordionComponent.vue'
+import GalleryImage from '@/components/Widgets/Galleries/GalleryImage.vue'
+import CalendarMonth from '@/components/Widgets/Calendar/CalendarMonth.vue'
 
-//NAVIGATIONS
-const SideNavComponent = defineAsyncComponent(() =>
-    import('@/components/Navigations/SideNavComponent.vue')
-)
-const DropDownProfileComponent = defineAsyncComponent(() =>
-    import('@/components/Navigations/DropDownProfileComponent.vue')
-)
-
-
-//WIDGETS
-const SkeletonLoader = defineAsyncComponent(() =>
-    import('@/components/Widgets/Loaders/SkeletonLoader.vue')
-)
-const ButtonLoader = defineAsyncComponent(() =>
-    import('@/components/Widgets/Loaders/ButtonLoader.vue')
-)
-const AppHeader = defineAsyncComponent(() =>
-    import('@/components/Widgets/Headers/AppHeader.vue')
-)
-const TableComponent = defineAsyncComponent(() =>
-    import('@/components/Widgets/Tables/TableComponent.vue')
-)
-const AccordionComponent = defineAsyncComponent(() =>
-    import('@/components/Widgets/Accordion/AccordionComponent.vue')
-)
-const GalleryImage = defineAsyncComponent(() =>
-    import('@/components/Widgets/Galleries/GalleryImage.vue')
-)
-const CalendarMonth = defineAsyncComponent(() =>
-    import('@/components/Widgets/Calendar/CalendarMonth.vue')
-)
-
-
-//UIELEMENTS
-const ImgComponent = defineAsyncComponent(() =>
-    import('@/components/UIElements/ImgComponent.vue')
-)
-const ButtonComponent = defineAsyncComponent(() =>
-    import('@/components/UIElements/ButtonComponent.vue')
-)
-const InputComponent = defineAsyncComponent(() =>
-    import('@/components/UIElements/InputComponent.vue')
-)
-const LottieComponent = defineAsyncComponent(() =>
-    import('@/components/UIElements/LottieComponent.vue')
-)
-const OdometerComponent = defineAsyncComponent(() =>
-    import('@/components/UIElements/OdometerComponent.vue')
-)
-const SelectCountry = defineAsyncComponent(() =>
-    import('@/components/UIElements/SelectCountry.vue')
-)
-const TextAreaComponent = defineAsyncComponent(() =>
-    import('@/components/UIElements/TextAreaComponent.vue')
-)
-const UploadCsv = defineAsyncComponent(() =>
-    import('@/components/UIElements/UploadCsv.vue')
-)
-const SVGIcon = defineAsyncComponent(() =>
-    import('@/components/UIElements/SVGIcon.vue')
-)
+// UIELEMENTS
+import ImgComponent from '@/components/UIElements/ImgComponent.vue'
+import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
+import InputComponent from '@/components/UIElements/InputComponent.vue'
+import LottieComponent from '@/components/UIElements/LottieComponent.vue'
+import OdometerComponent from '@/components/UIElements/OdometerComponent.vue'
+import SelectCountry from '@/components/UIElements/SelectCountry.vue'
+import TextAreaComponent from '@/components/UIElements/TextAreaComponent.vue'
+import UploadCsv from '@/components/UIElements/UploadCsv.vue'
+import SVGIcon from '@/components/UIElements/SVGIcon.vue'
 
 export {
-    //Wrapper
+    // Wrapper
     SectionWrapper,
     ContainerWrapper,
     RowWrapper,
     ColumnWrapper,
     FormWrapper,
 
-    //Navigations
+    // Navigations
     SideNavComponent,
     DropDownProfileComponent,
 
-    //Widgets
+    // Widgets
     SkeletonLoader,
     ButtonLoader,
     AppHeader,
@@ -101,7 +50,7 @@ export {
     GalleryImage,
     CalendarMonth,
 
-    //UIElements
+    // UIElements
     ImgComponent,
     ButtonComponent,
     InputComponent,
