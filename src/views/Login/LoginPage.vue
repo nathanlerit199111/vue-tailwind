@@ -12,7 +12,7 @@
   import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
-  import { Form, Field, useForm } from 'vee-validate';
+  import { Form, Field, useForm } from 'vee-validate'
 
   //TOAST MESSAGE
   import ToastWrapper from '@/components/ToastWrapper.vue'
@@ -65,7 +65,7 @@
       if (response?.status === 200) {
         let expires = ''
         let token = response?.data?.token
-        let days = 30
+        let days = 1
         var date = new Date()
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
         expires = '; expires=' + date.toUTCString()
@@ -99,10 +99,10 @@
   const toast = useToastStore()
   const isRequired = (value) => {
     if (!value) {
-      return 'This field is required';
+      return 'This field is required'
     }
-    return true;
-    }
+    return true
+  }
 </script>
 <template>
   <ToastWrapper position="top-right" />
@@ -113,8 +113,6 @@
     <ContainerWrapper additional_class="h-full">
       <RowWrapper additional_class="items-center h-full">
         <ColumnWrapper additional_class="w-4/12 max-w-md mx-auto">
-
-          
           <FormWrapper @submit="login">
             <div
               v-if="!isRegister"
@@ -309,7 +307,7 @@
                 />
               </div>
             </div>
-          </FormWrapper >
+          </FormWrapper>
         </ColumnWrapper>
       </RowWrapper>
     </ContainerWrapper>
