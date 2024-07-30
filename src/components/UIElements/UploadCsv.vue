@@ -1,7 +1,7 @@
 <script setup>
     import { ref } from 'vue'
 
-    import Button from 'primevue/button';
+    import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
     import Papa from 'papaparse';
     // Parse the CSV data using PapaParse
     const isLoading = ref(false)
@@ -21,16 +21,17 @@
 </script>
 <template>
     <div class="flex items-center file-upload-wrapper">
+        <!-- doesnt matter if it uses InputComponent since this is input tag is hidden  -->
         <input type="file" id="fileInput" @change="csvUploadFn">
-        <Button class="tbs-btn-primary">
-            <label class="flex items-center " for="fileInput">
-                <span v-if="!isLoading">
-                    <i class="pi pi-upload mx-2" style="font-size: 14px"></i>
+        <ButtonComponent btn_type="primary">
+            <label class="flex items-center p-0" for="fileInput">
+                <span v-if="!isLoading" class="mx-gap-d">
+                    <i class="pi pi-upload mr-2" style="font-size: 14px"></i>
                     Upload CSV
                 </span>
                 <span v-if="isLoading">Extracting...</span>
             </label>
-        </Button>
+        </ButtonComponent>
     </div>
         <!-- Display parsed data, Just removed it. -->
         <div v-if="parsedData">

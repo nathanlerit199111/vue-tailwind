@@ -4,17 +4,19 @@
     "tbs-bg-secondary-color-100" : "#e4e5f1",
     "tbs-bg-tertiary-color-100" : "#9394a5"
   },
-  "button": {
-    "tbs-btn-bg-primary-color-100" : "#fff",
-    "tbs-btn-bg-secondary-color-100": "#484b6a",
-    "tbs-btn-font-primary-color-100" : "#858585",
-    "tbs-btn-font-secondary-color-100": "#fff"
+  "button primary" : {
+    "tbs-btnPrimary-primary-color-100": "#868ac1",
+    "tbs-btnPrimary-primary-color-200": "#656892",
+    "tbs-btnPrimary-primary-color-400": "#484b6a",
+    "tbs-btnPrimary-primary-color-500": "#32344a",
+    "tbs-btnPrimary-secondary-color": "#FCFCFD"
   },
-  "button: hover": {
-    "tbs-btn-bg-primary-color-100-hover" : "#fff",
-    "tbs-btn-bg-secondary-color-100-hover": "#484b6a",
-    "tbs-btn-font-primary-color-100-hover" : "#858585",
-    "tbs-btn-font-secondary-color-100-hover": "#fff"
+  "button secondary" : {
+    "tbs-btnSecondary-primary-color-100": "#e7f1f5",
+    "tbs-btnSecondary-primary-color-200": "#c7dbe3",
+    "tbs-btnSecondary-primary-color-400": "#bacdd6",
+    "tbs-btnSecondary-primary-color-500": "#94a4ab",
+    "tbs-btnSecondary-secondary-color": "#FCFCFD"
   },
   "side navigation": {
     "tbs-nav-bg-color" : "#F1F2F7",

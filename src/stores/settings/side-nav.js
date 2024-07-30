@@ -9,7 +9,7 @@ export const useSideNavigation = defineStore('sideNav', {
         title: 'Home',
         link: 'home',
         isLinkOut: false,  
-        icon: 'Dashboard',
+        icon: 'bell',
         isPermissionRequired: false,
         rolePermissions: ['Admin'],
         children: []
@@ -19,7 +19,7 @@ export const useSideNavigation = defineStore('sideNav', {
         title: 'POS',
         link: 'pos',
         isLinkOut: false,  
-        icon: 'Dashboard',
+        icon: 'bell',
         isPermissionRequired: false,
         rolePermissions: ['Admin'],
         children: []
@@ -29,7 +29,7 @@ export const useSideNavigation = defineStore('sideNav', {
         title: 'Theme',
         link: 'theme',
         isLinkOut: false,  
-        icon: 'Dashboard',
+        icon: 'bell',
         isPermissionRequired: false,
         rolePermissions: ['Admin'],
         children: []

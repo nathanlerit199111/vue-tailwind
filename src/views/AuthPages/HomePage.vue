@@ -10,6 +10,8 @@
   import ImgComponent from '@/components/UIElements/ImgComponent.vue'
   import TableComponent from '@/components/Tables/TableComponent.vue'
   import WizardWrapper from '@/components/WizardWrapper.vue'
+  import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
+  import AccordionComponent from '@/components/Accordion/AccordionComponent.vue'
 
   //API
   import AuthApi from '@/api/product-api.js'
@@ -25,6 +27,17 @@
       isLoading.value = false
     }
   }
+
+  const accordion_array = [
+    {
+      name: 'acc1',
+      content: 'accCon1'
+    },
+    {
+      name: 'acc2',
+      content: 'accCon2'
+    }
+  ]
 
   onMounted(() => {
     getProductApi()
@@ -117,6 +130,13 @@
       <ContainerWrapper>
         <RowWrapper>
           <ColumnWrapper additional_class="w-full">
+            <AccordionComponent
+              :items="accordion_array"
+              right_icon="bell"
+              title_key="name"
+              content_key="content"
+            />
+
             <!--
               - table_data props will pass the entire data from database
               - headers props will just literally display the text. if no value, it will load the whole data
@@ -151,13 +171,22 @@
               <template #item.action="{ item }">
                 <td class="p-5">
                   <div class="flex mx-gap-sm">
-                    <button class="tbs-btn-primary">{{ item.brand }}</button>
-                    <button
-                      class="tbs-btn-secondary"
+                    <ButtonComponent
+                      :label="item.brand"
+                      btn_type="primary"
+                      variant=""
+                      size="small"
+                      left_icon="bell"
+                      :is_loader="true"
+                    />
+                    <ButtonComponent
+                      :label="item.brand"
+                      btn_type="secondary"
+                      variant=""
+                      size="small"
+                      :is_loader="true"
                       @click="deleteItem(item.title)"
-                    >
-                      Delete
-                    </button>
+                    />
                   </div>
                 </td>
               </template>

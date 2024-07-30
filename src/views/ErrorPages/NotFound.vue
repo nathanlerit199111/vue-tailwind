@@ -1,10 +1,17 @@
+<script setup>
+    import ButtonComponent from '@/components/UIElements/ButtonComponent.vue';
+</script>
 <template>
     <div id="not-found-wrapper" class="my-gap-md">
         <h1>404</h1>
         <p>Sorry, Page not found</p>
-        <router-link to="/">
-            <button class="tbs-btn-primary">Go back</button>
-        </router-link>
+        <ButtonComponent
+            label="Go back"
+            btn_type="primary"
+            link_type="internal"
+            link="/"
+        />
+ 
     </div>
     <!-- BACKGROUND ANIMATION -->
     <ul class="floating-squares">

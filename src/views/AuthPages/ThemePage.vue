@@ -80,7 +80,6 @@ onMounted(() => {
     </ContainerWrapper>
   </SectionWrapper>
 
-
   <SectionWrapper>
     <ContainerWrapper additional_class="max-w-5xl">
       <RowWrapper v-for="(category, categoryName) in TEMPORARYCONFIG" :key="categoryName">

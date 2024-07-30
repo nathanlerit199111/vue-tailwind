@@ -38,7 +38,7 @@
       <RowWrapper additional_class="justify-end">
         <ColumnWrapper additional_class="flex items-center mx-gap-md">
           <SVGIcon
-            icon="Bell"
+            icon="bell"
             fill="none"
             stroke="black"
           />
