@@ -1,10 +1,11 @@
 <script setup>
-  import { ref } from 'vue'
+  import { ref, defineEmits } from 'vue'
   import { Field, ErrorMessage } from 'vee-validate'
 
   const model = defineModel()
+  const emit = defineEmits(['input'])
 
-  const props = defineProps({
+  const props_data = defineProps({
     additional_class: {
       type: String,
       default: ''
@@ -34,23 +35,24 @@
     <Field
       v-bind="$attrs"
       v-model="model"
-      :name="props.name"
-      :type="isPasswordVisible ? 'text' : props.type"
-      :rules="props.rules"
-      :class="`py-2 px-4 ${props.additional_class} 
-        ${props.type === 'password' ? 'password pr-10' : ''}
-        ${props.type === 'search' ? 'search pr-10' : ''}
+      :name="props_data.name"
+      :type="isPasswordVisible ? 'text' : props_data.type"
+      :rules="props_data.rules"
+      @input="$emit('input', $event)"
+      :class="`py-2 px-4 ${props_data.additional_class} 
+        ${props_data.type === 'password' ? 'password pr-10' : ''}
+        ${props_data.type === 'search' ? 'search pr-10' : ''}
         `"
     />
     <i
-      v-if="props.type === 'password'"
+      v-if="props_data.type === 'password'"
       :class="isPasswordVisible ? 'pi pi-eye' : 'pi pi-eye-slash'"
       @click="isPasswordVisible = !isPasswordVisible"
     />
     <i
-      v-if="props.type === 'search'"
+      v-if="props_data.type === 'search'"
       class="pi pi-search"
     />
   </div>
-  <ErrorMessage :name="props.name" />
+  <ErrorMessage :name="props_data.name" />
 </template>

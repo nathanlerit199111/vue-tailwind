@@ -11,7 +11,8 @@
     ImgComponent,
     TableComponent,
     ButtonComponent,
-    AccordionComponent
+    AccordionComponent,
+    OTP
   } from '@/components/index.js'
 
 
@@ -59,6 +60,7 @@
 </script>
 
 <template>
+  <OTP />
   <SkeletonLoader
     v-if="isLoading"
     type="table"

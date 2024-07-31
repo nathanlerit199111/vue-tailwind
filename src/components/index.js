@@ -16,6 +16,7 @@ import AppHeader from '@/components/Widgets/Headers/AppHeader.vue'
 import TableComponent from '@/components/Widgets/Tables/TableComponent.vue'
 import AccordionComponent from '@/components/Widgets/Accordion/AccordionComponent.vue'
 import GalleryImage from '@/components/Widgets/Galleries/GalleryImage.vue'
+import OTP from '@/components/Widgets/OTP/OTP.vue'
 import CalendarMonth from '@/components/Widgets/Calendar/CalendarMonth.vue'
 
 // UIELEMENTS
@@ -48,6 +49,7 @@ export {
     TableComponent,
     AccordionComponent,
     GalleryImage,
+    OTP,
     CalendarMonth,
 
     // UIElements
