@@ -1,9 +1,9 @@
 // WRAPPERS
-import SectionWrapper from '@/components/SectionWrapper.vue'
-import ContainerWrapper from '@/components/ContainerWrapper.vue'
-import RowWrapper from '@/components/RowWrapper.vue'
-import ColumnWrapper from '@/components/ColumnWrapper.vue'
-import FormWrapper from '@/components/FormWrapper.vue'
+import SectionWrapper from '@/components/Wrappers/SectionWrapper.vue'
+import ContainerWrapper from '@/components/Wrappers/ContainerWrapper.vue'
+import RowWrapper from '@/components/Wrappers/RowWrapper.vue'
+import ColumnWrapper from '@/components/Wrappers/ColumnWrapper.vue'
+import FormWrapper from '@/components/Wrappers/FormWrapper.vue'
 
 // NAVIGATIONS
 import SideNavComponent from '@/components/Navigations/SideNavComponent.vue'

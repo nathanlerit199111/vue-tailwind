@@ -16,7 +16,7 @@
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
   //TOAST MESSAGE
-  import ToastWrapper from '@/components/ToastWrapper.vue'
+  import ToastWrapper from '@/components/Wrappers/ToastWrapper.vue'
   import { useToastStore } from '@/stores/toast'
 
   //VUE PRIME
