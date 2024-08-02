@@ -1,12 +1,14 @@
 <script setup>
   import { ref } from 'vue'
 
-  import SectionWrapper from '@/components/SectionWrapper.vue'
-  import ContainerWrapper from '@/components/ContainerWrapper.vue'
-  import RowWrapper from '@/components/RowWrapper.vue'
-  import ColumnWrapper from '@/components/ColumnWrapper.vue'
-  import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
-  import WizardWrapper from '@/components/WizardWrapper.vue'
+  import {
+    WizardWrapper,
+    ColumnWrapper,
+    RowWrapper,
+    ContainerWrapper,
+    SectionWrapper,
+    SkeletonLoader
+  } from '@/components/index.js'
 
   let isLoading = ref(false)
 

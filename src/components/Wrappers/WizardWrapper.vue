@@ -1,6 +1,6 @@
 <script setup>
   import { defineProps, defineEmits, computed } from 'vue'
-  import FormWrapper from '@/components/FormWrapper.vue'
+  import FormWrapper from '@/components/Wrappers/FormWrapper.vue'
   import SVGIcon from '@/components/UIElements/SVGIcon.vue'
   import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
 

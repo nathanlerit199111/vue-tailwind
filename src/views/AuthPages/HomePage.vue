@@ -1,17 +1,19 @@
 <script setup>
-  import { ref, onMounted, watchEffect, onBeforeUnmount } from 'vue'
+  import { ref, onMounted, watchEffect } from 'vue'
 
-  import SectionWrapper from '@/components/SectionWrapper.vue'
-  import ContainerWrapper from '@/components/ContainerWrapper.vue'
-  import RowWrapper from '@/components/RowWrapper.vue'
-  import ColumnWrapper from '@/components/ColumnWrapper.vue'
-  import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
-  import UploadCsv from '@/components/UIElements/UploadCsv.vue'
-  import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-  import TableComponent from '@/components/Tables/TableComponent.vue'
-  import WizardWrapper from '@/components/WizardWrapper.vue'
-  import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
-  import AccordionComponent from '@/components/Accordion/AccordionComponent.vue'
+  import {
+    SectionWrapper,
+    ContainerWrapper,
+    RowWrapper,
+    ColumnWrapper,
+    SkeletonLoader,
+    UploadCsv,
+    ImgComponent,
+    TableComponent,
+    ButtonComponent,
+    AccordionComponent,
+    OTP
+  } from '@/components/index.js'
 
   //API
   import AuthApi from '@/api/product-api.js'
@@ -106,6 +108,7 @@
 </script>
 
 <template>
+  <OTP />
   <SkeletonLoader
     v-if="isLoading"
     type="table"

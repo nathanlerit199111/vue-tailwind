@@ -1,15 +1,14 @@
 <script setup>
     import { ref, onMounted, computed  } from 'vue'
-    import SectionWrapper from '@/components/SectionWrapper.vue'
-    import ContainerWrapper from '@/components/ContainerWrapper.vue'
-    import RowWrapper from '@/components/RowWrapper.vue'
-    import ColumnWrapper from '@/components/ColumnWrapper.vue'
-    import SkeletonLoader from '@/components/Loaders/SkeletonLoader.vue'
-    // import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-    import GalleryImage from '@/components/Galleries/GalleryImage.vue'
 
-    //VUE PRIME
-    // import Button from 'primevue/button';
+    import {
+        SectionWrapper,
+        ContainerWrapper,
+        RowWrapper,
+        ColumnWrapper,
+        SkeletonLoader,
+        GalleryImage
+    } from '@/components/index.js'
 
     //API
     import AuthApi from '@/api/product-api.js'

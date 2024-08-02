@@ -1,8 +1,8 @@
 <script setup>
-    import SectionWrapper from '@/components/SectionWrapper.vue'
-    import ContainerWrapper from '@/components/ContainerWrapper.vue'
-    import RowWrapper from '@/components/RowWrapper.vue'
-    import ColumnWrapper from '@/components/ColumnWrapper.vue'
+    import SectionWrapper from '@/components/Wrappers/SectionWrapper.vue'
+    import ContainerWrapper from '@/components/Wrappers/ContainerWrapper.vue'
+    import RowWrapper from '@/components/Wrappers/RowWrapper.vue'
+    import ColumnWrapper from '@/components/Wrappers/ColumnWrapper.vue'
     import ImgComponent from '@/components/UIElements/ImgComponent.vue'
 
 

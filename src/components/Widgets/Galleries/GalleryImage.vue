@@ -1,6 +1,8 @@
 <script setup>
-    import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-
+    import {
+        ImgComponent
+    } from '@/components/index.js'
+    
     const props_data = defineProps({
         gallery_data: {
             type: Array,
@@ -32,3 +34,34 @@
         </div>
     </div>
 </template>
+
+<style lang="scss">
+    .gallery-wrapper {
+        .gallery-list {
+            background: var(--tbs-bg-secondary-color-100);
+            border-radius: var(--tbs-border-radius-sm);
+            box-shadow: 2px 2px 3px color-mix(in srgb,var(--tbs-bg-primary-color-100),#000 12%);
+            padding: var(--tbs-space-sm);
+        }
+        .gallery-image-wrapper {
+            border-radius: var(--tbs-border-radius-sm);
+            img {
+                aspect-ratio: 2/1;
+                min-height: 140px;
+            }
+        }
+        .gallery-description-wrapper {
+            position: relative;
+            padding: var(--tbs-space-md) 0;
+
+            // .price {
+            //     position: absolute;
+            //     left: 0;
+            //     bottom: 0;
+            // }
+        }
+        button {
+            height: max-content;
+        }
+    }
+</style>
