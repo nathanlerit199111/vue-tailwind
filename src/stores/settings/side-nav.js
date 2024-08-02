@@ -34,6 +34,16 @@ export const useSideNavigation = defineStore('sideNav', {
         rolePermissions: ['Admin'],
         children: []
       },
+      {
+        id: 3,
+        title: 'Wizard',
+        link: 'wizard',
+        isLinkOut: false,  
+        icon: 'bell',
+        isPermissionRequired: false,
+        rolePermissions: ['Admin'],
+        children: []
+      },
     ]
   }),
   actions: {

@@ -4,6 +4,7 @@ import ContainerWrapper from '@/components/Wrappers/ContainerWrapper.vue'
 import RowWrapper from '@/components/Wrappers/RowWrapper.vue'
 import ColumnWrapper from '@/components/Wrappers/ColumnWrapper.vue'
 import FormWrapper from '@/components/Wrappers/FormWrapper.vue'
+import WizardWrapper from '@/components/Wrappers/WizardWrapper.vue'
 
 // NAVIGATIONS
 import SideNavComponent from '@/components/Navigations/SideNavComponent.vue'
@@ -37,6 +38,7 @@ export {
     RowWrapper,
     ColumnWrapper,
     FormWrapper,
+    WizardWrapper,
 
     // Navigations
     SideNavComponent,

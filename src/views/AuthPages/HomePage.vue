@@ -15,7 +15,6 @@
     OTP
   } from '@/components/index.js'
 
-
   //API
   import AuthApi from '@/api/product-api.js'
   let products = ref()
@@ -49,6 +48,55 @@
   const deleteItem = (item) => {
     console.log('ITEM', item)
   }
+
+  const tabs = ref([
+    {
+      name: 'Tab 1',
+      index: 1,
+      isFillUp: false,
+      child: []
+    },
+    {
+      name: 'Tab 2',
+      index: 2,
+      isFillUp: false,
+      child: []
+    },
+    {
+      name: 'Tab 3',
+      index: 3,
+      isFillUp: false,
+      child: [
+        {
+          name: 'Tab 3 Index 1',
+          index: 3.1,
+          isFillUp: false
+        },
+        {
+          name: 'Tab 3 Index 2',
+          index: 3.2,
+          isFillUp: false
+        },
+        {
+          name: 'Tab 3 Index 3',
+          index: 3.3,
+          isFillUp: false
+        }
+      ]
+    },
+    {
+      name: 'Tab 4',
+      index: 4,
+      isFillUp: false,
+      child: []
+    },
+    {
+      name: 'Tab 5',
+      index: 5,
+      isFillUp: false,
+      child: []
+    }
+  ])
 
   //Functions from child component
   const tableRef = ref()
@@ -87,10 +135,9 @@
             <AccordionComponent
               :items="accordion_array"
               right_icon="bell"
-              title_key="name" 
+              title_key="name"
               content_key="content"
             />
-
 
             <!--
               - table_data props will pass the entire data from database

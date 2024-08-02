@@ -61,5 +61,10 @@
     "tbs-border-radius-md" : "16px",
     "tbs-border-radius-lg" : "25px",
     "tbs-border-radius-xl" : "32px"
+  },
+  "wizard":{
+    "tbs-wizard-bg-primary": "#868ac1",
+    "tbs-wizard-bg-secondary": "#9b0101",
+    "tbs-wizard-bg-success": "#036803"
   }
 }

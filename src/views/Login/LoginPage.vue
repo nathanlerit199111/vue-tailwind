@@ -10,9 +10,9 @@
     FormWrapper,
     InputComponent,
     SelectCountry,
-    ButtonComponent,
+    ButtonComponent
   } from '@/components/index.js'
-  
+
   import { passwordRules, validatePassword } from '@/helpers/form-validation.js'
 
   //TOAST MESSAGE
