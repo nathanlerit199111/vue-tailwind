@@ -2,7 +2,13 @@ import { camelCase, upperFirst } from 'lodash'
 
 export default {
   install(app) {
-    const componentFiles = import.meta.glob('@/components/UIElements/AppIcon.vue', {
+    /*
+      TO DO:
+      SOLUTION 1: Either create a Global Folder and use wild card
+
+      SOLUTION 2: Use the existing folder structure and import manually that needs to use globally
+    */
+    const componentFiles = import.meta.glob('@/components/UIElements/*.vue', {
       eager: true
     })
 
