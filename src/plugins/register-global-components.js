@@ -8,7 +8,7 @@ export default {
 
       SOLUTION 2: Use the existing folder structure and import manually that needs to use globally
     */
-    const componentFiles = import.meta.glob('@/components/UIElements/*.vue', {
+    const componentFiles = import.meta.glob('@/components/Common/*.vue', {
       eager: true
     })
 

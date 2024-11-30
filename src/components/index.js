@@ -1,45 +1,29 @@
-// WRAPPERS
-import SectionWrapper from '@/components/Wrappers/SectionWrapper.vue'
-import ContainerWrapper from '@/components/Wrappers/ContainerWrapper.vue'
-import RowWrapper from '@/components/Wrappers/RowWrapper.vue'
-import ColumnWrapper from '@/components/Wrappers/ColumnWrapper.vue'
-import FormWrapper from '@/components/Wrappers/FormWrapper.vue'
-import WizardWrapper from '@/components/Wrappers/WizardWrapper.vue'
-
 // NAVIGATIONS
-import SideNavComponent from '@/components/Navigations/SideNavComponent.vue'
-import DropDownProfileComponent from '@/components/Navigations/DropDownProfileComponent.vue'
+import SideNavComponent from '@/components/Base/Navigations/SideNavComponent.vue'
+import DropDownProfileComponent from '@/components/Base/Navigations/DropDownProfileComponent.vue'
 
 // WIDGETS
-import SkeletonLoader from '@/components/Widgets/Loaders/SkeletonLoader.vue'
-import ButtonLoader from '@/components/Widgets/Loaders/ButtonLoader.vue'
-import AppHeader from '@/components/Widgets/Headers/AppHeader.vue'
-import TableComponent from '@/components/Widgets/Tables/TableComponent.vue'
-import AccordionComponent from '@/components/Widgets/Accordion/AccordionComponent.vue'
-import GalleryImage from '@/components/Widgets/Galleries/GalleryImage.vue'
-import OTP from '@/components/Widgets/OTP/OTP.vue'
-import CalendarMonth from '@/components/Widgets/Calendar/CalendarMonth.vue'
+import SkeletonLoader from '@/components/Base/Widgets/Loaders/SkeletonLoader.vue'
+import ButtonLoader from '@/components/Base/Widgets/Loaders/ButtonLoader.vue'
+import AppHeader from '@/components/Base/Widgets/Headers/AppHeader.vue'
+import TableComponent from '@/components/Base/Widgets/Tables/TableComponent.vue'
+import AccordionComponent from '@/components/Base/Widgets/Accordion/AccordionComponent.vue'
+import GalleryImage from '@/components/Base/Widgets/Galleries/GalleryImage.vue'
+import OTP from '@/components/Base/Widgets/OTP/OTP.vue'
+import CalendarMonth from '@/components/Base/Widgets/Calendar/CalendarMonth.vue'
 
 // UIELEMENTS
-import ImgComponent from '@/components/UIElements/ImgComponent.vue'
-import ButtonComponent from '@/components/UIElements/ButtonComponent.vue'
-import InputComponent from '@/components/UIElements/InputComponent.vue'
-import LottieComponent from '@/components/UIElements/LottieComponent.vue'
-import OdometerComponent from '@/components/UIElements/OdometerComponent.vue'
-import SelectCountry from '@/components/UIElements/SelectCountry.vue'
-import TextAreaComponent from '@/components/UIElements/TextAreaComponent.vue'
-import UploadCsv from '@/components/UIElements/UploadCsv.vue'
-import SVGIcon from '@/components/UIElements/SVGIcon.vue'
+import ImgComponent from '@/components/Common/ImgComponent.vue'
+import ButtonComponent from '@/components/Common/ButtonComponent.vue'
+import InputComponent from '@/components/Common/InputComponent.vue'
+import LottieComponent from '@/components/Base/LottieComponent.vue'
+import OdometerComponent from '@/components/Base/OdometerComponent.vue'
+import SelectCountry from '@/components/Base/SelectCountry.vue'
+import TextAreaComponent from '@/components/Common/TextAreaComponent.vue'
+import UploadCsv from '@/components/Base/UploadCsv.vue'
+import SVGIcon from '@/components/Common/SVGIcon.vue'
 
 export {
-    // Wrapper
-    SectionWrapper,
-    ContainerWrapper,
-    RowWrapper,
-    ColumnWrapper,
-    FormWrapper,
-    WizardWrapper,
-
     // Navigations
     SideNavComponent,
     DropDownProfileComponent,

@@ -1,5 +1,5 @@
 <script setup>
-    import ButtonComponent from '@/components/UIElements/ButtonComponent.vue';
+    import ButtonComponent from '@/components/Common/ButtonComponent.vue';
 </script>
 <template>
     <div id="not-found-wrapper" class="my-gap-md">

@@ -10,7 +10,7 @@ import customConfig from '@/theme/theme.json';
   } from '@/components/index.js'
 
 //TOAST MESSAGE
-import ToastWrapper from '@/components/Wrappers/ToastWrapper.vue'
+import ToastWrapper from '@/components/Common/ToastWrapper.vue'
 import { useToastStore } from '@/stores/toast'
 
 // Import vue3-colorpicker

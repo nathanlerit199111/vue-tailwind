@@ -2,15 +2,9 @@
   import { ref, onMounted, watchEffect } from 'vue'
 
   import {
-    SectionWrapper,
-    ContainerWrapper,
-    RowWrapper,
-    ColumnWrapper,
     SkeletonLoader,
     UploadCsv,
-    ImgComponent,
     TableComponent,
-    ButtonComponent,
     AccordionComponent,
     OTP
   } from '@/components/index.js'
@@ -108,7 +102,7 @@
 </script>
 
 <template>
-  <OTP />
+  <!-- <OTP /> -->
   <SkeletonLoader
     v-if="isLoading"
     type="table"
@@ -132,12 +126,12 @@
       <ContainerWrapper>
         <RowWrapper>
           <ColumnWrapper additional_class="w-full">
-            <AccordionComponent
+            <!-- <AccordionComponent
               :items="accordion_array"
               right_icon="bell"
               title_key="name"
               content_key="content"
-            />
+            /> -->
 
             <!--
               - table_data props will pass the entire data from database
