@@ -2,10 +2,6 @@
     import { ref, onMounted, computed  } from 'vue'
 
     import {
-        SectionWrapper,
-        ContainerWrapper,
-        RowWrapper,
-        ColumnWrapper,
         SkeletonLoader,
         GalleryImage
     } from '@/components/index.js'

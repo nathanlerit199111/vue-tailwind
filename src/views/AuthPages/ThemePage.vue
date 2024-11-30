@@ -2,13 +2,6 @@
 import { ref, onMounted } from 'vue'
 import customConfig from '@/theme/theme.json';
 
-  import {
-    SectionWrapper,
-    ContainerWrapper,
-    RowWrapper,
-    ColumnWrapper,
-  } from '@/components/index.js'
-
 //TOAST MESSAGE
 import ToastWrapper from '@/components/Common/ToastWrapper.vue'
 import { useToastStore } from '@/stores/toast'

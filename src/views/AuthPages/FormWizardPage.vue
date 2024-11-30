@@ -2,11 +2,6 @@
   import { ref } from 'vue'
 
   import {
-    WizardWrapper,
-    ColumnWrapper,
-    RowWrapper,
-    ContainerWrapper,
-    SectionWrapper,
     SkeletonLoader
   } from '@/components/index.js'
 
